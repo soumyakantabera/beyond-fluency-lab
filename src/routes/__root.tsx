@@ -13,7 +13,7 @@ export const Route = createRootRoute({
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: APP_NAME },
       { name: "description", content: "Communication coaching for fluent English speakers: public speaking, interviews, presentations, persuasion and performance under pressure. Live courses from €50." },
-      { name: "theme-color", content: "#111A33" },
+      { name: "theme-color", content: "#174F46" },
     ],
     links: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
