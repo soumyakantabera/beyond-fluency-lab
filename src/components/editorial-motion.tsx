@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { LabIcon } from "@/components/lab-icon";
 import { photos } from "@/lib/editorial";
 
@@ -103,7 +103,27 @@ const chapters = [
 
 export function StoryChapters() {
   const [index, setIndex] = useState(0);
-  const c = chapters[index];
+  const track = useRef<HTMLDivElement>(null);
+
+  function go(i: number) {
+    const next = Math.max(0, Math.min(chapters.length - 1, i));
+    setIndex(next);
+    const el = track.current;
+    const slide = el?.children[next] as HTMLElement | undefined;
+    if (el && slide) el.scrollTo({ left: slide.offsetLeft, behavior: "smooth" });
+  }
+
+  function onScroll() {
+    const el = track.current;
+    if (!el) return;
+    const slides = Array.from(el.children) as HTMLElement[];
+    const mark = el.scrollLeft + el.clientWidth * 0.4;
+    let next = 0;
+    for (let i = 0; i < slides.length; i++) {
+      if (slides[i].offsetLeft <= mark) next = i;
+    }
+    setIndex(next);
+  }
 
   return (
     <section className="story-section" aria-labelledby="story-title">
@@ -127,23 +147,32 @@ export function StoryChapters() {
           </p>
         </div>
         <div className="story-carousel" aria-label="The Beyond Fluency Lab story">
-          <div className="story-slide" aria-label={"Chapter " + c.number + " of 3"}>
-            <figure className="story-image">
-              <img src={c.photo.src} alt={c.photo.alt} width="1400" height="950" loading="lazy" />
-              <figcaption>{c.photo.caption}</figcaption>
-            </figure>
-            <div className="story-copy">
-              <div className="chapter-line">
-                <span className="chapter-number">{c.number}</span>
-                <span>{c.label}</span>
-              </div>
-              <h3>{c.title}</h3>
-              <p>{c.text}</p>
-              <a className="text-link" href={c.link}>
-                {c.linkText}
-                <LabIcon name="arrow" size={18} />
-              </a>
-            </div>
+          <div className="story-track" ref={track} onScroll={onScroll}>
+            {chapters.map((c, i) => (
+              <article
+                key={c.number}
+                className={"story-slide" + (i === index ? " is-current" : "")}
+                aria-label={"Chapter " + c.number + " of 3"}
+                aria-hidden={i === index ? undefined : true}
+              >
+                <figure className="story-image">
+                  <img src={c.photo.src} alt={c.photo.alt} width="1400" height="950" loading="lazy" />
+                  <figcaption>{c.photo.caption}</figcaption>
+                </figure>
+                <div className="story-copy">
+                  <div className="chapter-line">
+                    <span className="chapter-number">{c.number}</span>
+                    <span>{c.label}</span>
+                  </div>
+                  <h3>{c.title}</h3>
+                  <p>{c.text}</p>
+                  <a className="text-link" href={c.link} tabIndex={i === index ? 0 : -1}>
+                    {c.linkText}
+                    <LabIcon name="arrow" size={18} />
+                  </a>
+                </div>
+              </article>
+            ))}
           </div>
           <div className="story-controls">
             <div className="chapter-select" aria-label="Choose story chapter">
@@ -151,7 +180,7 @@ export function StoryChapters() {
                 <button
                   key={ch.number}
                   type="button"
-                  onClick={() => setIndex(i)}
+                  onClick={() => go(i)}
                   aria-current={i === index ? "step" : undefined}
                   aria-label={"Read chapter " + ch.number}
                 >
@@ -166,7 +195,7 @@ export function StoryChapters() {
             <div className="slide-buttons">
               <button
                 type="button"
-                onClick={() => setIndex((i) => Math.max(0, i - 1))}
+                onClick={() => go(index - 1)}
                 disabled={index === 0}
                 aria-label="Previous chapter"
               >
@@ -174,8 +203,8 @@ export function StoryChapters() {
               </button>
               <button
                 type="button"
-                onClick={() => setIndex((i) => Math.min(2, i + 1))}
-                disabled={index === 2}
+                onClick={() => go(index + 1)}
+                disabled={index === chapters.length - 1}
                 aria-label="Next chapter"
               >
                 <LabIcon name="next" />

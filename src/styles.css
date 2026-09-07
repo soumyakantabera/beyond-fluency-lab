@@ -273,3 +273,38 @@ p, .lead, .hero-description { text-wrap: pretty; }
 .deck-dots button[aria-selected="true"] { background: var(--primary); }
 .deck-controls .deck-expand { min-width: auto; padding: 0 12px; }
 
+.story-slide:not(.is-current) { display: none; }
+@media (max-width: 820px) {
+  .story-track {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    touch-action: pan-x;
+    margin-right: -30px;
+    padding-right: 30px;
+  }
+  .story-track::-webkit-scrollbar { display: none; }
+  .story-slide,
+  .story-slide.is-current,
+  .story-slide:not(.is-current) {
+    display: grid;
+    flex: 0 0 calc(100% - 44px);
+    width: calc(100% - 44px);
+    max-width: calc(100% - 44px);
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    min-width: 0;
+  }
+  .story-slide:not(.is-current) { opacity: .4; }
+  .story-slide.is-current { opacity: 1; }
+  .story-section .slide-buttons { display: none; }
+  .story-copy { padding-right: 8px; }
+}
+@media (max-width: 580px) {
+  .story-track { margin-right: -16px; padding-right: 16px; }
+}
+
