@@ -213,3 +213,12 @@ html[data-motion=paused] *,html[data-motion=paused] *:before,html[data-motion=pa
 h1, h2, h3 { text-wrap: balance; }
 p, .lead, .hero-description { text-wrap: pretty; }
 
+@media (max-width: 900px) {
+  .hero-intro { font-size: 12px; letter-spacing: .08em; gap: 8px; margin-bottom: 16px; }
+  .hero-intro .eyebrow-rule { width: 18px; }
+}
+@media (max-width: 580px) {
+  .hero-intro { font-size: 11px; letter-spacing: .06em; gap: 7px; margin-bottom: 12px; line-height: 1.35; }
+  .hero-intro .eyebrow-rule { width: 14px; }
+}
+
