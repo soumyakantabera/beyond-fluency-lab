@@ -1,5 +1,6 @@
 'use client';
-import { Children, useEffect, useRef, useState, type ReactNode } from 'react';
+import {Children,useEffect,useRef,useState,type ReactNode} from 'react';
+import {usePassVerticalScroll} from '@/lib/pass-vertical-scroll';
 
 export function MobileDeck({
   children,
@@ -16,6 +17,7 @@ export function MobileDeck({
   const [index, setIndex] = useState(0);
   const scroller = useRef<HTMLDivElement>(null);
   const compact = mobile && !all;
+  usePassVerticalScroll(scroller, compact);
 
   useEffect(() => {
     const m = matchMedia('(max-width: 580px)');

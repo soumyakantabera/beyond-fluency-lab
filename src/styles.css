@@ -242,12 +242,13 @@ p, .lead, .hero-description { text-wrap: pretty; }
   display: flex !important;
   gap: 0;
   overflow-x: auto;
+  overflow-y: clip;
   overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  touch-action: pan-x;
+  touch-action: pan-x pan-y;
 }
 .deck-compact .course-grid::-webkit-scrollbar,
 .deck-compact .article-grid::-webkit-scrollbar { display: none; }
@@ -279,11 +280,12 @@ p, .lead, .hero-description { text-wrap: pretty; }
     display: flex;
     gap: 14px;
     overflow-x: auto;
+    overflow-y: clip;
     overscroll-behavior-x: contain;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    touch-action: pan-x;
+    touch-action: pan-x pan-y;
     margin-right: -30px;
     padding-right: 30px;
   }

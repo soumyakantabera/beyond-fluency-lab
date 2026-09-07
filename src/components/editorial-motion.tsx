@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { LabIcon } from "@/components/lab-icon";
 import { photos } from "@/lib/editorial";
+import { usePassVerticalScroll } from "@/lib/pass-vertical-scroll";
 
 export function MotionDirector() {
   const [paused, setPaused] = useState(false);
@@ -104,6 +105,16 @@ const chapters = [
 export function StoryChapters() {
   const [index, setIndex] = useState(0);
   const track = useRef<HTMLDivElement>(null);
+  const [swipe, setSwipe] = useState(false);
+
+  useEffect(() => {
+    const m = matchMedia("(max-width: 820px)");
+    const update = () => setSwipe(m.matches);
+    update();
+    m.addEventListener("change", update);
+    return () => m.removeEventListener("change", update);
+  }, []);
+  usePassVerticalScroll(track, swipe);
 
   function go(i: number) {
     const next = Math.max(0, Math.min(chapters.length - 1, i));
