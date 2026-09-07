@@ -96,3 +96,120 @@ html[data-motion=paused] *,html[data-motion=paused] *:before,html[data-motion=pa
 .nav > .btn { white-space: nowrap; }
 .status { padding: 16px; background: #e3e6db; font-size: 14px; }
 .status.error { background: #f0ded7; color: #793820; }
+
+/* Compact tablet + phone: smaller body, less overflow, more of the page in view. */
+@media (max-width: 1120px) {
+  body { font-size: 15px; line-height: 1.6; }
+  p { line-height: 1.62; }
+  .hero-description,
+  .editorial-page .lead,
+  .plateau-editorial .lead,
+  .prose p,
+  .lead,
+  .result-intro .lead { font-size: 15px; line-height: 1.65; max-width: 38em; }
+  .course-card p:not(.eyebrow),
+  .article-card p:not(.eyebrow),
+  .story-copy > p,
+  .dimension p,
+  .faq-list p,
+  .site-invitation p,
+  .enrol-summary p,
+  .answer span { font-size: 14.5px; line-height: 1.6; min-height: 0; }
+  .btn, .text-link { font-size: 14px; }
+  .nav > a { font-size: 15px; }
+  .nav > .btn { font-size: 14px; }
+  .new-hero { min-height: 0; padding-top: 36px; padding-bottom: 48px; gap: 28px; }
+  .new-hero h1,
+  .editorial-page h1 { font-size: clamp(2.05rem, 4vw, 2.65rem); line-height: 1.12; letter-spacing: -0.04em; }
+  h2,
+  .section-head h2,
+  .plateau-editorial h2,
+  .story-copy h3,
+  .diagnostic-editorial h2,
+  .closing h2,
+  .site-invitation h2 { font-size: clamp(1.6rem, 3.1vw, 2.15rem); }
+  .audience h3,
+  .course-card h3,
+  .article-card h3 { font-size: 1.32rem; min-height: 0; line-height: 1.2; }
+  .audience .small { min-height: 0; font-size: 13px; }
+  .section { padding-top: 48px; padding-bottom: 48px; }
+  .wrap { padding-left: 28px; padding-right: 28px; }
+  .header { padding-left: 28px; padding-right: 28px; }
+  .heritage-proof strong { font-size: 20px; }
+  .heritage-proof span { font-size: 13px; }
+  .story-image img { height: 320px; }
+  .audience-image img { height: 220px; }
+  .hero-actions { flex-wrap: wrap; }
+  .footer-description,
+  .footer-top > div > a:not(.brand) { font-size: 14px; }
+  .prose ul, .prose ol { font-size: 14.5px; }
+}
+
+@media (max-width: 900px) {
+  body { font-size: 15px; }
+  .new-hero h1 { font-size: 2.2rem; }
+  .hero-actions { flex-direction: column; align-items: stretch; gap: 10px; }
+  .hero-actions .btn { width: 100%; justify-content: space-between; min-height: 48px; flex-basis: auto; }
+  .hero-composition { height: 380px; margin-left: 10px; margin-right: 6px; }
+  .hero-main-image { height: 320px; left: 28px; }
+  .hero-detail-image { width: 132px; height: 180px; }
+  .hero-detail-image img { height: 148px; }
+  .hero-seal { max-width: 180px; }
+  .story-section { padding: 48px 0; }
+  .audiences { gap: 24px 16px; }
+  .course-grid { gap: 16px; }
+  .course-card-body { padding: 20px; min-height: 0; }
+  .course-card h3 { font-size: 1.4rem; min-height: 0; }
+  .course-card p:not(.eyebrow) { min-height: 0; }
+  footer { padding: 44px 28px 22px; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 28px 20px; }
+  .footer-top > div:first-child { grid-column: 1 / -1; }
+  .section-head { display: block; }
+  .section-head > p { margin-top: 12px; max-width: 36em; }
+}
+
+@media (max-width: 580px) {
+  body { font-size: 14.5px; line-height: 1.58; }
+  .hero-description,
+  .editorial-page .lead,
+  .plateau-editorial .lead,
+  .prose p,
+  .lead { font-size: 14.5px; line-height: 1.62; }
+  .new-hero { padding-top: 24px; padding-bottom: 36px; gap: 28px; }
+  .new-hero h1 { font-size: 2.12rem; line-height: 1.14; letter-spacing: -0.03em; }
+  .section-head h2,
+  .plateau-editorial h2,
+  .story-copy h3,
+  .closing h2 { font-size: 1.65rem; }
+  .brand-wordmark { font-size: 22px; white-space: nowrap; }
+  .brand-wordmark > span { font-size: 16px; margin-top: 2px; }
+  .header { padding: 12px 16px; min-height: 72px; }
+  .nav { top: 72px; }
+  .section { padding-top: 36px; padding-bottom: 36px; }
+  .wrap { padding-left: 16px; padding-right: 16px; }
+  .hero-composition { height: 220px; margin: 0; }
+  .hero-main-image { height: 220px; left: 0; right: 0; }
+  .hero-detail-image,
+  .hero-seal { display: none; }
+  .heritage-proof { gap: 0; }
+  .heritage-proof strong { font-size: 18px; }
+  .heritage-proof span { font-size: 12.5px; }
+  .audiences { gap: 20px 12px; }
+  .audience-image img { height: 150px; }
+  .audience h3 { font-size: 1.12rem; min-height: 0; }
+  .story-image img { height: 220px; }
+  .story-copy h3 { font-size: 1.5rem; }
+  .course-card h3 { font-size: 1.45rem; }
+  .course-card-image { height: 180px; }
+  footer { padding: 32px 16px 16px; }
+  .footer-top { grid-template-columns: 1fr; gap: 22px; }
+  .footer-top > div:last-child { grid-column: auto; }
+  .footer-description { font-size: 13.5px; }
+  .hero-actions .btn { min-height: 46px; font-size: 14px; }
+  .prose h2 { font-size: 1.55rem; margin-top: 28px; }
+  .faq-list summary { font-size: 1.15rem; }
+}
+
+h1, h2, h3 { text-wrap: balance; }
+p, .lead, .hero-description { text-wrap: pretty; }
+

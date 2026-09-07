@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { SiteInvitation } from "@/components/course-invitation";
-import { BUSINESS } from "@/lib/content";
+import { BUSINESS, FOOTER_BLURB } from "@/lib/content";
 import { Signature, HeritageStrip } from "@/components/identity";
 import { MotionDirector } from "@/components/editorial-motion";
 import { Navigation } from "@/components/navigation";
@@ -31,7 +31,7 @@ export function Footer() {
             <a href="/" className="brand">
               <Signature />
             </a>
-            <p className="footer-description">{BUSINESS}</p>
+            <p className="footer-description">{FOOTER_BLURB}</p>
             <p className="small">From Learn With Smile. Seven years of teaching behind a distinct new programme.</p>
           </div>
           <div>
@@ -39,7 +39,7 @@ export function Footer() {
             <a href="/courses">Courses</a>
             <a href="/who-its-for">Who it’s for</a>
             <a href="/our-method">Our method</a>
-            <a href="/pricing">Pricing</a>
+            <a href="/blog">Journal</a>
           </div>
           <div>
             <h2>The lab</h2>

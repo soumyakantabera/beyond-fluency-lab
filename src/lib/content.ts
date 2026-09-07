@@ -1,5 +1,6 @@
 export const ORIGIN = "";
 export const BUSINESS = 'Beyond Fluency Lab is an independent communication-coaching brand for people who already work and speak in English. From Learn With Smile, it offers live online coaching in public speaking, interviews and professional communication in groups of approximately 6, with course fees from €50 to €150.';
+export const FOOTER_BLURB = 'Beyond Fluency Lab is an independent communication-coaching brand for people who already work and speak in English. From Learn With Smile: live online coaching in public speaking, interviews and professional communication, in groups of about six.';
 export const AFFILIATION_Q = 'Are you affiliated with my university?';
 export const AFFILIATION_A = "No. Beyond Fluency Lab is an independent programme — we are not partnered with, endorsed by, or officially connected to any specific university. If we ever do form a real partnership with a school, we'll state it clearly on this page, by name.";
 export function pageMeta(path: string, title: string, description: string, _kind?: string) {
