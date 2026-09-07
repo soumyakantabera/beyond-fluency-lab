@@ -236,3 +236,40 @@ p, .lead, .hero-description { text-wrap: pretty; }
   .heritage-strip { font-size: clamp(8.5px, 2.7vw, 11px); letter-spacing: .035em; padding-left: 10px; padding-right: 10px; }
 }
 
+/* Horizontal swipe for mobile course / article decks. */
+.deck-compact .course-grid,
+.deck-compact .article-grid {
+  display: flex !important;
+  gap: 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  touch-action: pan-x;
+}
+.deck-compact .course-grid::-webkit-scrollbar,
+.deck-compact .article-grid::-webkit-scrollbar { display: none; }
+.deck-compact .deck-item {
+  flex: 0 0 100%;
+  min-width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  animation: none;
+}
+.deck-compact .deck-item[hidden] { display: block !important; }
+.deck-dots { display: flex; align-items: center; gap: 7px; }
+.deck-dots button {
+  width: 8px;
+  height: 8px;
+  min-width: 8px;
+  min-height: 8px;
+  padding: 0;
+  border: 1px solid var(--primary);
+  background: transparent;
+  border-radius: 0;
+}
+.deck-dots button[aria-selected="true"] { background: var(--primary); }
+.deck-controls .deck-expand { min-width: auto; padding: 0 12px; }
+
