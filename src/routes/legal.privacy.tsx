@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { LegalPage } from "@/components/legal-pages";
-import { seo } from "@/lib/head";
+import { seoForPath } from "@/lib/head";
 import { simplePages } from "@/lib/routes";
+
+const seo = seoForPath("/legal/privacy");
 
 export const Route = createFileRoute("/legal/privacy")({
   component: () => <LegalPage kind="privacy" />,

@@ -19,6 +19,7 @@ import { Route as EnrolRouteImport } from './routes/enrol'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as OurMethodRouteImport } from './routes/our-method'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TestimonialsRouteImport } from './routes/testimonials'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
@@ -79,6 +80,11 @@ const OurMethodRoute = OurMethodRouteImport.update({
 const PricingRoute = PricingRouteImport.update({
   id: '/pricing',
   path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TestimonialsRoute = TestimonialsRouteImport.update({
@@ -148,6 +154,7 @@ export interface FileRoutesByFullPath {
   '/faq': typeof FaqRoute
   '/our-method': typeof OurMethodRoute
   '/pricing': typeof PricingRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/testimonials': typeof TestimonialsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/courses/$slug': typeof CoursesSlugRoute
@@ -171,6 +178,7 @@ export interface FileRoutesByTo {
   '/faq': typeof FaqRoute
   '/our-method': typeof OurMethodRoute
   '/pricing': typeof PricingRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/testimonials': typeof TestimonialsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/courses/$slug': typeof CoursesSlugRoute
@@ -195,6 +203,7 @@ export interface FileRoutesById {
   '/faq': typeof FaqRoute
   '/our-method': typeof OurMethodRoute
   '/pricing': typeof PricingRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/testimonials': typeof TestimonialsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/courses/$slug': typeof CoursesSlugRoute
@@ -220,6 +229,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/our-method'
     | '/pricing'
+    | '/sitemap.xml'
     | '/testimonials'
     | '/blog/$slug'
     | '/courses/$slug'
@@ -243,6 +253,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/our-method'
     | '/pricing'
+    | '/sitemap.xml'
     | '/testimonials'
     | '/blog/$slug'
     | '/courses/$slug'
@@ -266,6 +277,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/our-method'
     | '/pricing'
+    | '/sitemap.xml'
     | '/testimonials'
     | '/blog/$slug'
     | '/courses/$slug'
@@ -290,6 +302,7 @@ export interface RootRouteChildren {
   FaqRoute: typeof FaqRoute
   OurMethodRoute: typeof OurMethodRoute
   PricingRoute: typeof PricingRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TestimonialsRoute: typeof TestimonialsRoute
   BlogSlugRoute: typeof BlogSlugRoute
   CoursesSlugRoute: typeof CoursesSlugRoute
@@ -373,6 +386,13 @@ declare module '@tanstack/react-router' {
       path: '/pricing'
       fullPath: '/pricing'
       preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/testimonials': {
@@ -466,6 +486,7 @@ const rootRouteChildren: RootRouteChildren = {
   FaqRoute: FaqRoute,
   OurMethodRoute: OurMethodRoute,
   PricingRoute: PricingRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   TestimonialsRoute: TestimonialsRoute,
   BlogSlugRoute: BlogSlugRoute,
   CoursesSlugRoute: CoursesSlugRoute,

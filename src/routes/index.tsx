@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { HomePage } from "@/components/site-pages";
-import { seo } from "@/lib/head";
+import { seoForPath } from "@/lib/head";
+
+const seo = seoForPath("/");
 
 export const Route = createFileRoute("/")({
   component: HomePage,

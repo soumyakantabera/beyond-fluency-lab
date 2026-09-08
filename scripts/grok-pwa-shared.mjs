@@ -432,7 +432,9 @@ export function injectGrokPwaHead(html, ctx = {}) {
     host,
     documentTitle,
   );
-  let next = stripShareMetaTags(html);
+  // Canonical-bearing pages own their route-specific share metadata.
+  const pageOwnsMetadata = /<link\b[^>]*rel=["']canonical["']/i.test(html);
+  let next = pageOwnsMetadata ? html : stripShareMetaTags(html);
 
   const missing = grokPwaHeadTags(appName)
     .filter(([key]) => {
@@ -444,7 +446,10 @@ export function injectGrokPwaHead(html, ctx = {}) {
 
   next = insertAfterHeadOpen(
     next,
-    grokOgHeadTags({ host, appName, site, documentTitle, cwd }).join(""),
+    grokOgHeadTags({ host, appName, site, documentTitle, cwd }).filter(tag => {
+      const key = tag.match(/(?:name|property)="([^"]+)"/)?.[1];
+      return !pageOwnsMetadata || !key || !next.includes(`="${key}"`);
+    }).join(""),
   );
 
   if (!next.includes("/grok-app-builder/extensions.js")) {

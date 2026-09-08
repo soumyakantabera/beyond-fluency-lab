@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AboutPage } from "@/components/site-pages";
-import { seo } from "@/lib/head";
+import { seoForPath } from "@/lib/head";
 import { simplePages } from "@/lib/routes";
+
+const seo = seoForPath("/about");
 
 export const Route = createFileRoute("/about")({
   component: AboutPage,

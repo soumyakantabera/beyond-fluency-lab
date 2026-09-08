@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/site-pages";
 import { Diagnostic, SharedResult } from "@/components/site-interactions";
-import { seo } from "@/lib/head";
+import { seoForPath } from "@/lib/head";
+
+const seo = seoForPath("/diagnostic");
 
 export const Route = createFileRoute("/diagnostic")({
   component: DiagnosticPage,
