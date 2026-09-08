@@ -160,30 +160,33 @@ export function Dimensions() {
 export function AudienceGrid() {
   return (
     <div className="audiences">
-      {segments.map((s, i) => (
-        <a className="audience" key={s.slug} href={"/who-its-for/" + s.slug} data-reveal>
-          <div className="audience-image">
-            <img
-              src={"/assets/" + s.image + ".webp"}
-              alt={s.name + " communication scenario"}
-              loading="lazy"
-              width="560"
-              height="700"
-            />
-            <span className="image-icon">
-              <LabIcon
-                name={(["briefcase", "enterprise", "exchange", "graduate"] as const)[i]}
-                size={23}
+      {[3, 0, 1, 2].map((i) => {
+        const s = segments[i];
+        return (
+          <a className="audience" key={s.slug} href={"/who-its-for/" + s.slug} data-reveal>
+            <div className="audience-image">
+              <img
+                src={"/assets/" + s.image + ".webp"}
+                alt={s.name + " communication scenario"}
+                loading="lazy"
+                width="560"
+                height="700"
               />
+              <span className="image-icon">
+                <LabIcon
+                  name={(["briefcase", "enterprise", "exchange", "graduate"] as const)[i]}
+                  size={23}
+                />
+              </span>
+            </div>
+            <p className="small">{s.name}</p>
+            <h3>{s.hook}</h3>
+            <span className="text-link">
+              Find your next step <Arrow />
             </span>
-          </div>
-          <p className="small">{s.name}</p>
-          <h3>{s.hook}</h3>
-          <span className="text-link">
-            Find your next step <Arrow />
-          </span>
-        </a>
-      ))}
+          </a>
+        );
+      })}
     </div>
   );
 }
@@ -329,7 +332,8 @@ export function HomePage() {
           </h1>
           <p className="hero-description">
             You already communicate in English. Now develop the structure, judgment, composure and
-            presence to make every conversation count.
+            presence to make every conversation count—from university presentations and first
+            interviews to the conversations that shape your working life.
           </p>
           <div className="actions hero-actions">
             <a className="btn" href="/contact">
@@ -342,7 +346,7 @@ export function HomePage() {
           <div className="hero-footnote">
             <LabIcon name="cohort" size={21} />
             <p>
-              Live coaching for Europe. <br />
+              For students, graduates and professionals. <br />
               <span>Small groups. The same trainer. Room to grow.</span>
             </p>
           </div>
@@ -441,11 +445,19 @@ export function HomePage() {
               </h2>
             </div>
             <p>
-              Corporate professionals. Business owners. Sales and marketing people. Graduating
-              students. An equal place for every ambition.
+              Communication coaching for university students and graduates, and for professionals
+              taking their next step. Your context shapes the practice.
             </p>
           </div>
           <AudienceGrid />
+          <div className="actions" style={{ marginTop: 28 }}>
+            <a className="text-link" href="/who-its-for/university-students">
+              At university <Arrow />
+            </a>
+            <a className="text-link" href="/who-its-for/graduating-students">
+              Graduating or recently graduated <Arrow />
+            </a>
+          </div>
         </div>
       </section>
       <section className="wrap section programmes-section">
@@ -954,7 +966,9 @@ export function AboutPage() {
           width="1500"
           height="844"
         />
-        <p className="fine">Seven years of live teaching, carried into a new international programme.</p>
+        <p className="fine">
+          Seven years of live teaching, carried into a new international programme.
+        </p>
         <div className="prose" style={{ maxWidth: 760, margin: "45px auto 0" }}>
           <h2>What stays with us?</h2>
           <p>
