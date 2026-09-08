@@ -30,16 +30,19 @@ export function MobileDeck({
   function onScroll() {
     const el = scroller.current;
     if (!el || !compact) return;
-    const w = el.clientWidth;
-    if (!w) return;
-    const next = Math.round(el.scrollLeft / w);
-    setIndex(Math.max(0, Math.min(items.length - 1, next)));
+    const slides = Array.from(el.children) as HTMLElement[];
+    const mark = el.scrollLeft + el.clientWidth * 0.4;
+    let next = 0;
+    for (let i = 0; i < slides.length; i++) {
+      if (slides[i].offsetLeft <= mark) next = i;
+    }
+    setIndex(next);
   }
 
   function go(i: number) {
     const el = scroller.current;
-    if (!el) return;
-    el.scrollTo({ left: i * el.clientWidth, behavior: 'smooth' });
+    const slide = el?.children[i] as HTMLElement | undefined;
+    if (el && slide) el.scrollTo({ left: slide.offsetLeft, behavior: 'smooth' });
   }
 
   return (
@@ -74,7 +77,7 @@ export function MobileDeck({
         aria-roledescription={compact ? 'carousel' : undefined}
       >
         {items.map((item, i) => (
-          <div key={i} className="deck-item">
+          <div key={i} className={'deck-item' + (compact && i === index ? ' is-current' : '')}>
             {item}
           </div>
         ))}

@@ -240,7 +240,7 @@ p, .lead, .hero-description { text-wrap: pretty; }
 .deck-compact .course-grid,
 .deck-compact .article-grid {
   display: flex !important;
-  gap: 0;
+  gap: 12px;
   overflow-x: auto;
   overflow-y: clip;
   overscroll-behavior-x: contain;
@@ -249,16 +249,22 @@ p, .lead, .hero-description { text-wrap: pretty; }
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   touch-action: pan-x pan-y;
+  margin-right: -16px;
+  padding-right: 16px;
 }
 .deck-compact .course-grid::-webkit-scrollbar,
 .deck-compact .article-grid::-webkit-scrollbar { display: none; }
 .deck-compact .deck-item {
-  flex: 0 0 100%;
-  min-width: 100%;
+  flex: 0 0 calc(100% - 44px);
+  min-width: calc(100% - 44px);
+  max-width: calc(100% - 44px);
   scroll-snap-align: start;
   scroll-snap-stop: always;
   animation: none;
+  opacity: .42;
+  transition: opacity .25s;
 }
+.deck-compact .deck-item.is-current { opacity: 1; }
 .deck-compact .deck-item[hidden] { display: block !important; }
 .deck-dots { display: flex; align-items: center; gap: 7px; }
 .deck-dots button {
