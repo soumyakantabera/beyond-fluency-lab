@@ -31,6 +31,7 @@ export function Footer() {
             <a href="/" className="brand">
               <Signature />
             </a>
+            <p className="footer-tagline">Thoughtful practice. Lasting presence.</p>
             <p className="footer-description">{FOOTER_BLURB}</p>
             <p className="small">From Learn With Smile. Seven years of teaching behind a distinct new programme.</p>
           </div>

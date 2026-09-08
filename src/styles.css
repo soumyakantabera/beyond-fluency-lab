@@ -316,3 +316,34 @@ p, .lead, .hero-description { text-wrap: pretty; }
   .story-track { margin-right: -16px; padding-right: 16px; }
 }
 
+/* Full "Beyond the words" caption, clear of the inset photo. */
+.hero-main-image figcaption {
+  left: 42%;
+  right: 16px;
+  bottom: 16px;
+  justify-content: flex-end;
+  white-space: nowrap;
+  letter-spacing: .1em;
+  font-size: 12px;
+  z-index: 2;
+}
+.hero-seal { display: none; }
+
+.footer-tagline {
+  font: 500 12px/1.45 var(--sans);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #d7bd79;
+  margin: 12px 0 18px;
+}
+@media (max-width: 580px) {
+  .hero-main-image figcaption {
+    left: 16px;
+    right: 16px;
+    justify-content: flex-start;
+    letter-spacing: .08em;
+  }
+  .footer-tagline { letter-spacing: .08em; font-size: 11px; }
+}
+
+
