@@ -355,7 +355,37 @@ export function StudentAudiencePage({ graduate = false }: { graduate?: boolean }
           ))}
         </div>
       </section>
+      <section className="sf-section sf-trust">
+        <p className="sf-label">Try a small first step</p>
+        <h2>{graduate ? "One project. One clear answer." : "Give your idea a clear opening."}</h2>
+        <p>
+          {graduate
+            ? "Choose a project from your studies, volunteering or part-time work. In 60 seconds, explain what needed to happen, what you personally did and what you learned. Then try answering: why did you choose that approach?"
+            : "Choose a topic from a seminar or group project. In 60 seconds, state your main idea, give one reason or example and say what you want the group to consider next. Ask a friend which point they remember."}
+        </p>
+        <p>
+          You don’t need to get it right on the first attempt. Notice one thing you would make
+          clearer, then try again.
+        </p>
+        <a className="sf-link" href="/our-method">
+          See how we turn practice into feedback →
+        </a>
+      </section>
       <CourseFeature />
+      {!graduate && (
+        <section className="sf-section sf-trust">
+          <p className="sf-label">Presentations before interviews?</p>
+          <h2>Choose practice that fits your immediate goal.</h2>
+          <p>
+            If speaking up in seminars or presenting to a group is your first priority, Speak with
+            Confidence offers focused practice over 3–4 weeks for a listed fee of €50. You do not
+            need to take every course in order.
+          </p>
+          <a className="sf-link" href="/courses/speak-with-confidence">
+            Explore Speak with Confidence →
+          </a>
+        </section>
+      )}
       <PracticeSteps />
       <StudentFaq />
       <StudentPaths />
