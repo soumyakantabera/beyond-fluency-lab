@@ -353,4 +353,34 @@ h1, h2, h3 { word-spacing: .04em; }
   .diagnostic-editorial h2 { letter-spacing: -.03em; word-spacing: .06em; }
 }
 
+.footer-payments {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+  color: #c6b4a9;
+  font-size: 12px;
+  letter-spacing: .04em;
+}
+.footer-payments img { width: auto; object-fit: contain; filter: saturate(.85); opacity: .9; }
+.footer-payments img[alt="Stripe"] { height: 22px; }
+.footer-payments img[alt="Visa"] { height: 17px; }
+.footer-payments img[alt="Mastercard"] { height: 27px; }
+.footer-payments img[alt="American Express"] { height: 30px; }
 
+.footer-payments {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+  color: #c6b4a9;
+  font-size: 12px;
+  letter-spacing: .04em;
+}
+.footer-payments img { width: auto; object-fit: contain; filter: saturate(.85); opacity: .9; }
+.footer-payments img[alt="Stripe"] { height: 22px; }
+.footer-payments img[alt="Visa"] { height: 17px; }
+.footer-payments img[alt="Mastercard"] { height: 27px; }
+.footer-payments img[alt="American Express"] { height: 30px; }
