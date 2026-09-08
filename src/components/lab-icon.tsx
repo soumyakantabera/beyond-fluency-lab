@@ -1,3 +1,4 @@
 import { iconPaths, monogramPaths, type IconName } from '@/lib/icon-paths';
+import './brand-atmosphere.css';
 export function LabIcon({name,size=24,className='',label}:{name:IconName,size?:number,className?:string,label?:string}){return <svg className={'lab-icon '+className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden={label?undefined:true} role={label?'img':undefined}>{label&&<title>{label}</title>}<path d={iconPaths[name]}/></svg>}
 export function Monogram({className=''}:{className?:string}){return <svg className={'monogram '+className} width="48" height="48" viewBox="0 0 48 48" aria-hidden="true">{monogramPaths.map(d=><path key={d} d={d} fill="currentColor"/>)}</svg>}

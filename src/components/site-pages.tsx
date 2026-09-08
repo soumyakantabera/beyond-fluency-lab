@@ -947,7 +947,7 @@ export function AboutPage() {
       <section className="wrap section">
         <div className="split">
           <div>
-            <p className="eyebrow">LEARN WITH SMILE → BEYOND FLUENCY LAB</p>
+            <p className="eyebrow">LEARN WITH SMILE <LabIcon name="arrow" size={17} /> BEYOND FLUENCY LAB</p>
             <h2>
               Seven years of listening. <br />A sharper question.
             </h2>
