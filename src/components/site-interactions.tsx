@@ -25,6 +25,14 @@ export function LeadForm({
   const [status, setStatus] = useState("");
   const [error, setError] = useState(false);
   const [requestText, setRequestText] = useState("");
+  const [online, setOnline] = useState(false);
+  const submission = useRef<{ body: string; id: string } | null>(null);
+  useEffect(() => {
+    const controller = new AbortController();
+    fetch('/api/enquiries', { signal: controller.signal })
+      .then(r => r.ok ? r.json() : null).then(data => setOnline(data?.enabled === true)).catch(() => {});
+    return () => controller.abort();
+  }, []);
   const [consent, setConsent] = useState(false);
   const [course, setCourse] = useState(report?.course.slug || "not-sure");
 
@@ -67,6 +75,27 @@ export function LeadForm({
       .filter(Boolean)
       .join("\n");
     setRequestText(lines);
+    if (online) {
+      const payload = { kind: report ? 'report' : enrol ? 'enrolment' : 'trial',
+        name: String(f.get('name') || ''), email: String(f.get('email') || ''), course,
+        timezone: String(f.get('timezone') || ''), availability: String(f.get('availability') || ''),
+        message: String(f.get('message') || ''), diagnostic: report?.dimension.name,
+        privacyAcknowledged: consent, website: String(f.get('website') || '') };
+      const body = JSON.stringify(payload);
+      if (submission.current?.body !== body) submission.current = { body, id: crypto.randomUUID() };
+      try {
+        const response = await fetch('/api/enquiries', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ...payload, id: submission.current.id }), signal: AbortSignal.timeout(20000) });
+        const result = await response.json();
+        if (!response.ok || !result.saved) throw new Error(result.error || 'We could not confirm your request.');
+        setError(false);
+        setStatus(`Your request is saved. Reference: ${result.reference}. The team will confirm availability separately.`);
+      } catch {
+        setError(true);
+        setStatus('We could not confirm receipt. Keep a copy and try again later.');
+      } finally { setBusy(false); }
+      return;
+    }
     try {
       await navigator.clipboard.writeText(lines);
       setError(false);
@@ -210,7 +239,7 @@ export function LeadForm({
           onChange={(e) => setConsent(e.target.checked)}
         />
         <label htmlFor={report ? "report-consent" : "trial-consent"}>
-          I agree to the use of my details to{" "}
+          I understand that my details will be used to{" "}
           {report
             ? "prepare my diagnostic report"
             : enrol
@@ -224,11 +253,10 @@ export function LeadForm({
         </label>
       </div>
       <p className="note" role="status">
-        Email delivery is not connected yet. Submitting copies a complete enquiry to your clipboard.
-        No details are stored on a server.
+        {online ? 'Your request will be saved for the team. This is not a confirmed booking.' : 'Online submissions are not open yet. Copy or download your request to keep it; this does not send it to the team.'}
       </p>
       <button className="btn" disabled={busy} type="submit">
-        {busy
+        {online ? (busy ? 'Sending…' : 'Send my request') : busy
           ? "Preparing…"
           : report
             ? "Copy my report request"
