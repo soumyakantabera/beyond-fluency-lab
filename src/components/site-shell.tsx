@@ -33,7 +33,16 @@ export function Footer() {
             </a>
             <p className="footer-tagline">Thoughtful practice. Lasting presence.</p>
             <p className="footer-description">{FOOTER_BLURB}</p>
-            <p className="small">From Learn With Smile. Seven years of teaching behind a distinct new programme.</p>
+            <p className="small">
+              From Learn With Smile. Seven years of teaching behind a distinct new programme.
+            </p>
+            <div className="footer-payments" aria-label="Payment methods">
+              <span>Secure payments by</span>
+              <img src="/assets/payments/stripe.svg" width="72" height="30" alt="Stripe" />
+              <img src="/assets/payments/visa.png" width="54" height="18" alt="Visa" />
+              <img src="/assets/payments/mastercard.png" width="50" height="28" alt="Mastercard" />
+              <img src="/assets/payments/amex.svg" width="34" height="34" alt="American Express" />
+            </div>
           </div>
           <div>
             <h2>Explore</h2>
@@ -67,12 +76,9 @@ export function Footer() {
           </div>
         </div>
         <p className="legal-fields">
-          Legal entity: [TO BE CONFIRMED] · Registered address: [TO BE CONFIRMED] · Registration no.: [TO BE CONFIRMED] ·
-          VAT ID / tax treatment: [TO BE CONFIRMED] · EU representative: [TO BE CONFIRMED]
-        </p>
-        <p className="fine">
-          Editorial people and place imagery is AI-generated. It does not depict actual learners, trainers, premises,
-          historical events or endorsers.
+          Legal entity: [TO BE CONFIRMED] · Registered address: [TO BE CONFIRMED] · Registration
+          no.: [TO BE CONFIRMED] · VAT ID / tax treatment: [TO BE CONFIRMED] · EU representative:
+          [TO BE CONFIRMED]
         </p>
       </footer>
     </>
