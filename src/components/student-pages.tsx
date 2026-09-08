@@ -1,4 +1,5 @@
 import { courses, segments } from "@/lib/content";
+import { LabIcon } from "./lab-icon";
 import "./student-pages.css";
 
 const trial = "/contact?course=career-interview-intensive";
@@ -34,7 +35,9 @@ function StudentPaths() {
               <p className="sf-label">{p.label}</p>
               <h3>{p.title}</h3>
               <p>{p.text}</p>
-              <span className="sf-link">Explore this pathway →</span>
+              <span className="sf-link">
+                Explore this pathway <LabIcon name="arrow" size={18} />
+              </span>
             </div>
           </a>
         ))}
@@ -55,7 +58,7 @@ function CourseFeature() {
           don’t need a long CV to have something worth saying.
         </p>
         <a className="sf-button" href={"/courses/" + c.slug}>
-          See the course →
+          See the course <LabIcon name="arrow" size={18} />
         </a>
       </div>
       <div className="sf-course-details">
@@ -163,7 +166,7 @@ function Professionals() {
       <div className="sf-audience-links">
         {segments.slice(0, 3).map((s) => (
           <a href={"/who-its-for/" + s.slug} key={s.slug}>
-            {s.name} →
+            {s.name} <LabIcon name="arrow" size={18} />
           </a>
         ))}
       </div>
@@ -180,7 +183,7 @@ function EndSection() {
         Tell us what you’re preparing for. We’ll help you explore the right communication practice.
       </p>
       <a className="sf-button" href={trial}>
-        Request a free trial →
+        Request a free trial <LabIcon name="arrow" size={18} />
       </a>
       <a className="sf-link" href="/pricing">
         Explore all course fees
@@ -206,10 +209,10 @@ export function StudentHomePage() {
           </p>
           <div className="sf-actions">
             <a className="sf-button" href={trial}>
-              Request a free trial →
+              Request a free trial <LabIcon name="arrow" size={18} />
             </a>
             <a className="sf-link" href="#student-pathways">
-              Find your starting point ↓
+              Find your starting point <LabIcon name="arrow" size={18} className="sf-icon-down" />
             </a>
           </div>
           <p className="sf-note">Live online · Small groups · Interview course from €50</p>
@@ -263,7 +266,7 @@ export function StudentHomePage() {
           Fluency Lab brings that approach to the communication challenges ahead of you.
         </p>
         <a className="sf-link" href="/our-method">
-          Explore our teaching method →
+          Explore our teaching method <LabIcon name="arrow" size={18} />
         </a>
       </section>
       <StudentFaq />
@@ -320,7 +323,7 @@ export function StudentAudiencePage({ graduate = false }: { graduate?: boolean }
               : "Communication coaching for university students preparing for presentations, internships and first professional conversations. Build confidence through practice, one situation at a time."}
           </p>
           <a className="sf-button" href={trial}>
-            Request a free trial →
+            Request a free trial <LabIcon name="arrow" size={18} />
           </a>
           <p className="sf-note">Online · Groups of about six · Practical trainer feedback</p>
         </div>
@@ -368,7 +371,7 @@ export function StudentAudiencePage({ graduate = false }: { graduate?: boolean }
           clearer, then try again.
         </p>
         <a className="sf-link" href="/our-method">
-          See how we turn practice into feedback →
+          See how we turn practice into feedback <LabIcon name="arrow" size={18} />
         </a>
       </section>
       <CourseFeature />
@@ -382,7 +385,7 @@ export function StudentAudiencePage({ graduate = false }: { graduate?: boolean }
             need to take every course in order.
           </p>
           <a className="sf-link" href="/courses/speak-with-confidence">
-            Explore Speak with Confidence →
+            Explore Speak with Confidence <LabIcon name="arrow" size={18} />
           </a>
         </section>
       )}
