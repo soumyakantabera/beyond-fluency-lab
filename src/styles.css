@@ -346,4 +346,11 @@ p, .lead, .hero-description { text-wrap: pretty; }
   .footer-tagline { letter-spacing: .08em; font-size: 11px; }
 }
 
+h1, h2, h3 { word-spacing: .04em; }
+.diagnostic-editorial h2 em { display: block; margin-top: .12em; }
+@media (max-width: 820px) {
+  .new-hero h1,
+  .diagnostic-editorial h2 { letter-spacing: -.03em; word-spacing: .06em; }
+}
+
 
