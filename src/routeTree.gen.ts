@@ -26,6 +26,7 @@ import { Route as CoursesIndexRouteImport } from './routes/courses.index'
 import { Route as CoursesSlugRouteImport } from './routes/courses.$slug'
 import { Route as LegalCookiesRouteImport } from './routes/legal.cookies'
 import { Route as LegalPrivacyRouteImport } from './routes/legal.privacy'
+import { Route as LegalRefundsRouteImport } from './routes/legal.refunds'
 import { Route as LegalTermsRouteImport } from './routes/legal.terms'
 import { Route as WhoItsForIndexRouteImport } from './routes/who-its-for.index'
 import { Route as WhoItsForSlugRouteImport } from './routes/who-its-for.$slug'
@@ -115,6 +116,11 @@ const LegalPrivacyRoute = LegalPrivacyRouteImport.update({
   path: '/legal/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LegalRefundsRoute = LegalRefundsRouteImport.update({
+  id: '/legal/refunds',
+  path: '/legal/refunds',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LegalTermsRoute = LegalTermsRouteImport.update({
   id: '/legal/terms',
   path: '/legal/terms',
@@ -147,6 +153,7 @@ export interface FileRoutesByFullPath {
   '/courses/$slug': typeof CoursesSlugRoute
   '/legal/cookies': typeof LegalCookiesRoute
   '/legal/privacy': typeof LegalPrivacyRoute
+  '/legal/refunds': typeof LegalRefundsRoute
   '/legal/terms': typeof LegalTermsRoute
   '/who-its-for/$slug': typeof WhoItsForSlugRoute
   '/blog/': typeof BlogIndexRoute
@@ -169,6 +176,7 @@ export interface FileRoutesByTo {
   '/courses/$slug': typeof CoursesSlugRoute
   '/legal/cookies': typeof LegalCookiesRoute
   '/legal/privacy': typeof LegalPrivacyRoute
+  '/legal/refunds': typeof LegalRefundsRoute
   '/legal/terms': typeof LegalTermsRoute
   '/who-its-for/$slug': typeof WhoItsForSlugRoute
   '/blog': typeof BlogIndexRoute
@@ -192,6 +200,7 @@ export interface FileRoutesById {
   '/courses/$slug': typeof CoursesSlugRoute
   '/legal/cookies': typeof LegalCookiesRoute
   '/legal/privacy': typeof LegalPrivacyRoute
+  '/legal/refunds': typeof LegalRefundsRoute
   '/legal/terms': typeof LegalTermsRoute
   '/who-its-for/$slug': typeof WhoItsForSlugRoute
   '/blog/': typeof BlogIndexRoute
@@ -216,6 +225,7 @@ export interface FileRouteTypes {
     | '/courses/$slug'
     | '/legal/cookies'
     | '/legal/privacy'
+    | '/legal/refunds'
     | '/legal/terms'
     | '/who-its-for/$slug'
     | '/blog/'
@@ -238,6 +248,7 @@ export interface FileRouteTypes {
     | '/courses/$slug'
     | '/legal/cookies'
     | '/legal/privacy'
+    | '/legal/refunds'
     | '/legal/terms'
     | '/who-its-for/$slug'
     | '/blog'
@@ -260,6 +271,7 @@ export interface FileRouteTypes {
     | '/courses/$slug'
     | '/legal/cookies'
     | '/legal/privacy'
+    | '/legal/refunds'
     | '/legal/terms'
     | '/who-its-for/$slug'
     | '/blog/'
@@ -283,6 +295,7 @@ export interface RootRouteChildren {
   CoursesSlugRoute: typeof CoursesSlugRoute
   LegalCookiesRoute: typeof LegalCookiesRoute
   LegalPrivacyRoute: typeof LegalPrivacyRoute
+  LegalRefundsRoute: typeof LegalRefundsRoute
   LegalTermsRoute: typeof LegalTermsRoute
   WhoItsForSlugRoute: typeof WhoItsForSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
@@ -411,6 +424,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LegalPrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/legal/refunds': {
+      id: '/legal/refunds'
+      path: '/legal/refunds'
+      fullPath: '/legal/refunds'
+      preLoaderRoute: typeof LegalRefundsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/legal/terms': {
       id: '/legal/terms'
       path: '/legal/terms'
@@ -451,6 +471,7 @@ const rootRouteChildren: RootRouteChildren = {
   CoursesSlugRoute: CoursesSlugRoute,
   LegalCookiesRoute: LegalCookiesRoute,
   LegalPrivacyRoute: LegalPrivacyRoute,
+  LegalRefundsRoute: LegalRefundsRoute,
   LegalTermsRoute: LegalTermsRoute,
   WhoItsForSlugRoute: WhoItsForSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
