@@ -24,6 +24,7 @@ export function LeadForm({
   const [busy, setBusy] = useState(false);
   const [status, setStatus] = useState("");
   const [error, setError] = useState(false);
+  const [requestText, setRequestText] = useState("");
   const [consent, setConsent] = useState(false);
   const [course, setCourse] = useState(report?.course.slug || "not-sure");
 
@@ -46,7 +47,11 @@ export function LeadForm({
     setBusy(true);
     const chosen = courses.find((c) => c.slug === course);
     const lines = [
-      report ? "Diagnostic report request" : enrol ? "Course enrolment enquiry" : "Free trial request",
+      report
+        ? "Diagnostic report request"
+        : enrol
+          ? "Course enrolment enquiry"
+          : "Free trial request",
       "",
       "Name: " + (f.get("name") || "—"),
       "Email: " + f.get("email"),
@@ -61,20 +66,30 @@ export function LeadForm({
     ]
       .filter(Boolean)
       .join("\n");
+    setRequestText(lines);
     try {
       await navigator.clipboard.writeText(lines);
       setError(false);
       setStatus(
-        "Enquiry copied to your clipboard. Email delivery is not connected yet, so nothing has been sent. Keep this copy until enrolment opens, or send it yourself.",
+        "Your request is copied. Nothing has been sent to the team. You can also download a copy below.",
       );
     } catch {
       setError(false);
       setStatus(
-        "Email delivery is not connected yet, so this enquiry has not been sent. Copy the details from the form and keep them until enrolment opens.",
+        "Your browser could not copy the request. Nothing has been sent. Download a copy below to keep your details.",
       );
     } finally {
       setBusy(false);
     }
+  }
+
+  function downloadRequest() {
+    const url = URL.createObjectURL(new Blob([requestText], { type: "text/plain;charset=utf-8" }));
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "beyond-fluency-enquiry.txt";
+    link.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
 
   return (
@@ -102,7 +117,14 @@ export function LeadForm({
           </div>
           <div>
             <label htmlFor="lead-email">Email address</label>
-            <input id="lead-email" name="email" type="email" autoComplete="email" required maxLength={254} />
+            <input
+              id="lead-email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              required
+              maxLength={254}
+            />
           </div>
         </div>
       )}
@@ -124,7 +146,12 @@ export function LeadForm({
         <>
           <div>
             <label htmlFor="course-select">Course you’re considering</label>
-            <select id="course-select" className="form-select" value={course} onChange={(e) => setCourse(e.target.value)}>
+            <select
+              id="course-select"
+              className="form-select"
+              value={course}
+              onChange={(e) => setCourse(e.target.value)}
+            >
               <option value="not-sure">Help me choose</option>
               {courses.map((c) => (
                 <option key={c.slug} value={c.slug}>
@@ -136,18 +163,36 @@ export function LeadForm({
           <div className="form-row">
             <div>
               <label htmlFor="timezone">City or time zone</label>
-              <input id="timezone" name="timezone" placeholder="e.g. Berlin / Europe/Berlin" required maxLength={100} />
+              <input
+                id="timezone"
+                name="timezone"
+                placeholder="e.g. Berlin / Europe/Berlin"
+                required
+                maxLength={100}
+              />
             </div>
             <div>
               <label htmlFor="availability">When are you usually free?</label>
-              <input id="availability" name="availability" placeholder="e.g. weekday evenings" required maxLength={200} />
+              <input
+                id="availability"
+                name="availability"
+                placeholder="e.g. weekday evenings"
+                required
+                maxLength={200}
+              />
             </div>
           </div>
           <div>
             <label htmlFor="message">
-              What conversation would you like to handle better? <span className="fine">Optional</span>
+              What conversation would you like to handle better?{" "}
+              <span className="fine">Optional</span>
             </label>
-            <textarea id="message" name="message" maxLength={2000} placeholder="A meeting, an interview, a client call…" />
+            <textarea
+              id="message"
+              name="message"
+              maxLength={2000}
+              placeholder="An internship interview, university presentation, first-job conversation or meeting…"
+            />
           </div>
         </>
       )}
@@ -179,17 +224,28 @@ export function LeadForm({
         </label>
       </div>
       <p className="note" role="status">
-        Email delivery is not connected yet. Submitting copies a complete enquiry to your clipboard. No details are stored
-        on a server.
+        Email delivery is not connected yet. Submitting copies a complete enquiry to your clipboard.
+        No details are stored on a server.
       </p>
       <button className="btn" disabled={busy} type="submit">
-        {busy ? "Preparing…" : report ? "Copy my report request" : enrol ? "Copy my enrolment enquiry" : "Copy my free trial request"}{" "}
+        {busy
+          ? "Preparing…"
+          : report
+            ? "Copy my report request"
+            : enrol
+              ? "Copy my enrolment enquiry"
+              : "Copy my free trial request"}{" "}
         <LabIcon name="arrow" size={17} />
       </button>
       {status && (
         <p role={error ? "alert" : "status"} className={"status " + (error ? "error" : "")}>
           {status}
         </p>
+      )}
+      {requestText && (
+        <button className="btn outline" type="button" onClick={downloadRequest}>
+          Download a copy of my request
+        </button>
       )}
       <p className="fine">
         {report
@@ -219,7 +275,10 @@ export function Diagnostic() {
       if (navigator.share)
         await navigator.share({
           title: "My plateau: " + result.dimension.name,
-          text: "My Beyond Fluency Lab result: " + result.dimension.name + ". Find your plateau in 90 seconds.",
+          text:
+            "My Beyond Fluency Lab result: " +
+            result.dimension.name +
+            ". Find your plateau in 90 seconds.",
           url,
         });
       else {
@@ -304,7 +363,8 @@ export function Diagnostic() {
         <div className="result-report">
           <h3>Keep your result close.</h3>
           <p className="small" style={{ marginBottom: 24 }}>
-            Copy a personalised report request with your result, a practice exercise and the related guide.
+            Copy a personalised report request with your result, a practice exercise and the related
+            guide.
           </p>
           <LeadForm report={result} answers={answers} />
         </div>
@@ -331,7 +391,10 @@ export function Diagnostic() {
       </p>
       <div className="answers" role="radiogroup" aria-labelledby="question">
         {questions[step].a.map((a, i) => (
-          <label key={step + "-" + i} className={"answer" + (answers[step] === i ? " selected" : "")}>
+          <label
+            key={step + "-" + i}
+            className={"answer" + (answers[step] === i ? " selected" : "")}
+          >
             <input
               type="radio"
               name={"q" + step}
@@ -369,7 +432,9 @@ export function SharedResult() {
     <aside className="note">
       <strong>A colleague shared: {d.name}</strong>
       <p>{d.description}</p>
-      <p className="small">This describes their result. Take the questions below to find your own.</p>
+      <p className="small">
+        This describes their result. Take the questions below to find your own.
+      </p>
     </aside>
   );
 }
