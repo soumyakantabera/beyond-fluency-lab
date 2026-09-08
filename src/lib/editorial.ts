@@ -104,7 +104,7 @@ export function editorialPair(label: string, title: string): [EditorialPhoto, Ed
   if (l === "testimonials") return [photos.notebook, photos.listening];
   if (l === "pricing") return [photos.practice, photos.notebook];
   if (l === "faq") return [photos.listening, photos.practice];
-  if (l.includes("contact")) return [photos.corporate, photos.presentation];
+  if (l.includes("contact")) return [photos.student, photos.interview];
   if (l.includes("diagnostic")) return [photos.listening, photos.notebook];
   if (l === "brand assets") return [photos.presentation, photos.salon];
   if (l === "the pillar report") return [photos.notebook, photos.presentation];
