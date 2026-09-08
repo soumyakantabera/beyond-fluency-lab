@@ -1,4 +1,4 @@
-export const ORIGIN = "";
+export const ORIGIN = "https://beyond-fluency-lab.vercel.app";
 export const BUSINESS = 'Beyond Fluency Lab is an independent communication-coaching brand for people who already work and speak in English. From Learn With Smile, it offers live online coaching in public speaking, interviews and professional communication in groups of approximately 6, with course fees from €50 to €150.';
 export const FOOTER_BLURB = 'Communication and interview coaching for university students, graduates and professionals who already speak English. From Learn With Smile: live online practice in groups of about six.';
 export const AFFILIATION_Q = 'Are you affiliated with my university?';

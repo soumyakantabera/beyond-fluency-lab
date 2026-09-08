@@ -1,13 +1,16 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, notFound } from "@tanstack/react-router";
 import { SegmentPage } from "@/components/site-pages";
 import { StudentAudiencePage } from "@/components/student-pages";
 import { NotFoundPage } from "@/components/not-found";
 import { segments } from "@/lib/content";
-import { seo } from "@/lib/head";
+import { seoForPath } from "@/lib/head";
 
 export const Route = createFileRoute("/who-its-for/$slug")({
+  beforeLoad: ({ params }) => { if (params.slug !== "university-students" && !segments.some(x => x.slug === params.slug)) throw notFound(); },
+  notFoundComponent: NotFoundPage,
   component: SegmentRoute,
   head: ({ params }) => {
+    const seo = seoForPath(`/who-its-for/${params.slug}`);
     if (params.slug === "university-students")
       return seo(
         "Communication Coaching for University Students | Beyond Fluency Lab",

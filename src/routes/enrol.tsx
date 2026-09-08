@@ -2,8 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHero, CoursePage } from "@/components/site-pages";
 import { courses } from "@/lib/content";
 import { LeadForm } from "@/components/site-interactions";
-import { seo } from "@/lib/head";
+import { seoForPath } from "@/lib/head";
 import { simplePages } from "@/lib/routes";
+
+const seo = seoForPath("/enrol");
 
 export const Route = createFileRoute("/enrol")({
   component: EnrolPage,
