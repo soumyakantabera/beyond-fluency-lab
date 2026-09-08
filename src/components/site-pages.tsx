@@ -614,6 +614,23 @@ export function CoursePage({ index }: { index: number }) {
             ))}
           </ul>
           <h2>How does the course progress?</h2>
+          {c.slug === "career-interview-intensive" && (
+            <div className="note">
+              <h3>Starting with a short CV?</h3>
+              <p>
+                Your examples can come from a group project, dissertation, society role,
+                volunteering or part-time work. Practise explaining the challenge, your own
+                contribution and what you learned.
+              </p>
+              <p>
+                Bring a role description if you have one, one project you know well and a question
+                you find difficult. You can begin without an interview booked.
+              </p>
+              <a className="text-link" href="/contact?course=career-interview-intensive">
+                Explore the course in a free trial <Arrow />
+              </a>
+            </div>
+          )}
           {c.modules.map(([t, p], i) => (
             <div className="module" key={t} data-reveal>
               <LabIcon name={(["structure", "pressure", "register"] as const)[i]} size={28} />
@@ -1400,13 +1417,15 @@ export function ContactPage() {
           <div className="prose">
             <h3>What happens next?</h3>
             <ol>
-              <li>Your request is saved for the team.</li>
-              <li>A suitable course and local-time slot are confirmed with you.</li>
-              <li>You join the live trial before deciding about enrolment.</li>
+              <li>Choose your course, time zone and the situation you want to practise.</li>
+              <li>Copy or download your request. This form does not send it to the team yet.</li>
+              <li>
+                A trial is booked only once the team has received your enquiry and confirmed a slot.
+              </li>
             </ol>
             <p className="small">
-              Cohort schedules are being arranged for the European launch. A submitted request is
-              not a confirmed appointment.
+              Email delivery is being connected. Preparing a request here does not reserve a place
+              or create an appointment.
             </p>
             <p className="small">Live online coaching for fluent speakers in Europe.</p>
           </div>
