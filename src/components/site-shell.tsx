@@ -73,6 +73,7 @@ export function Footer() {
             <a href="/legal/terms">Terms</a>
             <a href="/legal/privacy">Privacy</a>
             <a href="/legal/cookies">Cookies</a>
+            <a href="/legal/refunds">Refunds</a>
           </div>
         </div>
         <p className="legal-fields">
