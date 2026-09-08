@@ -133,7 +133,7 @@ export function LeadForm({
                 courses.find((c) => c.slug === course)!.price +
                 " · " +
                 courses.find((c) => c.slug === course)!.duration +
-                " · listed course fee"
+                " · including VAT"
               : "Select a course below, or ask us to help you choose."}
           </p>
         </div>
