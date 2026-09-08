@@ -12,11 +12,11 @@ export function CourseInvitation({course, reason, source = 'course'}: {
     <div className="invitation-heading"><LabIcon name="craft" size={30}/><p className="eyebrow">TURN INSIGHT INTO PRACTICE</p></div>
     <h3>{course.name}</h3>
     <p>{reason || course.short}</p>
-    <div className="invitation-fee"><strong>€{course.price}</strong><span>{course.duration} <br />Complete course · listed fee</span></div>
+    <div className="invitation-fee"><strong>€{course.price}</strong><span>{course.duration} <br />Complete course · VAT included</span></div>
     <ul>{course.outcomes.map(outcome => <li key={outcome}><LabIcon name="arrow" size={21}/>{outcome}</li>)}</ul>
     <a className="btn" href={enrolmentHref(course.slug, source)}>Join this course <LabIcon name="arrow"/></a>
     <a className="text-link" href={'/courses/' + course.slug}>See the course outline <LabIcon name="arrow"/></a>
-    <p className="fine">Start with an enrolment enquiry. We confirm your schedule and total before payment. VAT treatment: [TO BE CONFIRMED].</p>
+    <p className="fine">Explore the course, complete your details and review the VAT-inclusive total before continuing to Stripe. All course fees include VAT.</p>
   </section>;
 }
 

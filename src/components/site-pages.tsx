@@ -6,6 +6,7 @@ import { LabIcon, Monogram } from "./lab-icon";
 import { StoryChapters } from "./editorial-motion";
 import { editorialPair, coursePhotos, photos } from "@/lib/editorial";
 import { LeadForm } from "./site-interactions";
+import { CourseJoin } from "./course-join";
 export function Arrow() {
   return <LabIcon name="arrow" size={17} />;
 }
@@ -218,13 +219,13 @@ export function CourseGrid() {
               <span className="price">€{c.price}</span>
               <span className="duration">
                 {c.duration} <br />
-                Listed course fee
+                Total including VAT
               </span>
             </div>
             <a className="text-link" href={"/courses/" + c.slug}>
               Explore the course <Arrow />
             </a>
-            <a className="btn course-join" href={"/enrol?course=" + c.slug}>
+            <a className="btn course-join" href={"/courses/" + c.slug}>
               Join this course <Arrow />
             </a>
           </div>
@@ -478,8 +479,7 @@ export function HomePage() {
         </div>
         <CourseGrid />
         <p className="fine" style={{ marginTop: 22 }}>
-          Live, small-group coaching. Listed fees cover the stated course duration. VAT treatment:
-          [TO BE CONFIRMED].
+          Live, small-group coaching. All course fees include VAT and cover the stated duration.
         </p>
       </section>
       <section className="diagnostic-editorial">
@@ -553,9 +553,7 @@ export function CoursesPage() {
       <section className="wrap section">
         <CourseGrid />
         <p className="note">
-          Listed fees cover the stated course duration. VAT treatment and the complete payable total
-          will be confirmed before payment. Session length, frequency and cohort dates are confirmed
-          before enrolment.
+          All course fees include VAT and cover the stated duration. Session length, frequency and cohort dates are agreed before payment.
         </p>
         <Dimensions />
       </section>
@@ -591,11 +589,11 @@ export function CoursePage({ index }: { index: number }) {
       <PageHero eyebrow={c.name} title={c.headline} description={c.for}>
         <div className="meta">
           <span>{c.duration}</span>
-          <span>€{c.price} listed course fee</span>
+          <span>€{c.price} including VAT</span>
           <span>Live online · ~6 learners</span>
         </div>
         <div className="actions">
-          <a className="btn" href={"/enrol?course=" + c.slug}>
+          <a className="btn" href="#join-course">
             Join this course <Arrow />
           </a>
         </div>
@@ -660,7 +658,7 @@ export function CoursePage({ index }: { index: number }) {
         <aside className="course-aside">
           <p className="eyebrow">{c.name}</p>
           <div className="price">€{c.price}</div>
-          <p>{c.duration} · Listed course fee</p>
+          <p>{c.duration} · Total including VAT</p>
           <ul>
             <li>
               <LabIcon name="globe" size={19} />
@@ -684,10 +682,9 @@ export function CoursePage({ index }: { index: number }) {
             </li>
           </ul>
           <p className="fine">
-            VAT treatment: [TO BE CONFIRMED]. Cohort schedule, session length, frequency and payable
-            total are confirmed before enrolment.
+            VAT is included. Cohort schedule, session length and frequency are agreed before payment.
           </p>
-          <a className="btn" href={"/enrol?course=" + c.slug}>
+          <a className="btn" href="#join-course">
             Join this course <Arrow />
           </a>
           <p className="fine" style={{ marginTop: 15 }}>
@@ -695,6 +692,7 @@ export function CoursePage({ index }: { index: number }) {
           </p>
         </aside>
       </section>
+      <CourseJoin course={c} />
       <section className="tinted">
         <div className="wrap section">
           <div className="section-head">
@@ -777,7 +775,7 @@ export function SegmentPage({ index }: { index: number }) {
     <main id="main">
       <PageHero eyebrow={s.name} title={s.hook} description={s.intro}>
         <div className="actions">
-          <a className="btn" href={"/enrol?course=" + c.slug + "&segment=" + s.slug}>
+          <a className="btn" href={"/courses/" + c.slug}>
             Join this course <Arrow />
           </a>
         </div>
@@ -816,7 +814,7 @@ export function SegmentPage({ index }: { index: number }) {
           </p>
           <h2 style={{ fontSize: 35 }}>{c.name}</h2>
           <p className="lead" style={{ fontSize: 16 }}>
-            {c.short} {c.duration} · €{c.price} listed course fee.
+            {c.short} {c.duration} · €{c.price} including VAT.
           </p>
           <a className="text-link" href={"/courses/" + c.slug}>
             Read the course outline <Arrow />
@@ -835,7 +833,7 @@ export function SegmentPage({ index }: { index: number }) {
           </p>
         </div>
         <div className="actions">
-          <a className="btn" href={"/enrol?course=" + c.slug + "&segment=" + s.slug}>
+          <a className="btn" href={"/courses/" + c.slug}>
             Join this course <Arrow />
           </a>
         </div>
@@ -1129,7 +1127,7 @@ export function PricingPage() {
               <tr>
                 <th>Programme</th>
                 <th>Duration</th>
-                <th>Listed course fee</th>
+                <th>Total including VAT</th>
                 <th>Focus</th>
               </tr>
             </thead>
@@ -1167,9 +1165,7 @@ export function PricingPage() {
               total payable amount are confirmed before enrolment.
             </p>
             <p>
-              VAT ID / tax treatment: <strong>[TO BE CONFIRMED]</strong>. No tax status or
-              VAT-inclusive total is asserted here. Payment, cancellation and rescheduling terms
-              must be finalised before paid enrolment opens.
+              All displayed fees include VAT. The total shown is the total you pay for the course. Review the cancellation and rescheduling terms before payment.
             </p>
             <a href="/legal/terms">Read the current terms</a>
           </div>
@@ -1348,7 +1344,7 @@ export function ArticlePage({ index }: { index: number }) {
             <p className="eyebrow">PUT IT INTO PRACTICE</p>
             <h2>{c.name}</h2>
             <p>
-              {c.short} {c.duration} · €{c.price} listed course fee.
+              {c.short} {c.duration} · €{c.price} including VAT.
             </p>
             <a href={"/courses/" + c.slug}>
               Explore the course <LabIcon name="arrow" size={17} />

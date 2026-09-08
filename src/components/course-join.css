@@ -1,0 +1,92 @@
+.course-enrolment {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  scroll-margin-top: 32px;
+}
+.course-enrolment h2 {
+  margin: 16px 0;
+}
+.course-enrolment p {
+  margin-bottom: 20px;
+}
+.course-enrolment label {
+  display: block;
+}
+.course-enrolment label.consent {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.course-enrolment input:not([type="checkbox"]),
+.course-enrolment textarea {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+}
+.course-enrolment input[type="checkbox"] {
+  flex: none;
+  margin-top: 5px;
+}
+.course-confirm {
+  border: 1px solid var(--border);
+  background: var(--background);
+  color: var(--foreground);
+  padding: 40px;
+  width: min(620px, calc(100vw - 32px));
+  max-height: 85vh;
+  overflow: auto;
+  margin: auto;
+  box-shadow: 0 24px 80px #102d3430;
+}
+.course-confirm::backdrop {
+  background: #142d296b;
+}
+.course-confirm h2 {
+  font-size: 38px;
+  margin: 15px 0 25px;
+}
+.course-confirm h3 {
+  font-size: 27px;
+}
+.course-confirm p {
+  overflow-wrap: anywhere;
+  margin: 15px 0;
+}
+.course-confirm .confirm-total {
+  font-size: 26px;
+  border-block: 1px solid var(--border);
+  padding: 18px 0;
+}
+.confirm-total span {
+  display: block;
+  font-size: 15px;
+}
+.course-confirm button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+.course-enrolment a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.course-enrolment :focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+}
+@media (max-width: 700px) {
+  .course-enrolment {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .course-confirm {
+    padding: 25px;
+  }
+  .course-confirm h2 {
+    font-size: 30px;
+  }
+  .course-confirm .actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

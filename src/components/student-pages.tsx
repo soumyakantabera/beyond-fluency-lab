@@ -66,8 +66,7 @@ function CourseFeature() {
           €{c.price} <span>/ {c.duration}</span>
         </p>
         <p>
-          Listed course fee, not a monthly subscription. Your complete payable total and session
-          schedule are confirmed before enrolment.
+          One-time course fee including VAT. Your session schedule is agreed before payment.
         </p>
         <ul>
           <li>Live online practice in groups of about six</li>

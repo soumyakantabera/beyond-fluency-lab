@@ -78,7 +78,7 @@ export function Footer() {
         </div>
         <p className="legal-fields">
           Legal entity: [TO BE CONFIRMED] · Registered address: [TO BE CONFIRMED] · Registration
-          no.: [TO BE CONFIRMED] · VAT ID / tax treatment: [TO BE CONFIRMED] · EU representative:
+          no.: [TO BE CONFIRMED] · VAT included in course fees · VAT ID: [TO BE CONFIRMED] · EU representative:
           [TO BE CONFIRMED]
         </p>
       </footer>
