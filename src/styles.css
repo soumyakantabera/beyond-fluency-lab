@@ -414,3 +414,37 @@ h1, h2, h3 { word-spacing: .04em; }
 .footer-payments img[alt="Visa"] { height: 17px; }
 .footer-payments img[alt="Mastercard"] { height: 27px; }
 .footer-payments img[alt="American Express"] { height: 30px; }
+/* Keep the header's primary action distinct from ordinary navigation links. */
+.header .nav > a.btn,
+.header .nav > a.btn:visited,
+.header .nav > a.btn.active {
+  color: #ffffff;
+  background: #174f46;
+  border-color: #174f46;
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  white-space: nowrap;
+}
+.header .nav > a.btn:hover,
+.header .nav > a.btn:focus-visible {
+  color: #ffffff;
+  background: #103b34;
+  border-color: #103b34;
+}
+.header .nav > a.btn .lab-icon {
+  color: inherit;
+  stroke: currentColor;
+  flex: 0 0 auto;
+  width: 19px;
+  height: 19px;
+}
+.header .nav > a.btn:focus-visible,
+.header .brand:focus-visible {
+  outline: 2px solid #174f46;
+  outline-offset: 4px;
+}
+.header .brand { flex-shrink: 0; align-items: center; }
+.header .brand > .monogram { flex: 0 0 auto; }
