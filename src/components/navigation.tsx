@@ -3,8 +3,8 @@ import { useRouterState } from "@tanstack/react-router";
 import { LabIcon } from "@/components/lab-icon";
 
 const links = [
-  ["/who-its-for", "Students & graduates"],
   ["/courses", "Courses"],
+  ["/who-its-for", "Who it’s for"],
   ["/our-method", "Our method"],
   ["/blog", "Journal"],
   ["/about", "About"],
