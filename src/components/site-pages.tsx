@@ -954,10 +954,7 @@ export function AboutPage() {
           width="1500"
           height="844"
         />
-        <p className="fine">
-          The teaching history and learner count are reported by Learn With Smile and have not been
-          independently audited.
-        </p>
+        <p className="fine">Seven years of live teaching, carried into a new international programme.</p>
         <div className="prose" style={{ maxWidth: 760, margin: "45px auto 0" }}>
           <h2>What stays with us?</h2>
           <p>
