@@ -1234,7 +1234,12 @@ export function BlogPage() {
       <section className="wrap section">
         <p className="eyebrow">ACROSS EVERY CONTEXT</p>
         <h2 style={{ marginBottom: 35 }}>Work on the dimension.</h2>
-        <ArticleCards items={articles.slice(5)} />
+        <ArticleCards items={articles.slice(5, 7)} />
+      </section>
+      <section className="wrap section">
+        <p className="eyebrow">STUDENTS & GRADUATES</p>
+        <h2 style={{ marginBottom: 35 }}>Prepare for your next conversation.</h2>
+        <ArticleCards items={articles.slice(7)} />
       </section>
     </main>
   );
@@ -1247,7 +1252,7 @@ export function ArticlePage({ index }: { index: number }) {
       <PageHero eyebrow={a.category} title={a.title} description={a.intro}>
         <div className="meta">
           <span>Beyond Fluency Lab</span>
-          <span>6 September 2026</span>
+          <time dateTime={a.published || "2026-09-06"}>{new Date((a.published || "2026-09-06") + "T12:00:00Z").toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}</time>
           <span>{a.read}</span>
         </div>
       </PageHero>
@@ -1358,13 +1363,13 @@ export function ArticlePage({ index }: { index: number }) {
             {"segment" in a && a.segment !== undefined && (
               <p>
                 More for{" "}
-                <a href={"/who-its-for/" + segments[a.segment].slug}>{segments[a.segment].name}</a>.
+                <a href={"/who-its-for/" + (a.audience || segments[a.segment].slug)}>{a.audience === "university-students" ? "university students" : segments[a.segment].name}</a>.
               </p>
             )}
           </section>
           <h2>What should you read next?</h2>
           <ul>
-            {(index === 0 ? articles.slice(1) : [articles[0], articles[(index % 6) + 1]])
+            {(index === 0 ? articles.slice(1) : [...articles.filter(x => x.slug !== a.slug && (x.course === a.course || (a.segment !== undefined && x.segment === a.segment))).slice(0, 3), articles[0]])
               .filter((x) => x.slug !== a.slug)
               .map((x) => (
                 <li key={x.slug}>

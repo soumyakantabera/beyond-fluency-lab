@@ -1,3 +1,4 @@
+import { conversionEvent } from "@/lib/conversion-events";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { CourseInvitation } from "@/components/course-invitation";
 import { LabIcon } from "@/components/lab-icon";
@@ -88,6 +89,7 @@ export function LeadForm({
           body: JSON.stringify({ ...payload, id: submission.current.id }), signal: AbortSignal.timeout(20000) });
         const result = await response.json();
         if (!response.ok || !result.saved) throw new Error(result.error || 'We could not confirm your request.');
+        conversionEvent("lead_saved", course, report ? "report" : enrol ? "enrolment" : "trial");
         setError(false);
         setStatus(`Your request is saved. Reference: ${result.reference}. The team will confirm availability separately.`);
       } catch {
