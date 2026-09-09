@@ -40,7 +40,7 @@ export function pageSchema(path: string, title: string, description: string) {
   if (article) graph.push({
     "@type": "BlogPosting", "@id": url + "#article", url, headline: article.title,
     description: article.description, articleSection: article.category, inLanguage: "en",
-    datePublished: "2026-09-06", author: { "@type": "Organization", ...organization, name: "Beyond Fluency Lab", url: ORIGIN + "/about" },
+    datePublished: article.published || "2026-09-06", author: { "@type": "Organization", ...organization, name: "Beyond Fluency Lab", url: ORIGIN + "/about" },
     publisher: organization, mainEntityOfPage: { "@id": url + "#webpage" },
   });
   return { "@context": "https://schema.org", "@graph": graph };

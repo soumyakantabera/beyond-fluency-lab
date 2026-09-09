@@ -1,3 +1,4 @@
+import { conversionEvent } from "@/lib/conversion-events";
 import { useRef, useState, type FormEvent } from "react";
 import { courses } from "@/lib/content";
 import { LabIcon } from "./lab-icon";
@@ -17,6 +18,7 @@ export function CourseJoin({ course }: { course: (typeof courses)[number] }) {
     );
     setError("");
     dialog.current?.showModal();
+    conversionEvent("checkout_reviewed", course.slug, "enrolment");
   }
   async function pay() {
     if (busy) return;
@@ -43,6 +45,7 @@ export function CourseJoin({ course }: { course: (typeof courses)[number] }) {
       const url = new URL(result.url);
       if (url.protocol !== "https:" || url.hostname !== "checkout.stripe.com")
         throw new Error("Payment is temporarily unavailable.");
+      conversionEvent("checkout_handoff", course.slug, "enrolment");
       location.assign(url.href);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Please try again.");

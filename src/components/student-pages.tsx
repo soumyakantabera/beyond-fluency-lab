@@ -393,7 +393,8 @@ export function StudentAudiencePage({ graduate = false }: { graduate?: boolean }
         <h2>Prepare for your next conversation.</h2>
         <p>Use these short guides before your next interview, seminar or presentation.</p>
         <div className="sf-audience-links">
-          <a href="/blog/the-interview-after-the-exam">Interview preparation after university <LabIcon name="arrow" size={18} /></a>
+          <a href={graduate ? "/blog/graduate-interview-tell-me-about-yourself" : "/blog/internship-interview-no-experience"}>{graduate ? "Introduce yourself in a graduate interview" : "Prepare for an internship without work experience"} <LabIcon name="arrow" size={18} /></a>
+          <a href="/blog/university-presentation-opening">Start a university presentation clearly <LabIcon name="arrow" size={18} /></a>
           <a href="/blog/stay-clear-under-pressure">Speaking clearly under pressure <LabIcon name="arrow" size={18} /></a>
         </div>
       </section>
