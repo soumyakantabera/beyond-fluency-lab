@@ -223,17 +223,18 @@
 .sf-end h2 {
   color: #fff;
 }
-.sf-end .sf-button {
+.sf-page .sf-end .sf-button {
   background: #f4f1ea;
   color: #174f46;
   border-color: #f4f1ea;
   margin-right: 24px;
   margin-bottom: 18px;
 }
-.sf-end .sf-link {
+.sf-page .sf-end .sf-link {
   color: #fff;
 }
-.sf-end p {
+.sf-page .sf-end p {
+  color: #f4f1ea;
   max-width: 720px;
 }
 #student-pathways {
@@ -302,7 +303,7 @@
     max-width: 100%;
     text-align: center;
   }
-  .sf-end .sf-link {
+  .sf-page .sf-end .sf-link {
     display: inline-block;
   }
   .sf-page h1 {
@@ -312,3 +313,6 @@
     font-size: 27px;
   }
 }
+
+.sf-page .sf-end .sf-button:hover { background: #e5e9df; color: #174f46; }
+.sf-page .sf-end a:focus-visible { outline-color: #f4f1ea; }

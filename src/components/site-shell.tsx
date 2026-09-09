@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { SiteInvitation } from "@/components/course-invitation";
-import { BUSINESS, FOOTER_BLURB } from "@/lib/content";
+import { BUSINESS, FOOTER_BLURB, ORIGIN } from "@/lib/content";
 import { Signature, HeritageStrip } from "@/components/identity";
 import { MotionDirector } from "@/components/editorial-motion";
 import { Navigation } from "@/components/navigation";
@@ -91,7 +91,9 @@ export function JsonLd() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Beyond Fluency Lab",
-    url: "https://www.learnwithsmile.app/",
+    "@id": ORIGIN + "/#organization",
+    url: ORIGIN + "/",
+    logo: ORIGIN + "/assets/mark.svg",
     description: BUSINESS,
     parentOrganization: {
       "@type": "Organization",
