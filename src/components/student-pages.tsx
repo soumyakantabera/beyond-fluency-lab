@@ -388,6 +388,15 @@ export function StudentAudiencePage({ graduate = false }: { graduate?: boolean }
           </a>
         </section>
       )}
+      <section className="sf-section">
+        <p className="sf-label">Keep practising</p>
+        <h2>Prepare for your next conversation.</h2>
+        <p>Use these short guides before your next interview, seminar or presentation.</p>
+        <div className="sf-audience-links">
+          <a href="/blog/the-interview-after-the-exam">Interview preparation after university <LabIcon name="arrow" size={18} /></a>
+          <a href="/blog/stay-clear-under-pressure">Speaking clearly under pressure <LabIcon name="arrow" size={18} /></a>
+        </div>
+      </section>
       <PracticeSteps />
       <StudentFaq />
       <StudentPaths />

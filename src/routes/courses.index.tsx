@@ -7,5 +7,5 @@ const seo = seoForPath("/courses");
 
 export const Route = createFileRoute("/courses/")({
   component: CoursesPage,
-  head: () => seo("Live Communication Courses in English for Fluent Speakers | Beyond Fluency Lab", simplePages.courses[1]),
+  head: () => seo(simplePages.courses[0] + " | Beyond Fluency Lab", simplePages.courses[1]),
 });

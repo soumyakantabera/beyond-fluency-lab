@@ -707,6 +707,9 @@ export function CoursePage({ index }: { index: number }) {
             </p>
           </div>
           <AudienceGrid />
+          {index < 2 && <p style={{ marginTop: 24 }}>
+            Explore practice for <a className="text-link" href="/who-its-for/university-students">university presentations and internship interviews</a> or <a className="text-link" href="/who-its-for/graduating-students">graduate and first-job interviews</a>.
+          </p>}
         </div>
       </section>
       <script
@@ -715,10 +718,12 @@ export function CoursePage({ index }: { index: number }) {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Course",
+            "@id": ORIGIN + "/courses/" + c.slug + "#course",
+            inLanguage: "en",
             name: c.name,
             description: c.description,
             url: ORIGIN + "/courses/" + c.slug,
-            provider: { "@type": "Organization", name: "Beyond Fluency Lab", url: ORIGIN },
+            provider: { "@type": "Organization", "@id": ORIGIN + "/#organization", name: "Beyond Fluency Lab", url: ORIGIN },
             educationalLevel: "Fluent English speakers",
             teaches: c.outcomes,
             offers: {
@@ -726,6 +731,7 @@ export function CoursePage({ index }: { index: number }) {
               price: c.price,
               priceCurrency: "EUR",
               category: "Paid",
+              priceSpecification: { "@type": "PriceSpecification", price: c.price, priceCurrency: "EUR", valueAddedTaxIncluded: true },
               url: ORIGIN + "/courses/" + c.slug,
             },
             hasCourseInstance: {

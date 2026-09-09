@@ -1,3 +1,5 @@
+import { pageSchema } from "./page-schema";
+
 export const SITE_ORIGIN = "https://beyond-fluency-lab.vercel.app";
 
 export function seoForPath(path: string) {
@@ -11,7 +13,7 @@ export function seoForPath(path: string) {
         { name: "robots", content: missing || path === "/enrol" ? "noindex, follow" : "index, follow" },
         { property: "og:title", content: title },
         { property: "og:description", content: description },
-        { property: "og:type", content: "website" },
+        { property: "og:type", content: path.startsWith("/blog/") ? "article" : "website" },
         { property: "og:site_name", content: "Beyond Fluency Lab" },
         { property: "og:url", content: canonical },
         { property: "og:image", content: SITE_ORIGIN + "/og.jpg" },
@@ -20,6 +22,7 @@ export function seoForPath(path: string) {
         { name: "twitter:description", content: description },
         { name: "twitter:image", content: SITE_ORIGIN + "/og.jpg" },
       ],
+      scripts: missing || path === "/enrol" ? [] : [{ type: "application/ld+json", children: JSON.stringify(pageSchema(path, title, description)).replace(/</g, "\\u003c") }],
       links: missing ? [] : [{ rel: "canonical", href: canonical }],
     };
   };
