@@ -8,6 +8,32 @@ import {
   type CookieConsentState,
 } from "@/lib/measurement";
 
+function Switch({
+  checked,
+  locked,
+  label,
+  onChange,
+}: {
+  checked: boolean;
+  locked?: boolean;
+  label: string;
+  onChange?: (value: boolean) => void;
+}) {
+  return (
+    <button
+      type="button"
+      className="cookie-switch"
+      role="switch"
+      aria-checked={checked}
+      aria-label={label}
+      disabled={locked}
+      onClick={() => onChange?.(!checked)}
+    >
+      <span />
+    </button>
+  );
+}
+
 export function CookieConsent() {
   const [ready, setReady] = useState(false);
   const [open, setOpen] = useState(false);
@@ -38,11 +64,11 @@ export function CookieConsent() {
     return () => window.removeEventListener("bfl:cookie-settings", reopen);
   }, []);
 
-  function save(next: CookieConsentState) {
-    writeConsent(next.analytics, next.marketing);
-    applyConsent(next);
-    setAnalytics(next.analytics);
-    setMarketing(next.marketing);
+  function save(next: Pick<CookieConsentState, "analytics" | "marketing">) {
+    const stored = writeConsent(next.analytics, next.marketing);
+    applyConsent(stored);
+    setAnalytics(stored.analytics);
+    setMarketing(stored.marketing);
     setOpen(false);
     setCustomize(false);
   }
@@ -50,71 +76,79 @@ export function CookieConsent() {
   if (!ready || !open) return null;
 
   return (
-    <div className="cookie-banner" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-copy">
-      <div className="cookie-banner-inner">
-        <div>
-          <p className="eyebrow" id="cookie-title">
-            Cookies on this site
-          </p>
-          <p id="cookie-copy">
-            We use essential storage to run the site. Analytics (Google Analytics and Tag Manager)
-            measure how pages are used. Bing UET measures visits that came from our Bing ads —
-            we do not show advertisements on this website. Read the{" "}
-            <a href="/legal/cookies">Cookie Policy</a>.
-          </p>
-          {customize && (
-            <div className="cookie-choices">
-              <label>
-                <input type="checkbox" checked disabled /> Essential — always on
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={analytics}
-                  onChange={(e) => setAnalytics(e.target.checked)}
-                />{" "}
-                Analytics — Google Analytics, Tag Manager
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={marketing}
-                  onChange={(e) => setMarketing(e.target.checked)}
-                />{" "}
-                Bing ads measurement — off-site Bing ads only, not ads on this site
-              </label>
-            </div>
-          )}
-        </div>
-        <div className="cookie-actions">
+    <aside className={"cookie-banner" + (customize ? " is-open" : "")} aria-labelledby="cookie-title">
+      <div className="cookie-panel">
+        <div className="cookie-copy">
+          <p className="eyebrow">YOUR CHOICE</p>
+          <h2 id="cookie-title">Cookies, plainly</h2>
           {customize ? (
-            <button className="btn" type="button" onClick={() => save({ analytics, marketing, updated: "" })}>
-              Save choices
-            </button>
+            <p id="cookie-copy">Turn each optional tool on or off. Essential storage stays on so the site can run.</p>
           ) : (
-            <>
-              <button
-                className="btn"
-                type="button"
-                onClick={() => save({ analytics: true, marketing: true, updated: "" })}
-              >
-                Accept all
-              </button>
-              <button
-                className="btn outline"
-                type="button"
-                onClick={() => save({ analytics: false, marketing: false, updated: "" })}
-              >
+            <p id="cookie-copy">
+              The site works with essential storage only. Optional tools: Google Analytics, to see
+              which pages help, and Bing UET, to measure ads we run <em>on Bing</em> — never ads on
+              this website.
+            </p>
+          )}
+          <p className="cookie-fine">
+            Change this later in the footer.{" "}
+            <a href="/legal/cookies">Cookie Policy</a>
+            {" · "}
+            <a href="/legal/privacy">Privacy</a>
+          </p>
+        </div>
+
+        {customize ? (
+          <div className="cookie-detail">
+            <div className="cookie-row">
+              <div>
+                <strong>Essential</strong>
+                <span>Pages, forms and remembering this choice. Always on.</span>
+              </div>
+              <Switch checked locked label="Essential cookies, always on" />
+            </div>
+            <div className="cookie-row">
+              <div>
+                <strong>Analytics</strong>
+                <span>Google Analytics and Tag Manager. Which pages are read. Off unless you allow.</span>
+              </div>
+              <Switch checked={analytics} label="Allow analytics cookies" onChange={setAnalytics} />
+            </div>
+            <div className="cookie-row">
+              <div>
+                <strong>Bing ads measurement</strong>
+                <span>Only if someone clicked a Bing ad we placed. No advertisements are shown here.</span>
+              </div>
+              <Switch
+                checked={marketing}
+                label="Allow Bing ads measurement"
+                onChange={setMarketing}
+              />
+            </div>
+            <div className="cookie-actions">
+              <button className="btn outline" type="button" onClick={() => save({ analytics: false, marketing: false })}>
                 Essential only
               </button>
-              <button className="text-link" type="button" onClick={() => setCustomize(true)}>
-                Choose
+              <button className="btn" type="button" onClick={() => save({ analytics, marketing })}>
+                Save my choices
               </button>
-            </>
-          )}
-        </div>
+            </div>
+          </div>
+        ) : (
+          <div className="cookie-actions cookie-actions-main">
+            <button className="btn outline" type="button" onClick={() => save({ analytics: false, marketing: false })}>
+              Essential only
+            </button>
+            <button className="btn" type="button" onClick={() => save({ analytics: true, marketing: true })}>
+              Allow measurement
+            </button>
+            <button className="cookie-choose" type="button" onClick={() => setCustomize(true)}>
+              Choose each one
+            </button>
+          </div>
+        )}
       </div>
-    </div>
+    </aside>
   );
 }
 
