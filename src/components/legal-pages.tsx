@@ -7,7 +7,7 @@ const meta: Record<PolicyKind, { title: string; summary: string; sections: strin
   privacy: { title: "Privacy Policy", summary: "What information we collect, why we use it and the choices available to you.", sections: ["Controller", "Information", "Purposes", "Sharing", "Transfers", "Retention", "Your rights", "Security", "Contact"] },
   cookies: { title: "Cookie Policy", summary: "A straightforward explanation of cookies and browser storage used by this website.", sections: ["Current use", "Essential storage", "Diagnostic", "Campaign links", "Your controls", "Changes", "Contact"] },
   refunds: { title: "Cancellation & Refund Policy", summary: "How cancellations, rescheduling, withdrawals and refunds are handled.", sections: ["Free trial", "Before payment", "Cooling-off period", "Learner cancellation", "Rescheduling", "Provider cancellation", "Refunds", "Contact"] },
-  gdpr: { title: "GDPR Information", summary: "How we handle personal data of people in the EU and EEA, including your rights and how to contact us.", sections: ["Scope", "Controller", "EU representative", "Data we process", "Legal bases", "Processors", "International transfers", "Retention", "Your rights", "Complaints", "Contact"] },
+  gdpr: { title: "GDPR Information", summary: "How we handle personal data of people in the EU and EEA, mapped to the actual forms, payments and logs on this website.", sections: ["Scope", "Controller", "EU representative", "Data flows", "Your rights", "Processors", "International transfers", "Retention", "Complaints", "Contact"] },
 };
 const id = (value: string) => value.toLowerCase().replaceAll(" ", "-");
 function Section({ title, children }: { title: string; children: ReactNode }) { return <section id={id(title)}><h2>{title}</h2>{children}</section>; }
@@ -59,17 +59,83 @@ function Refunds() { return <>
 </>; }
 
 function Gdpr() { return <>
-  <Section title="Scope"><p>This page explains how the GDPR applies when we process personal data of people in the European Union or the European Economic Area. It sits alongside our <a href="/legal/privacy">Privacy Policy</a> and <a href="/legal/cookies">Cookie Policy</a>.</p><p>Courses are offered to adults in Europe. If you are in the EU or EEA and you visit this website, request a trial, enrol or pay, this notice applies to that processing.</p></Section>
-  <Section title="Controller"><p>The controller is Learn With Smile, a sole proprietorship in India, trading as Beyond Fluency Lab. Registered address: 75/2/4, Raja Ram Mohan Roy Road, Kolkata 700008, India.</p><p>Data-protection contact: <a href="mailto:info@learnwithsmile.app">info@learnwithsmile.app</a>. You may also use the <a href="/contact">contact page</a> and write “Privacy request” in your message.</p></Section>
+  <Section title="Scope"><p>This page explains how the GDPR applies when we process personal data of people in the European Union or the European Economic Area. It sits alongside our <a href="/legal/privacy">Privacy Policy</a> and <a href="/legal/cookies">Cookie Policy</a>.</p><p>Each right below is mapped to a real data flow on this website: visiting the site, the diagnostic, a free-trial request, a course enquiry, Stripe payment, and live coaching.</p></Section>
+  <Section title="Controller"><p>The controller is Learn With Smile, a sole proprietorship in India, trading as Beyond Fluency Lab. Registered address: 75/2/4, Raja Ram Mohan Roy Road, Kolkata 700008, India.</p><p>Data-protection contact: <a href="mailto:info@learnwithsmile.app">info@learnwithsmile.app</a>. You may also use the <a href="/contact">contact page</a> and write “GDPR request” in your message.</p></Section>
   <Section title="EU representative"><p>We are established in India and have not appointed an Article 27 EU representative. Questions and requests should be sent to the controller at the contact details above.</p></Section>
-  <Section title="Data we process"><p>Depending on how you use the site, we may process: name, email, time zone, availability, selected course, communication goal, message content, diagnostic focus if you choose to share it, payment status, and basic technical logs such as IP address, browser type, request time and errors.</p><p>We do not ask for special-category data (health, beliefs, union membership and similar). Please do not include that kind of information in a form or session. Diagnostic answers stay in your browser unless you submit a form.</p></Section>
-  <Section title="Legal bases"><p>We rely on the following Article 6 bases, as relevant:</p><p>Contract or pre-contract steps — to answer an enquiry, arrange a trial, confirm a cohort and deliver a paid course.</p><p>Legal obligation — accounting, tax, consumer-rights and complaint handling.</p><p>Legitimate interests — to operate and secure the website, prevent abuse and improve the service, where those interests are not overridden by your rights.</p><p>Consent — only where we ask for it, for example a non-essential preference. You may withdraw consent without affecting processing already carried out.</p></Section>
-  <Section title="Processors"><p>We use providers only as needed to run the service: website hosting, forms, email, video sessions, and Stripe for payments. Stripe and card networks receive payment information when you pay. We do not store full card numbers. Processors may change as the service develops; they are bound to process data on our instructions where required.</p></Section>
+  <Section title="Data flows"><p>We do not ask for special-category data (health, beliefs, union membership and similar). Please do not include that information in a form or session.</p>
+    <h3>Visiting the site</h3>
+    <p>Hosting may record IP address, browser type, request time and errors. A hashed IP is used only to limit abusive form submissions. Legal basis: legitimate interests in security and availability. Rights: access and erasure are limited because logs are short-lived security records. An objection does not stop essential hosting.</p>
+    <h3>Motion preference</h3>
+    <p>The pause-motion control stores <code>bfl-motion</code> in your browser. It does not leave your device. You change or delete it yourself with the control or by clearing site data.</p>
+    <h3>Campaign links</h3>
+    <p>If a link already contains campaign parameters (<code>utm_source</code> and similar), the site may keep them while you browse and attach them only if you submit a form. They are not a separate advertising cookie. Rights: do not submit a form, or ask us to erase the resulting enquiry.</p>
+    <h3>Plateau diagnostic</h3>
+    <p>Your seven answers stay in the open page and clear when you refresh. A shared result link contains only the named focus, not your scores, email or answers. If you request a written report, we receive your email and that named focus. Legal basis: your use of the tool; pre-contract steps if you ask for a report. Rights: leave or refresh the page to erase answers; access, correction and erasure apply to a submitted report request.</p>
+    <h3>Free trial request</h3>
+    <p>The contact form sends name, email, course interest, city or time zone, availability, optional message and your privacy acknowledgement. We store that enquiry and notify the team. Legal basis: pre-contract steps. Rights: access, correction, portability, erasure if you do not later enrol, and objection to further follow-up.</p>
+    <h3>Course enquiry and enrolment form</h3>
+    <p>The same fields as a trial, marked as an enrolment enquiry. Legal basis: pre-contract steps, then contract if you pay. Rights: access, correction and portability of the form you sent. Erasure of an unpaid enquiry on request. After payment, we keep the accounting subset.</p>
+    <h3>Payment on Stripe</h3>
+    <p>When you continue to checkout we send Stripe your email, course, amount, and an enquiry reference. Card numbers, expiry and CVC go to Stripe only; we do not store them. We keep payment status, amount and the enquiry reference. Legal basis: contract, and legal obligation for accounts and tax. Rights: access to status and amount we hold. Erasure of Stripe’s and our payment records is limited. Portability covers our record, not Stripe’s card vault.</p>
+    <h3>Live coaching and alumni practice</h3>
+    <p>If you join a cohort we process attendance, scheduling and the communication examples you choose to share. Video is delivered by a session provider. We do not record a session unless everyone identifiable has agreed. Legal basis: contract. Rights: access to notes we keep about your place; erasure is limited while the course and follow-up run, and for records we must keep.</p>
+  </Section>
+  <Section title="Your rights"><p>If GDPR applies to you, these rights map to the flows above. They are not absolute. We may refuse or limit a request where the law allows, for example to keep tax records or defend a claim. We may need to verify your identity. We aim to respond within one month.</p>
+    <div className="table-scroll">
+      <table className="data-table">
+        <caption className="sr-only">GDPR rights mapped to Beyond Fluency Lab data flows</caption>
+        <thead>
+          <tr>
+            <th>Right</th>
+            <th>Applies to</th>
+            <th>What happens</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Access</td>
+            <td>Trial, enquiry, report request, payment status, coaching notes we keep</td>
+            <td>We send a copy of the records we hold. Diagnostic answers that never left your browser are not on our servers. Card details are held by Stripe.</td>
+          </tr>
+          <tr>
+            <td>Rectification</td>
+            <td>Name, email, time zone, availability, course interest, message</td>
+            <td>We correct the enquiry or enrolment record. Payment email on Stripe is updated where Stripe allows.</td>
+          </tr>
+          <tr>
+            <td>Erasure</td>
+            <td>Unpaid trial or enrolment enquiries; diagnostic answers in your browser; motion preference</td>
+            <td>We delete an unpaid enquiry on request. Refresh the diagnostic to clear answers. Paid invoices, tax records and security logs are kept as required.</td>
+          </tr>
+          <tr>
+            <td>Restriction</td>
+            <td>An enquiry or booking you dispute</td>
+            <td>We pause follow-up and scheduling on that record while we look into it. Hosting logs may still exist for security.</td>
+          </tr>
+          <tr>
+            <td>Portability</td>
+            <td>Data you typed in a form: name, email, time zone, availability, message, course, diagnostic focus</td>
+            <td>We send those fields in a reusable file. This does not include server logs or Stripe’s card vault.</td>
+          </tr>
+          <tr>
+            <td>Objection</td>
+            <td>Follow-up on a trial that did not become a booking; non-essential use of logs</td>
+            <td>We stop that follow-up. You cannot object to delivering a course you paid for, or to records we must keep for law, tax or security.</td>
+          </tr>
+          <tr>
+            <td>Withdraw consent</td>
+            <td>Motion preference, and any optional consent we have actually asked for</td>
+            <td>Use the pause-motion control or write to us. The privacy tick on a form is an acknowledgement that we will handle the request, not a marketing opt-in. We do not add trial requests to a marketing list.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </Section>
+  <Section title="Processors"><p>We use providers only as needed: website hosting, the enquiry database, email (to notify the team of a new request), video sessions, and Stripe for payments. Stripe and card networks receive payment information when you pay. Processors may change as the service develops; they process data on our instructions where required.</p></Section>
   <Section title="International transfers"><p>The controller is in India. Some processors may be in the EU, the United Kingdom, the United States or other countries. Where GDPR requires a safeguard for a transfer, we use a recognised mechanism such as an adequacy decision or standard contractual clauses, as available from the relevant provider.</p></Section>
-  <Section title="Retention"><p>We keep personal data only as long as needed for the course, reasonable follow-up, accounting, tax, disputes and legal duties. Enquiries that do not become bookings are reviewed and then deleted or anonymised. Technical logs are kept only for security and operations.</p></Section>
-  <Section title="Your rights"><p>If GDPR applies to you, you may request: access to your data; correction of inaccurate data; erasure; restriction of processing; data portability; and to object to processing based on legitimate interests. You may also withdraw consent where we rely on it.</p><p>These rights are not absolute. We may refuse or limit a request where the law allows, for example to keep accounting records or defend a claim. We may need to verify your identity. We aim to respond within one month.</p></Section>
+  <Section title="Retention"><p>Unpaid enquiries are reviewed and then deleted or anonymised when no longer needed for follow-up. Paid bookings are kept for the course, reasonable follow-up, accounts, tax and disputes. Technical logs are kept only for security and operations. Diagnostic answers that stay in your browser are gone when you leave or refresh the page.</p></Section>
   <Section title="Complaints"><p>Please contact us first so we can try to put things right. You also have the right to lodge a complaint with a supervisory authority in the EU or EEA, typically in your country of residence, place of work, or the place of the alleged infringement. The European Data Protection Board publishes a list of authorities.</p></Section>
-  <Section title="Contact"><p>Email <a href="mailto:info@learnwithsmile.app">info@learnwithsmile.app</a> or use the <a href="/contact">contact page</a>. Write “GDPR request” in the subject or message so we can treat it as a data-protection request.</p></Section>
+  <Section title="Contact"><p>Email <a href="mailto:info@learnwithsmile.app">info@learnwithsmile.app</a> or use the <a href="/contact">contact page</a>. Write “GDPR request” and which flow it concerns (trial, enrolment, payment, diagnostic or logs) so we can find the right record.</p></Section>
 </>; }
 
 export function LegalPage({ kind }: { kind: PolicyKind }) {
