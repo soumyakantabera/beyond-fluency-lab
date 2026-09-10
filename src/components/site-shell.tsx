@@ -42,7 +42,11 @@ export function Footer() {
               <img src="/assets/payments/visa.png" width="54" height="18" alt="Visa" />
               <img src="/assets/payments/mastercard.png" width="50" height="28" alt="Mastercard" />
               <img src="/assets/payments/amex.svg" width="34" height="34" alt="American Express" />
-              <img src="/assets/payments/pci-dss.svg" width="92" height="30" alt="PCI DSS" title="Card payments processed to PCI DSS standards via Stripe" />
+              <img src="/assets/payments/bancontact.svg" width="34" height="34" alt="Bancontact" />
+              <img src="/assets/payments/apple-pay.svg" width="92" height="36" alt="Apple Pay" />
+              <img src="/assets/payments/google-pay.svg" width="92" height="36" alt="Google Pay" />
+              <img src="/assets/payments/ideal.svg" width="78" height="36" alt="iDEAL" />
+              <img src="/assets/payments/sepa.svg" width="72" height="36" alt="SEPA" />
             </div>
           </div>
           <div>
