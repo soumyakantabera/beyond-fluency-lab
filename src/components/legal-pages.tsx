@@ -5,9 +5,9 @@ type PolicyKind = "terms" | "privacy" | "cookies" | "refunds" | "gdpr";
 const meta: Record<PolicyKind, { title: string; summary: string; sections: string[] }> = {
   terms: { title: "Terms & Conditions", summary: "The practical terms for using this website, measurement tools and joining a Beyond Fluency Lab programme.", sections: ["Provider", "Programmes", "Booking", "Payments", "Website and cookies", "Participation", "Intellectual property", "Liability", "Changes", "Contact"] },
   privacy: { title: "Privacy Policy", summary: "What information we collect through forms, hosting and measurement tools, why we use it and the choices available to you.", sections: ["Controller", "Information", "Purposes", "Sharing", "Transfers", "Retention", "Your rights", "Security", "Contact"] },
-  cookies: { title: "Cookie Policy", summary: "Essential storage, Google Analytics, Tag Manager, Microsoft Advertising / Bing, and how you control them.", sections: ["How we use cookies", "Essential", "Analytics", "Advertising", "Cookie list", "Your controls", "Changes", "Contact"] },
+  cookies: { title: "Cookie Policy", summary: "Essential storage, Google Analytics, Tag Manager, and Bing ads measurement for campaigns that run outside this website.", sections: ["How we use cookies", "Essential", "Analytics", "Bing ads measurement", "Cookie list", "Your controls", "Changes", "Contact"] },
   refunds: { title: "Cancellation & Refund Policy", summary: "How cancellations, rescheduling, withdrawals and refunds are handled.", sections: ["Free trial", "Before payment", "Cooling-off period", "Learner cancellation", "Rescheduling", "Provider cancellation", "Refunds", "Contact"] },
-  gdpr: { title: "GDPR Information", summary: "How we handle personal data of people in the EU and EEA, mapped to forms, payments, Google Analytics, Tag Manager and Microsoft Advertising.", sections: ["Scope", "Controller", "EU representative", "Data flows", "Your rights", "Processors", "International transfers", "Retention", "Complaints", "Contact"] },
+  gdpr: { title: "GDPR Information", summary: "How we handle personal data of people in the EU and EEA, mapped to forms, payments, Google Analytics, Tag Manager and off-site Bing ads measurement.", sections: ["Scope", "Controller", "EU representative", "Data flows", "Your rights", "Processors", "International transfers", "Retention", "Complaints", "Contact"] },
 };
 const id = (value: string) => value.toLowerCase().replaceAll(" ", "-");
 function Section({ title, children }: { title: string; children: ReactNode }) { return <section id={id(title)}><h2>{title}</h2>{children}</section>; }
@@ -18,7 +18,7 @@ function Terms() { return <>
   <Section title="Programmes"><p>We provide live online communication coaching for adults who already use English. Programme descriptions, duration and listed fees appear on the relevant course page. Coaching is educational and developmental; it is not a regulated qualification, therapy, legal advice or employment service.</p><p>Examples, exercises and diagnostic results are guidance only. We do not guarantee a job, promotion, sale, examination result or particular outcome.</p></Section>
   <Section title="Booking"><p>A trial or enrolment form is a request, not an automatic booking. A place is confirmed only after we agree the programme, cohort dates, session schedule, complete price and applicable taxes with you in writing. You must be at least 18 and provide accurate information.</p></Section>
   <Section title="Payments"><p>Fees are shown in euros and exclude VAT. The payable amount is confirmed before payment. Payments may be processed securely by Stripe and supported card networks. We do not store full card numbers.</p><p>See our <a href="/legal/refunds">Cancellation & Refund Policy</a>.</p></Section>
-  <Section title="Website and cookies"><p>The website uses essential storage to function. With your consent we also use Google Analytics, Google Tag Manager and Microsoft Advertising / Bing Webmaster tools to understand how the site is used and whether advertisements led to a visit. These tools are not required to request a trial or join a course. Choices are stored in your browser and can be changed from Cookie settings or the <a href="/legal/cookies">Cookie Policy</a>.</p></Section>
+  <Section title="Website and cookies"><p>The website uses essential storage to function. With your consent we also use Google Analytics and Google Tag Manager to understand how the site is used, and Bing UET to measure visits that started from our Bing advertisements. We do not display advertisements on this website. These tools are not required to request a trial or join a course. Choices are stored in your browser and can be changed from Cookie settings or the <a href="/legal/cookies">Cookie Policy</a>.</p></Section>
   <Section title="Participation"><p>Join on time, participate respectfully and use suitable equipment and connectivity. Do not share confidential employer, client or personal information. You may not record or distribute a session without prior permission from everyone identifiable in it.</p></Section>
   <Section title="Intellectual property"><p>The website, course structure, exercises, materials, graphics and brand assets belong to Beyond Fluency Lab, Learn With Smile or their licensors. Enrolment gives you personal, non-transferable use of supplied materials; it does not permit resale or publication.</p></Section>
   <Section title="Liability"><p>We provide the website and coaching with reasonable care and skill. We are not responsible for events outside our reasonable control, third-party services, your connection or reliance on coaching as professional advice. Nothing excludes liability or consumer rights that cannot lawfully be excluded.</p></Section>
@@ -28,21 +28,21 @@ function Terms() { return <>
 
 function Privacy() { return <>
   <Section title="Controller"><p>Learn With Smile, a sole proprietorship in India, trading as Beyond Fluency Lab, is the controller. Registered address: 75/2/4, Raja Ram Mohan Roy Road, Kolkata 700008, India. Data-protection contact: <a href="mailto:info@learnwithsmile.app">info@learnwithsmile.app</a>.</p></Section>
-  <Section title="Information"><p>When you request a trial, course place or report, we may collect your name, email, time zone, availability, selected programme, communication goal and message. The diagnostic calculates a suggested focus; unless you submit a form, answers remain in your browser. Hosting providers may receive IP address, browser type, request time and error logs.</p><p>If you accept analytics or advertising cookies, Google and Microsoft may also receive online identifiers (cookie IDs), device and browser type, approximate location, pages viewed, referral source, campaign parameters and whether a conversion event occurred. We do not send your form answers, diagnostic scores or card numbers to those tools.</p></Section>
-  <Section title="Purposes"><p>We use information to answer enquiries, arrange trials and cohorts, provide courses, deliver requested reports, process payments, maintain security, meet legal obligations and resolve complaints.</p><p>With your consent we use Google Analytics 4 and Google Tag Manager to understand which pages are used, and Microsoft Advertising / Bing (Webmaster Tools and Universal Event Tracking) to measure whether an advertisement or search listing led to a visit or enrolment step. We do not sell personal information or add trial requests to unrelated marketing lists.</p></Section>
-  <Section title="Sharing"><p>Information is shared only where needed with: website hosting; the enquiry database; email delivery; video session providers; Stripe and card networks for payment; Google LLC for Analytics and Tag Manager; and Microsoft Corporation for Advertising / Bing measurement. We may also disclose information where required by law or necessary to protect people and the service.</p></Section>
+  <Section title="Information"><p>When you request a trial, course place or report, we may collect your name, email, time zone, availability, selected programme, communication goal and message. The diagnostic calculates a suggested focus; unless you submit a form, answers remain in your browser. Hosting providers may receive IP address, browser type, request time and error logs.</p><p>If you accept analytics or Bing ads measurement, Google and Microsoft may also receive online identifiers (cookie IDs), device and browser type, approximate location, pages viewed, referral source, campaign parameters and whether a conversion event occurred. We do not send your form answers, diagnostic scores or card numbers to those tools. We do not show advertisements on this website.</p></Section>
+  <Section title="Purposes"><p>We use information to answer enquiries, arrange trials and cohorts, provide courses, deliver requested reports, process payments, maintain security, meet legal obligations and resolve complaints.</p><p>With your consent we use Google Analytics 4 and Google Tag Manager to understand which pages are used. Separately, we advertise on Bing (not on this website). With your consent we use Microsoft’s Bing UET tag so we can see whether a Bing ad led to a visit or enrolment step. We do not sell personal information or add trial requests to unrelated marketing lists.</p></Section>
+  <Section title="Sharing"><p>Information is shared only where needed with: website hosting; the enquiry database; email delivery; video session providers; Stripe and card networks for payment; Google LLC for Analytics and Tag Manager; and Microsoft Corporation for Bing ads measurement. We may also disclose information where required by law or necessary to protect people and the service.</p></Section>
   <Section title="Transfers"><p>The controller is in India. Google and Microsoft process measurement data in the United States and other countries. Stripe and hosting providers may also process data outside the EEA. Where GDPR requires a safeguard, we rely on a recognised mechanism such as an adequacy decision or the provider’s standard contractual clauses.</p></Section>
-  <Section title="Retention"><p>Enquiries are kept for follow-up, then deleted or anonymised when no longer required. Paid bookings are kept for the course, accounts, tax and disputes. Analytics and advertising identifiers are retained according to Google and Microsoft settings, typically between 24 hours and 24 months. Your cookie choice is stored in your browser as <code>bfl-consent</code>.</p></Section>
-  <Section title="Your rights"><p>Depending on applicable law, you may request access, correction, deletion, restriction or portability, object to certain processing or withdraw consent. Withdraw analytics or advertising consent at any time via Cookie settings. People in the EU and EEA have the rights set out in our <a href="/legal/gdpr">GDPR Information</a>. You may complain to your local data-protection authority.</p></Section>
+  <Section title="Retention"><p>Enquiries are kept for follow-up, then deleted or anonymised when no longer required. Paid bookings are kept for the course, accounts, tax and disputes. Analytics and Bing UET identifiers are retained according to Google and Microsoft settings, typically between 24 hours and 24 months. Your cookie choice is stored in your browser as <code>bfl-consent</code>.</p></Section>
+  <Section title="Your rights"><p>Depending on applicable law, you may request access, correction, deletion, restriction or portability, object to certain processing or withdraw consent. Withdraw analytics or Bing measurement at any time via Cookie settings. People in the EU and EEA have the rights set out in our <a href="/legal/gdpr">GDPR Information</a>. You may complain to your local data-protection authority.</p></Section>
   <Section title="Security"><p>We use proportionate safeguards including secure connections, input validation, access controls and restricted administration. Measurement tags load only after consent. No online system can guarantee absolute security.</p></Section>
   <Section title="Contact"><p>Email <a href="mailto:info@learnwithsmile.app">info@learnwithsmile.app</a> or use the <a href="/contact">contact page</a> and write “Privacy request”.</p></Section>
 </>; }
 
 function Cookies() { return <>
-  <Section title="How we use cookies"><p>This website uses three categories of storage. Essential storage runs the site. Analytics storage (Google Analytics 4 and Google Tag Manager) measures visits. Advertising storage (Microsoft Advertising / Bing UET and related Google conversion cookies if enabled in Tag Manager) measures whether an ad or search listing led to a visit. Analytics and advertising tags are off until you accept them in the cookie banner.</p></Section>
+  <Section title="How we use cookies"><p>This website uses three categories of storage. Essential storage runs the site. Analytics storage (Google Analytics 4 and Google Tag Manager) measures how the site is used. Bing ads measurement (Bing UET) is used only to see whether a visit started from an advertisement we placed on Bing. We do not show ads, pop-ups or third-party banners on this website. Analytics and Bing tags are off until you accept them in the cookie banner.</p></Section>
   <Section title="Essential"><p>Hosting and security may set strictly necessary cookies. We store <code>bfl-consent</code> (your cookie choice) and <code>bfl-motion</code> (pause-motion preference) in your browser. Diagnostic answers stay in the page’s memory and clear on refresh. Campaign parameters already in a link may be kept while you browse and attached only if you submit a form.</p></Section>
   <Section title="Analytics"><p>If you accept analytics, we load Google Tag Manager and/or Google Analytics 4. They help us see which pages are read, which buttons are used and whether a trial or enrolment step was started. They may set cookies such as <code>_ga</code> and <code>_ga_*</code>. Google may process this data in the United States. Legal basis in the EU: consent. You can refuse analytics and still use the whole site.</p></Section>
-  <Section title="Advertising"><p>If you accept advertising, we load Microsoft Advertising Universal Event Tracking (Bing UET) and may allow Tag Manager to fire conversion tags. Bing Webmaster Tools is used to verify and understand search listings. Typical cookies include <code>_uetsid</code>, <code>_uetvid</code> and, if Google ads conversion is enabled, <code>_gcl_au</code>. These tools are for campaign measurement, not to sell your enquiry. Legal basis in the EU: consent.</p></Section>
+  <Section title="Bing ads measurement"><p>If you accept Bing ads measurement, we load Microsoft’s Bing UET tag. It tells us if someone who clicked our Bing ad later opened a page or started a trial. Bing Webmaster Tools may be used to verify the site for search, which is not advertising on this website. Typical cookies include <code>_uetsid</code> and <code>_uetvid</code>. We do not use Google Ads conversion cookies. Legal basis in the EU: consent. You can refuse this and still use the whole site.</p></Section>
   <Section title="Cookie list">
     <div className="table-scroll">
       <table className="data-table">
@@ -87,25 +87,18 @@ function Cookies() { return <>
           </tr>
           <tr>
             <td><code>_uetsid</code>, <code>_uetvid</code></td>
-            <td>Microsoft Advertising</td>
-            <td>Measure Bing / Microsoft ads and remarketing</td>
-            <td>Advertising</td>
+            <td>Microsoft (Bing)</td>
+            <td>Measure whether a visit started from our Bing ads. No ads are shown on this site.</td>
+            <td>Bing ads measurement</td>
             <td>1 day / up to 13 months</td>
-          </tr>
-          <tr>
-            <td><code>_gcl_au</code></td>
-            <td>Google</td>
-            <td>Conversion linker if ads tags are enabled in GTM</td>
-            <td>Advertising</td>
-            <td>About 90 days</td>
           </tr>
         </tbody>
       </table>
     </div>
     <p>Exact cookie names can change when Google or Microsoft update their tags. The banner always controls whether those tags load.</p>
   </Section>
-  <Section title="Your controls"><p>Use the cookie banner, or Cookie settings in the footer, to accept, refuse or change analytics and advertising. Essential storage cannot be refused if you want the site to work. You can also block cookies in your browser. Google provides an opt-out add-on for Analytics; Microsoft advertising settings are available in your Microsoft account.</p></Section>
-  <Section title="Changes"><p>If we add another measurement or advertising tool, this policy and the banner choices will be updated before it is used.</p></Section>
+  <Section title="Your controls"><p>Use the cookie banner, or Cookie settings in the footer, to accept, refuse or change analytics and Bing ads measurement. Essential storage cannot be refused if you want the site to work. You can also block cookies in your browser. Google provides an opt-out add-on for Analytics. Microsoft account settings can limit advertising measurement on Bing.</p></Section>
+  <Section title="Changes"><p>If we add another measurement tool, or begin advertising on another network, this policy and the banner choices will be updated before it is used.</p></Section>
   <Section title="Contact"><p>Questions: <a href="mailto:info@learnwithsmile.app">info@learnwithsmile.app</a>. See the <a href="/legal/privacy">Privacy Policy</a> and <a href="/legal/gdpr">GDPR Information</a>.</p></Section>
 </>; }
 
@@ -130,9 +123,9 @@ function Gdpr() { return <>
     <h3>Motion preference</h3>
     <p>The pause-motion control stores <code>bfl-motion</code> in your browser. It does not leave your device. You change or delete it yourself with the control or by clearing site data.</p>
     <h3>Campaign links</h3>
-    <p>If a link already contains campaign parameters (<code>utm_source</code> and similar), the site may keep them while you browse and attach them only if you submit a form. If you also accept advertising cookies, those parameters may be read by Google or Microsoft tags. Rights: refuse advertising cookies; or ask us to erase a submitted enquiry.</p>
-    <h3>Analytics and advertising tags</h3>
-    <p>If you accept analytics, Google Tag Manager and/or Google Analytics 4 receive online identifiers, pages viewed and technical data. If you accept advertising, Microsoft Advertising (Bing UET / Webmaster) and any conversion tags enabled in Tag Manager receive similar data to measure ads. Form contents, diagnostic answers and card numbers are not sent to these tools. Legal basis: consent. Rights: withdraw via Cookie settings; access and erasure of Google/Microsoft records are limited because those companies are independent controllers or processors of their logs; we can stop the tags on this site.</p>
+    <p>If a link already contains campaign parameters (<code>utm_source</code> and similar), the site may keep them while you browse and attach them only if you submit a form. If you accept Bing ads measurement, those parameters may also be read by the Bing UET tag. Rights: refuse Bing measurement; or ask us to erase a submitted enquiry.</p>
+    <h3>Analytics and Bing ads measurement</h3>
+    <p>If you accept analytics, Google Tag Manager and/or Google Analytics 4 receive online identifiers, pages viewed and technical data. If you accept Bing ads measurement, Microsoft’s UET tag receives similar data so we can see whether a Bing advertisement led to a visit. We do not display ads on this website and we do not send form contents, diagnostic answers or card numbers to Google or Microsoft. Legal basis: consent. Rights: withdraw via Cookie settings. Access and erasure of Google/Microsoft logs are limited because those companies hold their own records; we can stop the tags on this site.</p>
     <h3>Plateau diagnostic</h3>
     <p>Your seven answers stay in the open page and clear when you refresh. A shared result link contains only the named focus, not your scores, email or answers. If you request a written report, we receive your email and that named focus. Legal basis: your use of the tool; pre-contract steps if you ask for a report. Rights: leave or refresh the page to erase answers; access, correction and erasure apply to a submitted report request.</p>
     <h3>Free trial request</h3>
@@ -168,8 +161,8 @@ function Gdpr() { return <>
           </tr>
           <tr>
             <td>Erasure</td>
-            <td>Unpaid trial or enrolment enquiries; diagnostic answers in your browser; motion preference; analytics and advertising cookies</td>
-            <td>We delete an unpaid enquiry on request. Refresh the diagnostic to clear answers. Turn off analytics and advertising in Cookie settings. Paid invoices, tax records and security logs are kept as required. Google and Microsoft retain their own logs per their policies.</td>
+            <td>Unpaid trial or enrolment enquiries; diagnostic answers in your browser; motion preference; analytics and Bing UET cookies</td>
+            <td>We delete an unpaid enquiry on request. Refresh the diagnostic to clear answers. Turn off analytics and Bing measurement in Cookie settings. Paid invoices, tax records and security logs are kept as required. Google and Microsoft retain their own logs per their policies.</td>
           </tr>
           <tr>
             <td>Restriction</td>
@@ -183,23 +176,23 @@ function Gdpr() { return <>
           </tr>
           <tr>
             <td>Objection</td>
-            <td>Follow-up on a trial that did not become a booking; analytics and advertising cookies; non-essential use of logs</td>
+            <td>Follow-up on a trial that did not become a booking; analytics and Bing UET cookies; non-essential use of logs</td>
             <td>We stop that follow-up. Use Cookie settings to refuse measurement tags. You cannot object to delivering a course you paid for, or to records we must keep for law, tax or security.</td>
           </tr>
           <tr>
             <td>Withdraw consent</td>
-            <td>Analytics cookies, advertising cookies, motion preference, and any optional consent we asked for</td>
-            <td>Use Cookie settings in the footer. Use the pause-motion control. The privacy tick on a form is an acknowledgement that we will handle the request, not a marketing opt-in and not analytics consent.</td>
+            <td>Analytics cookies, Bing UET cookies, motion preference, and any optional consent we asked for</td>
+            <td>Use Cookie settings in the footer. Use the pause-motion control. The privacy tick on a form is an acknowledgement that we will handle the request, not a marketing opt-in and not analytics or Bing consent.</td>
           </tr>
         </tbody>
       </table>
     </div>
   </Section>
-  <Section title="Processors"><p>We use providers only as needed: website hosting, the enquiry database, email (to notify the team of a new request), video sessions, Stripe for payments, Google LLC (Analytics and Tag Manager) and Microsoft Corporation (Advertising / Bing). Analytics and advertising tags load only after consent. Stripe and card networks receive payment information when you pay.</p></Section>
+  <Section title="Processors"><p>We use providers only as needed: website hosting, the enquiry database, email (to notify the team of a new request), video sessions, Stripe for payments, Google LLC (Analytics and Tag Manager) and Microsoft Corporation (Bing UET for off-site ads measurement). Analytics and Bing tags load only after consent. Stripe and card networks receive payment information when you pay.</p></Section>
   <Section title="International transfers"><p>The controller is in India. Google and Microsoft process measurement data in the United States. Some other processors may be in the EU, the United Kingdom, the United States or other countries. Where GDPR requires a safeguard for a transfer, we use a recognised mechanism such as an adequacy decision or standard contractual clauses, as available from the relevant provider.</p></Section>
-  <Section title="Retention"><p>Unpaid enquiries are reviewed and then deleted or anonymised when no longer needed for follow-up. Paid bookings are kept for the course, reasonable follow-up, accounts, tax and disputes. Technical logs are kept only for security and operations. Diagnostic answers that stay in your browser are gone when you leave or refresh the page. Analytics and advertising cookies last according to the cookie list in the <a href="/legal/cookies">Cookie Policy</a>.</p></Section>
+  <Section title="Retention"><p>Unpaid enquiries are reviewed and then deleted or anonymised when no longer needed for follow-up. Paid bookings are kept for the course, reasonable follow-up, accounts, tax and disputes. Technical logs are kept only for security and operations. Diagnostic answers that stay in your browser are gone when you leave or refresh the page. Analytics and Bing UET cookies last according to the cookie list in the <a href="/legal/cookies">Cookie Policy</a>.</p></Section>
   <Section title="Complaints"><p>Please contact us first so we can try to put things right. You also have the right to lodge a complaint with a supervisory authority in the EU or EEA, typically in your country of residence, place of work, or the place of the alleged infringement. The European Data Protection Board publishes a list of authorities.</p></Section>
-  <Section title="Contact"><p>Email <a href="mailto:info@learnwithsmile.app">info@learnwithsmile.app</a> or use the <a href="/contact">contact page</a>. Write “GDPR request” and which flow it concerns (trial, enrolment, payment, diagnostic, analytics or logs) so we can find the right record.</p></Section>
+  <Section title="Contact"><p>Email <a href="mailto:info@learnwithsmile.app">info@learnwithsmile.app</a> or use the <a href="/contact">contact page</a>. Write “GDPR request” and which flow it concerns (trial, enrolment, payment, diagnostic, analytics, Bing measurement or logs) so we can find the right record.</p></Section>
 </>; }
 
 export function LegalPage({ kind }: { kind: PolicyKind }) {

@@ -58,8 +58,9 @@ export function CookieConsent() {
           </p>
           <p id="cookie-copy">
             We use essential storage to run the site. Analytics (Google Analytics and Tag Manager)
-            and advertising measurement (Microsoft Advertising / Bing) load only if you accept.
-            Read the <a href="/legal/cookies">Cookie Policy</a>.
+            measure how pages are used. Bing UET measures visits that came from our Bing ads —
+            we do not show advertisements on this website. Read the{" "}
+            <a href="/legal/cookies">Cookie Policy</a>.
           </p>
           {customize && (
             <div className="cookie-choices">
@@ -80,7 +81,7 @@ export function CookieConsent() {
                   checked={marketing}
                   onChange={(e) => setMarketing(e.target.checked)}
                 />{" "}
-                Advertising — Microsoft Advertising / Bing
+                Bing ads measurement — off-site Bing ads only, not ads on this site
               </label>
             </div>
           )}
