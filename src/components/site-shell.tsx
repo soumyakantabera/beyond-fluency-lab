@@ -81,9 +81,11 @@ export function Footer() {
           </div>
         </div>
         <p className="legal-fields">
-          Legal entity: [TO BE CONFIRMED] · Registered address: [TO BE CONFIRMED] · Registration
-          no.: [TO BE CONFIRMED] · Course fees exclude VAT · VAT ID: [TO BE CONFIRMED] · EU representative:
-          [TO BE CONFIRMED]
+          Legal entity: Learn With Smile, a sole proprietorship in India, trading as Beyond
+          Fluency Lab · Registered address: 75/2/4, Raja Ram Mohan Roy Road, Kolkata 700008,
+          India · Data protection:{" "}
+          <a href="mailto:info@learnwithsmile.app">info@learnwithsmile.app</a> · Prices exclude
+          VAT; applicable VAT is added at checkout based on your country.
         </p>
       </footer>
     </>
@@ -103,6 +105,14 @@ export function JsonLd() {
       "@type": "Organization",
       name: "Learn With Smile",
       url: "https://www.learnwithsmile.app/",
+    },
+    email: "info@learnwithsmile.app",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "75/2/4, Raja Ram Mohan Roy Road",
+      addressLocality: "Kolkata",
+      postalCode: "700008",
+      addressCountry: "IN",
     },
   };
   return (
