@@ -42,6 +42,7 @@ export function Footer() {
               <img src="/assets/payments/visa.png" width="54" height="18" alt="Visa" />
               <img src="/assets/payments/mastercard.png" width="50" height="28" alt="Mastercard" />
               <img src="/assets/payments/amex.svg" width="34" height="34" alt="American Express" />
+              <img src="/assets/payments/pci-dss.svg" width="92" height="30" alt="PCI DSS" title="Card payments processed to PCI DSS standards via Stripe" />
             </div>
           </div>
           <div>
