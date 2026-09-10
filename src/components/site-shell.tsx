@@ -5,6 +5,7 @@ import { Signature, HeritageStrip } from "@/components/identity";
 import { MotionDirector } from "@/components/editorial-motion";
 import { Navigation } from "@/components/navigation";
 import { LabIcon } from "@/components/lab-icon";
+import { CookieConsent, CookieSettingsButton } from "@/components/cookie-consent";
 
 export function Header() {
   return (
@@ -79,6 +80,7 @@ export function Footer() {
             <a href="/legal/cookies">Cookies</a>
             <a href="/legal/refunds">Refunds</a>
             <a href="/legal/gdpr">GDPR</a>
+            <CookieSettingsButton />
           </div>
         </div>
         <p className="legal-fields">
@@ -130,6 +132,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
       <Header />
       {children}
       <Footer />
+      <CookieConsent />
       <JsonLd />
     </>
   );
