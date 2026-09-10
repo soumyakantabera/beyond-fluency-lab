@@ -82,9 +82,9 @@ export default defineHandler(async (event) => {
       "line_items[0][quantity]": "1",
       "line_items[0][price_data][currency]": "eur",
       "line_items[0][price_data][unit_amount]": String(order.amount_cents),
-      "line_items[0][price_data][tax_behavior]": "inclusive",
+      "line_items[0][price_data][tax_behavior]": "exclusive",
       "line_items[0][price_data][product_data][name]": course.name,
-      "line_items[0][price_data][product_data][description]": `${course.duration}. Total includes VAT. One-time course payment.`,
+      "line_items[0][price_data][product_data][description]": `${course.duration}. Price excludes VAT. One-time course payment.`,
       "metadata[enquiry_id]": data.id,
     });
     const response = await fetch("https://api.stripe.com/v1/checkout/sessions", {

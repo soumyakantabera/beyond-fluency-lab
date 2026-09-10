@@ -58,7 +58,7 @@ export function CourseJoin({ course }: { course: (typeof courses)[number] }) {
         <p className="eyebrow">JOIN THIS COURSE</p>
         <h2>{course.name}</h2>
         <p>
-          {course.duration} · <strong>€{course.price} including VAT</strong>
+          {course.duration} · <strong>€{course.price} excl. VAT</strong>
         </p>
         <p>
           Share your details, review your choice, then continue to Stripe for a one-time payment.
@@ -135,10 +135,10 @@ export function CourseJoin({ course }: { course: (typeof courses)[number] }) {
           {details.name} · {details.email}
         </p>
         <p className="confirm-total">
-          Total: €{course.price} <span>VAT included</span>
+          Total: €{course.price} <span>excl. VAT</span>
         </p>
         <p>
-          One payment. No subscription or extra VAT at checkout. Payment details are entered
+          One payment. No subscription. Prices exclude VAT. Payment details are entered
           securely on Stripe.
         </p>
         {error && (

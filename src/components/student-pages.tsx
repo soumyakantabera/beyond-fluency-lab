@@ -66,7 +66,7 @@ function CourseFeature() {
           €{c.price} <span>/ {c.duration}</span>
         </p>
         <p>
-          One-time course fee including VAT. Your session schedule is agreed before payment.
+          One-time course fee, excl. VAT. Your session schedule is agreed before payment.
         </p>
         <ul>
           <li>Live online practice in groups of about six</li>
