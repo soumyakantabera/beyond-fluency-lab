@@ -363,16 +363,15 @@ h1, h2, h3 { word-spacing: .04em; }
   font-size: 12px;
   letter-spacing: .04em;
 }
-.footer-payments img { width: auto; object-fit: contain; filter: saturate(.85); opacity: .9; }
-.footer-payments img[alt="Stripe"] { height: 22px; }
-.footer-payments img[alt="Visa"] { height: 17px; }
-.footer-payments img[alt="Mastercard"] { height: 27px; }
-.footer-payments img[alt="American Express"] { height: 30px; }
-.footer-payments img[alt="Bancontact"] { height: 30px; }
-.footer-payments img[alt="Apple Pay"],
-.footer-payments img[alt="Google Pay"] { height: 26px; }
-.footer-payments img[alt="iDEAL"],
-.footer-payments img[alt="SEPA"] { height: 26px; }
+.footer-payments img { width: auto; object-fit: contain; filter: none; opacity: 1; height: 28px; background: #f4f1ea; border-radius: 5px; padding: 5px 7px; }
+.footer-payments img[alt="Stripe"] { height: 22px; background: transparent; padding: 0; }
+.footer-payments img[alt="Visa"] { height: 16px; }
+.footer-payments img[alt="Mastercard"] { height: 26px; }
+.footer-payments img[alt="American Express"] { height: 30px; padding: 0; background: transparent; }
+.footer-payments img[alt="Bancontact"] { height: 28px; }
+.footer-payments img[alt="Apple Pay"] { height: 28px; padding: 0; background: transparent; }
+.footer-payments img[alt="Google Pay"] { height: 22px; }
+.footer-payments img[alt="iDEAL"] { height: 28px; padding: 3px 6px; }
 
 .policy-layout { display: grid; grid-template-columns: minmax(210px, .7fr) minmax(0, 2fr); gap: clamp(40px, 7vw, 90px); align-items: start; }
 .policy-nav { position: sticky; top: 28px; padding: 26px; border: 1px solid var(--border); background: #ebe8df; }
@@ -414,16 +413,15 @@ h1, h2, h3 { word-spacing: .04em; }
   font-size: 12px;
   letter-spacing: .04em;
 }
-.footer-payments img { width: auto; object-fit: contain; filter: saturate(.85); opacity: .9; }
-.footer-payments img[alt="Stripe"] { height: 22px; }
-.footer-payments img[alt="Visa"] { height: 17px; }
-.footer-payments img[alt="Mastercard"] { height: 27px; }
-.footer-payments img[alt="American Express"] { height: 30px; }
-.footer-payments img[alt="Bancontact"] { height: 30px; }
-.footer-payments img[alt="Apple Pay"],
-.footer-payments img[alt="Google Pay"] { height: 26px; }
-.footer-payments img[alt="iDEAL"],
-.footer-payments img[alt="SEPA"] { height: 26px; }
+.footer-payments img { width: auto; object-fit: contain; filter: none; opacity: 1; height: 28px; background: #f4f1ea; border-radius: 5px; padding: 5px 7px; }
+.footer-payments img[alt="Stripe"] { height: 22px; background: transparent; padding: 0; }
+.footer-payments img[alt="Visa"] { height: 16px; }
+.footer-payments img[alt="Mastercard"] { height: 26px; }
+.footer-payments img[alt="American Express"] { height: 30px; padding: 0; background: transparent; }
+.footer-payments img[alt="Bancontact"] { height: 28px; }
+.footer-payments img[alt="Apple Pay"] { height: 28px; padding: 0; background: transparent; }
+.footer-payments img[alt="Google Pay"] { height: 22px; }
+.footer-payments img[alt="iDEAL"] { height: 28px; padding: 3px 6px; }
 /* Keep the header's primary action distinct from ordinary navigation links. */
 .header .nav > a.btn,
 .header .nav > a.btn:visited,
