@@ -218,8 +218,7 @@ export function CourseGrid() {
             <div className="course-card-fee">
               <span className="price">€{c.price}</span>
               <span className="duration">
-                {c.duration} <br />
-                excl. VAT
+                {c.duration}
               </span>
             </div>
             <a className="text-link" href={"/courses/" + c.slug}>
@@ -589,7 +588,7 @@ export function CoursePage({ index }: { index: number }) {
       <PageHero eyebrow={c.name} title={c.headline} description={c.for}>
         <div className="meta">
           <span>{c.duration}</span>
-          <span>€{c.price} excl. VAT</span>
+          <span>€{c.price}</span>
           <span>Live online · ~6 learners</span>
         </div>
         <div className="actions">
@@ -658,7 +657,7 @@ export function CoursePage({ index }: { index: number }) {
         <aside className="course-aside">
           <p className="eyebrow">{c.name}</p>
           <div className="price">€{c.price}</div>
-          <p>{c.duration} · excl. VAT</p>
+          <p>{c.duration}</p>
           <ul>
             <li>
               <LabIcon name="globe" size={19} />
@@ -820,7 +819,7 @@ export function SegmentPage({ index }: { index: number }) {
           </p>
           <h2 style={{ fontSize: 35 }}>{c.name}</h2>
           <p className="lead" style={{ fontSize: 16 }}>
-            {c.short} {c.duration} · €{c.price} excl. VAT.
+            {c.short} {c.duration} · €{c.price}.
           </p>
           <a className="text-link" href={"/courses/" + c.slug}>
             Read the course outline <Arrow />
@@ -1133,7 +1132,7 @@ export function PricingPage() {
               <tr>
                 <th>Programme</th>
                 <th>Duration</th>
-                <th>excl. VAT</th>
+                <th>Fee</th>
                 <th>Focus</th>
               </tr>
             </thead>
@@ -1355,7 +1354,7 @@ export function ArticlePage({ index }: { index: number }) {
             <p className="eyebrow">PUT IT INTO PRACTICE</p>
             <h2>{c.name}</h2>
             <p>
-              {c.short} {c.duration} · €{c.price} excl. VAT.
+              {c.short} {c.duration} · €{c.price}.
             </p>
             <a href={"/courses/" + c.slug}>
               Explore the course <LabIcon name="arrow" size={17} />
