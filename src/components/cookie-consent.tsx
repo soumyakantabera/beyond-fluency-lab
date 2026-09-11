@@ -97,18 +97,18 @@ export function CookieConsent() {
             <div className="cookie-row">
               <div>
                 <strong>Analytics</strong>
-                <span>Google Analytics and Tag Manager. Which pages are read. Off unless you allow.</span>
+                <span>Which pages are read. Off unless you allow.</span>
               </div>
               <Switch checked={analytics} label="Allow analytics cookies" onChange={setAnalytics} />
             </div>
             <div className="cookie-row">
               <div>
-                <strong>Bing ads measurement</strong>
-                <span>Only if someone clicked a Bing ad we placed. No advertisements are shown here.</span>
+                <strong>Ads measurement</strong>
+                <span>Measures ads we run elsewhere. No ads on this site.</span>
               </div>
               <Switch
                 checked={marketing}
-                label="Allow Bing ads measurement"
+                label="Allow ads measurement"
                 onChange={setMarketing}
               />
             </div>
