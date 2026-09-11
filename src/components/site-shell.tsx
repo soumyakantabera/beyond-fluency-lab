@@ -86,11 +86,19 @@ export function Footer() {
           </div>
         </div>
         <p className="legal-fields">
-          Legal entity: Learn With Smile, a sole proprietorship in India, trading as Beyond
-          Fluency Lab · Registered address: 75/2/4, Raja Ram Mohan Roy Road, Kolkata 700008,
-          India · Data protection:{" "}
-          <a href="mailto:info@learnwithsmile.app">info@learnwithsmile.app</a> · Prices exclude
-          VAT; applicable VAT is added at checkout based on your country.
+          EU representative (GDPR Art. 27): Currently being appointed. Until this is
+          complete, EU data subjects may contact the data controller directly using
+          the details below.
+          <br />
+          UK representative (UK GDPR Art. 27): Currently being appointed. Until this
+          is complete, UK data subjects may contact the data controller directly using
+          the details below.
+          <br />
+          Data controller: Learn With Smile, a sole proprietorship in India, trading
+          as Beyond Fluency Lab · 75/2/4, Raja Ram Mohan Roy Road, Kolkata 700008,
+          India · <a href="mailto:info@learnwithsmile.app">info@learnwithsmile.app</a>
+          {" "}· Prices exclude VAT; applicable VAT is added at checkout based on your
+          country.
         </p>
       </footer>
     </>

@@ -8,13 +8,11 @@ Following the UK's departure from the EU, the UK operates its own version of the
 
 ## UK representative
 
-[TO BE CONFIRMED — if required, name and contact details of a UK-based representative appointed under UK GDPR Article 27, for businesses without a UK establishment selling to UK consumers]
-
-*Status: currently being appointed. See main Privacy Policy for the current interim contact arrangement.*
+Currently being appointed. Until this is complete, UK data subjects may contact the data controller directly using the details below.
 
 ## Data controller
 
-The data controller for UK learners is Learn With Smile, a sole proprietorship in India, trading as Beyond Fluency Lab — see the main Privacy Policy for full contact details.
+Learn With Smile, a sole proprietorship in India, trading as Beyond Fluency Lab · 75/2/4, Raja Ram Mohan Roy Road, Kolkata 700008, India · info@learnwithsmile.app
 
 ## Your rights under UK GDPR
 

@@ -10,12 +10,10 @@ This page explains what personal information Beyond Fluency Lab collects, why we
 
 Beyond Fluency Lab is a live communication coaching programme operated by **Learn With Smile**, a sole proprietorship registered in India, trading as Beyond Fluency Lab. We teach learners across Europe, the UK, and other countries over the internet.
 
-**Data controller:** Learn With Smile, a sole proprietorship in India, trading as Beyond Fluency Lab, is the data controller responsible for your personal information under GDPR, UK GDPR, and equivalent laws — meaning we determine the purposes and means of processing your data, as described throughout this policy.
-
-- Registered address: 75/2/4, Raja Ram Mohan Roy Road, Kolkata 700008, West Bengal, India (office only, not a walk-in campus)
-- Data protection contact: info@learnwithsmile.app
-- EU representative (GDPR Art. 27): Currently being appointed. Until this is complete, EU data subjects may contact the data controller directly using the details above.
-- UK representative (UK GDPR Art. 27): Currently being appointed. Until this is complete, UK data subjects may contact the data controller directly using the details above.
+- EU representative (GDPR Art. 27): Currently being appointed. Until this is complete, EU data subjects may contact the data controller directly using the details below.
+- UK representative (UK GDPR Art. 27): Currently being appointed. Until this is complete, UK data subjects may contact the data controller directly using the details below.
+- **Data controller:** Learn With Smile, a sole proprietorship in India, trading as Beyond Fluency Lab · 75/2/4, Raja Ram Mohan Roy Road, Kolkata 700008, India · info@learnwithsmile.app
+- Registered address is an office only, not a walk-in campus.
 - **Grievance Officer (India):** Soumyakanta Bera · bera.soumyakanta@yahoo.com · +91 9674479949. Appointed under India's Consumer Protection (E-Commerce) Rules and data protection law, for complaints and grievances from users. This role is separate from, and does not substitute for, the EU/UK representatives above.
 
 ## What this policy covers
