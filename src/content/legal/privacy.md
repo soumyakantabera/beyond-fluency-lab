@@ -14,7 +14,7 @@ Beyond Fluency Lab is a live communication coaching programme operated by **Lear
 - UK representative (UK GDPR Art. 27): Currently being appointed. Until this is complete, UK data subjects may contact the data controller directly using the details below.
 - **Data controller:** Learn With Smile, a sole proprietorship in India, trading as Beyond Fluency Lab · 75/2/4, Raja Ram Mohan Roy Road, Kolkata 700008, India · info@learnwithsmile.app
 - Registered address is an office only, not a walk-in campus.
-- **Grievance Officer (India):** Soumyakanta Bera · bera.soumyakanta@yahoo.com · +91 9674479949. Appointed under India's Consumer Protection (E-Commerce) Rules and data protection law, for complaints and grievances from users. This role is separate from, and does not substitute for, the EU/UK representatives above.
+- **Grievance Officer (India):** Soumyakanta Bera · bera.soumyakanta@yahoo.com · +91 9674479949 · 108, Shri Krishna Nagar, Kolkata 700056, India. Appointed under India's Consumer Protection (E-Commerce) Rules and data protection law, for complaints and grievances from users. This role is separate from, and does not substitute for, the EU/UK representatives above.
 
 ## What this policy covers
 
@@ -97,6 +97,7 @@ If you have a complaint about how we've handled your personal information, or ab
 **Soumyakanta Bera**
 Email: bera.soumyakanta@yahoo.com
 Phone: +91 9674479949
+Address: 108, Shri Krishna Nagar, Kolkata 700056, India
 
 We will acknowledge your complaint within a reasonable timeframe and work to resolve it. This does not affect any right you separately have to complain to a data protection authority in your own country (see the UK and EU sections of this policy, and the relevant addenda, for details on those authorities).
 
