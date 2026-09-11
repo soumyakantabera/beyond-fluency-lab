@@ -30,6 +30,8 @@ import { Route as LegalGdprRouteImport } from './routes/legal.gdpr'
 import { Route as LegalPrivacyRouteImport } from './routes/legal.privacy'
 import { Route as LegalRefundsRouteImport } from './routes/legal.refunds'
 import { Route as LegalTermsRouteImport } from './routes/legal.terms'
+import { Route as LegalUkRouteImport } from './routes/legal.uk'
+import { Route as LegalUsRouteImport } from './routes/legal.us'
 import { Route as WhoItsForIndexRouteImport } from './routes/who-its-for.index'
 import { Route as WhoItsForSlugRouteImport } from './routes/who-its-for.$slug'
 
@@ -138,6 +140,16 @@ const LegalTermsRoute = LegalTermsRouteImport.update({
   path: '/legal/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LegalUkRoute = LegalUkRouteImport.update({
+  id: '/legal/uk',
+  path: '/legal/uk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalUsRoute = LegalUsRouteImport.update({
+  id: '/legal/us',
+  path: '/legal/us',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WhoItsForIndexRoute = WhoItsForIndexRouteImport.update({
   id: '/who-its-for/',
   path: '/who-its-for/',
@@ -169,6 +181,8 @@ export interface FileRoutesByFullPath {
   '/legal/privacy': typeof LegalPrivacyRoute
   '/legal/refunds': typeof LegalRefundsRoute
   '/legal/terms': typeof LegalTermsRoute
+  '/legal/uk': typeof LegalUkRoute
+  '/legal/us': typeof LegalUsRoute
   '/who-its-for/$slug': typeof WhoItsForSlugRoute
   '/blog/': typeof BlogIndexRoute
   '/courses/': typeof CoursesIndexRoute
@@ -194,6 +208,8 @@ export interface FileRoutesByTo {
   '/legal/privacy': typeof LegalPrivacyRoute
   '/legal/refunds': typeof LegalRefundsRoute
   '/legal/terms': typeof LegalTermsRoute
+  '/legal/uk': typeof LegalUkRoute
+  '/legal/us': typeof LegalUsRoute
   '/who-its-for/$slug': typeof WhoItsForSlugRoute
   '/blog': typeof BlogIndexRoute
   '/courses': typeof CoursesIndexRoute
@@ -220,6 +236,8 @@ export interface FileRoutesById {
   '/legal/privacy': typeof LegalPrivacyRoute
   '/legal/refunds': typeof LegalRefundsRoute
   '/legal/terms': typeof LegalTermsRoute
+  '/legal/uk': typeof LegalUkRoute
+  '/legal/us': typeof LegalUsRoute
   '/who-its-for/$slug': typeof WhoItsForSlugRoute
   '/blog/': typeof BlogIndexRoute
   '/courses/': typeof CoursesIndexRoute
@@ -247,6 +265,8 @@ export interface FileRouteTypes {
     | '/legal/privacy'
     | '/legal/refunds'
     | '/legal/terms'
+    | '/legal/uk'
+    | '/legal/us'
     | '/who-its-for/$slug'
     | '/blog/'
     | '/courses/'
@@ -272,6 +292,8 @@ export interface FileRouteTypes {
     | '/legal/privacy'
     | '/legal/refunds'
     | '/legal/terms'
+    | '/legal/uk'
+    | '/legal/us'
     | '/who-its-for/$slug'
     | '/blog'
     | '/courses'
@@ -297,6 +319,8 @@ export interface FileRouteTypes {
     | '/legal/privacy'
     | '/legal/refunds'
     | '/legal/terms'
+    | '/legal/uk'
+    | '/legal/us'
     | '/who-its-for/$slug'
     | '/blog/'
     | '/courses/'
@@ -323,6 +347,8 @@ export interface RootRouteChildren {
   LegalPrivacyRoute: typeof LegalPrivacyRoute
   LegalRefundsRoute: typeof LegalRefundsRoute
   LegalTermsRoute: typeof LegalTermsRoute
+  LegalUkRoute: typeof LegalUkRoute
+  LegalUsRoute: typeof LegalUsRoute
   WhoItsForSlugRoute: typeof WhoItsForSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
   CoursesIndexRoute: typeof CoursesIndexRoute
@@ -478,6 +504,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LegalTermsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/legal/uk': {
+      id: '/legal/uk'
+      path: '/legal/uk'
+      fullPath: '/legal/uk'
+      preLoaderRoute: typeof LegalUkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal/us': {
+      id: '/legal/us'
+      path: '/legal/us'
+      fullPath: '/legal/us'
+      preLoaderRoute: typeof LegalUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/who-its-for/': {
       id: '/who-its-for/'
       path: '/who-its-for'
@@ -515,6 +555,8 @@ const rootRouteChildren: RootRouteChildren = {
   LegalPrivacyRoute: LegalPrivacyRoute,
   LegalRefundsRoute: LegalRefundsRoute,
   LegalTermsRoute: LegalTermsRoute,
+  LegalUkRoute: LegalUkRoute,
+  LegalUsRoute: LegalUsRoute,
   WhoItsForSlugRoute: WhoItsForSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
   CoursesIndexRoute: CoursesIndexRoute,
