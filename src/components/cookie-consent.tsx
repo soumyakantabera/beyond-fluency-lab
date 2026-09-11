@@ -79,22 +79,9 @@ export function CookieConsent() {
     <aside className={"cookie-banner" + (customize ? " is-open" : "")} aria-labelledby="cookie-title">
       <div className="cookie-panel">
         <div className="cookie-copy">
-          <p className="eyebrow">YOUR CHOICE</p>
-          <h2 id="cookie-title">Cookies, plainly</h2>
-          {customize ? (
-            <p id="cookie-copy">Turn each optional tool on or off. Essential storage stays on so the site can run.</p>
-          ) : (
-            <p id="cookie-copy">
-              The site works with essential storage only. Optional tools: Google Analytics, to see
-              which pages help, and Bing UET, to measure ads we run <em>on Bing</em> — never ads on
-              this website.
-            </p>
-          )}
-          <p className="cookie-fine">
-            Change this later in the footer.{" "}
+          <p id="cookie-title">
+            We use cookies. Essential stay on. Optional: analytics and Bing ads.{" "}
             <a href="/legal/cookies">Cookie Policy</a>
-            {" · "}
-            <a href="/legal/privacy">Privacy</a>
           </p>
         </div>
 
@@ -127,23 +114,23 @@ export function CookieConsent() {
             </div>
             <div className="cookie-actions">
               <button className="btn outline" type="button" onClick={() => save({ analytics: false, marketing: false })}>
-                Essential only
+                Reject
               </button>
               <button className="btn" type="button" onClick={() => save({ analytics, marketing })}>
-                Save my choices
+                Save
               </button>
             </div>
           </div>
         ) : (
           <div className="cookie-actions cookie-actions-main">
+            <button className="btn" type="button" onClick={() => save({ analytics: true, marketing: true })}>
+              Accept all
+            </button>
+            <button className="btn outline" type="button" onClick={() => save({ analytics: false, marketing: false })}>
+              Reject
+            </button>
             <button className="btn outline" type="button" onClick={() => save({ analytics: false, marketing: false })}>
               Essential only
-            </button>
-            <button className="btn" type="button" onClick={() => save({ analytics: true, marketing: true })}>
-              Allow measurement
-            </button>
-            <button className="cookie-choose" type="button" onClick={() => setCustomize(true)}>
-              Choose each one
             </button>
           </div>
         )}
