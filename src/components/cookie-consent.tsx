@@ -80,7 +80,7 @@ export function CookieConsent() {
       <div className="cookie-panel">
         <div className="cookie-copy">
           <p id="cookie-title">
-            We use cookies. Essential stay on. Optional: analytics and Bing ads.{" "}
+            We use cookies. Essential stay on. Optional: analytics.{" "}
             <a href="/legal/cookies">Cookie Policy</a>
           </p>
         </div>
