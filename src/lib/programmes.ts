@@ -93,7 +93,7 @@ export const programmes: Programme[] = [
     slug: "professional-communication",
     name: "Professional Communication",
     audience: "Work & leadership",
-    image: "corporate",
+    image: "bfl-global-work-v4",
     headline: "Make your contribution impossible to miss.",
     short: "Meetings, presentations and difficult conversations that move work forward.",
     outcomes: [
@@ -146,7 +146,7 @@ export const programmes: Programme[] = [
     slug: "settle-and-belong",
     name: "Settle & Belong",
     audience: "Life & belonging",
-    image: "bfl-everyday-v3",
+    image: "bfl-global-belonging-v4",
     headline: "A new place can start to feel like yours.",
     short: "Build confidence in everyday conversations when you are making a life somewhere new.",
     outcomes: [
@@ -228,7 +228,7 @@ export const programmes: Programme[] = [
     slug: "cross-cultural-relationships",
     name: "Cross-Cultural Relationships & Family Communication",
     audience: "Life & belonging",
-    image: "bfl-everyday-v3",
+    image: "bfl-global-belonging-v4",
     headline: "Understand the person behind the words.",
     short:
       "Private communication practice for adults navigating different languages, expectations and cultures.",

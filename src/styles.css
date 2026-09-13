@@ -564,3 +564,5 @@ h1, h2, h3 { word-spacing: .04em; }
   .cookie-actions .btn { min-height: 32px; padding: 5px 10px; }
 }
 
+/* Site-wide image framing: straight edges on every editorial and legacy page. */
+main img, main figure, .page-diptych, .diptych-image, .hero-main-image, .hero-detail-image, .article-cover, .audience-image, .course-card-image, .story-image { border-radius: 0 !important; }

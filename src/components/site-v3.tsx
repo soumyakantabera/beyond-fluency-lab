@@ -3,6 +3,21 @@ import { programmes, feeNote, type Programme } from "@/lib/programmes";
 import { faqs } from "@/lib/content";
 import { LeadForm } from "./site-interactions";
 import "./site-v3.css";
+import { LabIcon } from "./lab-icon";
+import { StorySlides, CourseRail, IconPlate, globalStories } from "./story-slides";
+import type { IconName } from "@/lib/icon-paths";
+const programmeIcons: IconName[] = [
+  "mentor",
+  "briefcase",
+  "structure",
+  "focus",
+  "globe",
+  "graduate",
+  "cohort",
+  "exchange",
+  "enterprise",
+  "compass",
+];
 
 const arrow = <span aria-hidden="true">↗</span>;
 function Link({
@@ -57,7 +72,10 @@ function Intro({
   return (
     <section className="v3-wrap v3-intro">
       <div>
-        <p className="v3-kicker">{label}</p>
+        <p className="v3-kicker">
+          <LabIcon name="compass" size={22} />
+          {label}
+        </p>
         <h1>{title}</h1>
         <p className="v3-lead">{description}</p>
       </div>
@@ -92,7 +110,9 @@ export function Story() {
     <section id="our-story" className="v3-story">
       <div className="v3-wrap">
         <div className="v3-section-top">
-          <p className="v3-kicker">A NOTE ON WHERE WE BEGAN</p>
+          <p className="v3-kicker">
+            <LabIcon name="story" size={24} /> A NOTE ON WHERE WE BEGAN
+          </p>
           <span className="v3-hand">Every voice has a story.</span>
         </div>
         <div className="v3-story-grid">
@@ -100,6 +120,7 @@ export function Story() {
             <div className="v3-tabs" aria-label="Story chapters">
               {chapters.map((item, i) => (
                 <button key={item.label} aria-pressed={i === active} onClick={() => setActive(i)}>
+                  <LabIcon name={(["story", "focus", "globe"] as IconName[])[i]} size={22} />
                   <span>0{i + 1}</span>
                   {item.label}
                 </button>
@@ -133,6 +154,7 @@ function Card({ p, index }: { p: Programme; index: number }) {
         <img src={"/assets/" + p.image + ".webp"} alt="" width="600" height="400" loading="lazy" />
       </a>
       <div className="v3-course-body">
+        <IconPlate name={programmeIcons[index]} />
         <p className="v3-kicker">
           {String(index + 1).padStart(2, "0")} / {p.audience}
         </p>
@@ -179,23 +201,50 @@ export function HomePage() {
           <Link href="#our-story">Discover your next chapter</Link>
           <p className="v3-hero-note">Live communication coaching · From Learn With Smile</p>
         </div>
-        <div className="v3-hero-art">
-          <Scene
-            name="bfl-hero-v3"
-            alt="Woman speaking thoughtfully during an online conversation in a sunlit study"
-            hero
-          />
-          <div className="v3-image-note">
-            <span>THE NEXT CHAPTER</span>
-            <p>
-              Still you.
+        <div className="v4-hero-mosaic" aria-label="Voices across life, work and cultures">
+          <figure className="v4-mosaic-main">
+            <img
+              src="/assets/bfl-hero-v3.webp"
+              alt="Woman finding her voice in an online conversation"
+              width="1536"
+              height="1024"
+              fetchPriority="high"
+            />
+            <figcaption>
+              <LabIcon name="mentor" size={20} /> YOUR VOICE
+            </figcaption>
+          </figure>
+          <figure className="v4-mosaic-work">
+            <img
+              src="/assets/bfl-global-work-v4.webp"
+              alt="Colleagues from different backgrounds sharing an idea at work"
+              width="1536"
+              height="1024"
+            />
+            <figcaption>
+              <LabIcon name="briefcase" size={20} /> YOUR WORLD
+            </figcaption>
+          </figure>
+          <figure className="v4-mosaic-life">
+            <img
+              src="/assets/bfl-global-belonging-v4.webp"
+              alt="Adults connecting through an everyday conversation"
+              width="1536"
+              height="1024"
+            />
+            <figcaption>
+              <LabIcon name="globe" size={20} /> YOUR NEXT CHAPTER
+            </figcaption>
+          </figure>
+          <div className="v4-mosaic-note">
+            <LabIcon name="exchange" size={27} />
+            <span>
+              Different worlds.
               <br />
-              <em>A little more heard.</em>
-            </p>
+              <em>A shared wish to be heard.</em>
+            </span>
           </div>
-          <div className="v3-seal" aria-hidden="true">
-            Bf<span>EST. WITH PURPOSE</span>
-          </div>
+          <p className="v4-mosaic-caption">Illustrative scenes · Real-life possibilities</p>
         </div>
       </section>
       <Story />
@@ -213,7 +262,7 @@ export function HomePage() {
             ["The room you want to belong in.", "You are there. You just do not quite feel heard."],
           ].map(([a, b], i) => (
             <article key={a}>
-              <span>0{i + 1}</span>
+              <IconPlate name={(["briefcase", "graduate", "globe"] as IconName[])[i]} />
               <h3>{a}</h3>
               <p>{b}</p>
             </article>
@@ -224,6 +273,9 @@ export function HomePage() {
           <br />
           You need space to practise being heard.
         </p>
+      </section>
+      <section className="v3-wrap v3-section">
+        <StorySlides label="Lives behind the words" slides={globalStories} />
       </section>
       <section className="v3-dark">
         <div className="v3-wrap v3-split">
@@ -249,7 +301,7 @@ export function HomePage() {
               ["03", "Connection", "Choose the language that meets the person in front of you."],
             ].map(([n, t, d]) => (
               <article key={n}>
-                <span>{n}</span>
+                <IconPlate name={n === "01" ? "structure" : n === "02" ? "pressure" : "exchange"} />
                 <div>
                   <h3>{t}</h3>
                   <p>{d}</p>
@@ -297,11 +349,11 @@ export function HomePage() {
               Explore all 10 programmes
             </Link>
           </div>
-          <div className="v3-grid">
-            {[programmes[0], programmes[2], programmes[4]].map((p) => (
-              <Card key={p.slug} p={p} index={programmes.indexOf(p)} />
+          <CourseRail label="Your next chapter">
+            {programmes.map((p, i) => (
+              <Card key={p.slug} p={p} index={i} />
             ))}
-          </div>
+          </CourseRail>
           <p className="v3-small">
             Live classes and premium private programmes for life, study and work. {feeNote}
           </p>
@@ -348,11 +400,11 @@ export function CoursesPage() {
         <p className="v3-small" role="status">
           {selected.length} programmes · All sessions live online
         </p>
-        <div className="v3-grid">
+        <CourseRail key={filter} label="Course collection">
           {selected.map((p) => (
             <Card p={p} key={p.slug} index={programmes.indexOf(p)} />
           ))}
-        </div>
+        </CourseRail>
         <p className="v3-small">{feeNote}</p>
       </section>
     </Frame>
@@ -389,15 +441,25 @@ export function CoursePage({ index }: { index: number }) {
         <div className="v3-wrap v3-section">
           <p className="v3-kicker">YOUR LEARNING JOURNEY</p>
           <h2>Small steps. Deliberate practice.</h2>
-          <div className="v3-moments">
-            {p.modules.map(([t, d], i) => (
-              <article key={t}>
-                <span>0{i + 1}</span>
-                <h3>{t}</h3>
-                <p>{d}</p>
-              </article>
-            ))}
-          </div>
+          <StorySlides
+            label="Your learning chapters"
+            slides={p.modules.map(([title, text], i) => ({
+              title,
+              text,
+              label: ["YOUR STARTING POINT", "THE PRACTICE", "INTO REAL LIFE"][i],
+              image:
+                index === 6
+                  ? "bfl-young-voices-v3"
+                  : index === 7 || index === 4
+                    ? "bfl-global-belonging-v4"
+                    : i === 0
+                      ? p.image
+                      : i === 1
+                        ? "practice"
+                        : "bfl-global-work-v4",
+              icon: programmeIcons[index],
+            }))}
+          />
         </div>
       </section>
       <section className="v3-wrap v3-section" id="programme-details">
@@ -941,14 +1003,15 @@ export function InfoPage({ page }: { page: string }) {
     <Frame>
       <Intro label={p.label} title={p.title} description={p.description} image={p.image} />
       <section className="v3-wrap v3-section">
-        <div className="v3-info-grid">
-          {p.sections.map(([t, d]) => (
-            <article key={t}>
-              <h2>{t}</h2>
-              <p>{d}</p>
-            </article>
-          ))}
-        </div>
+        <StorySlides
+          label="Inside your next chapter"
+          slides={p.sections.map(([title, text], i) => ({
+            title,
+            text,
+            image: i % 2 ? p.image : "bfl-global-work-v4",
+            icon: (["compass", "mentor", "calendar", "check"] as IconName[])[i % 4],
+          }))}
+        />
         {p.links && (
           <div className="v3-related">
             <p className="v3-kicker">EXPLORE YOUR NEXT STEP</p>
@@ -971,12 +1034,16 @@ export function AudiencesPage() {
         label="WHO IT’S FOR"
         title="A voice for every chapter of life."
         description="Start with your situation. There is no single version of confidence, and no single route to finding it."
-        image="bfl-everyday-v3"
+        image="bfl-global-belonging-v4"
       />
+      <section className="v3-wrap v3-section">
+        <StorySlides label="People, problems, possibilities" slides={globalStories} />
+      </section>
       <section className="v3-wrap v3-section">
         <div className="v3-info-grid">
           {[...new Set(programmes.map((p) => p.audience))].map((a) => (
             <article key={a}>
+              <IconPlate name={programmeIcons[programmes.findIndex((p) => p.audience === a)]} />
               <h2>{a}</h2>
               {programmes
                 .filter((p) => p.audience === a)
@@ -1053,11 +1120,42 @@ export function AudienceDetail({ slug }: { slug: string }) {
       />
       <section className="v3-wrap v3-section">
         <p className="v3-kicker">PROGRAMMES TO EXPLORE</p>
-        <div className="v3-grid">
+        <StorySlides
+          label="From the problem to the practice"
+          slides={[
+            {
+              title: a.title,
+              text: a.description,
+              label: "THE MOMENT",
+              image: a.image,
+              icon: programmeIcons[a.indexes[0]],
+            },
+            {
+              title: "Give the difficult moment a place to change.",
+              text:
+                programmes[a.indexes[0]].modules[1][1] +
+                " Your coach gives you specific feedback, and you try the conversation again.",
+              label: "THE PRACTICE",
+              image: "practice",
+              icon: "mentor",
+            },
+            {
+              title: "Take a clearer next step into your world.",
+              text:
+                programmes[a.indexes[0]].outcomes.join(" ") +
+                " These are practice goals, not guaranteed outcomes.",
+              label: "YOUR NEXT CHAPTER",
+              image: "bfl-global-work-v4",
+              icon: "globe",
+              href: "/courses/" + programmes[a.indexes[0]].slug,
+            },
+          ]}
+        />
+        <CourseRail label="Programmes for your situation">
           {a.indexes.map((i) => (
             <Card key={i} p={programmes[i]} index={i} />
           ))}
-        </div>
+        </CourseRail>
         <p className="v3-small">{feeNote}</p>
       </section>
     </Frame>

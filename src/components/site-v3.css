@@ -837,3 +837,442 @@
     transition: none !important;
   }
 }
+/* Angular editorial system: global stories, image mosaics and navigable chapters. */
+.v3 .v3-kicker {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+.v3-last > .v3-kicker {
+  justify-content: center;
+}
+.v3 img,
+.v3 figure,
+.v3 .v3-seal {
+  border-radius: 0 !important;
+}
+.v3 .v3-tabs button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.v4-icon-plate {
+  display: inline-flex;
+  width: 60px;
+  height: 60px;
+  align-items: center;
+  justify-content: center;
+  background: #e0e7d7;
+  border: 1px solid #b9c8ad;
+  color: #174f46;
+  position: relative;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+.v4-icon-plate:after {
+  content: "";
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+  width: 13px;
+  height: 13px;
+  border-right: 2px solid #174f46;
+  border-bottom: 2px solid #174f46;
+}
+.v3-dark .v4-icon-plate {
+  background: #275e51;
+  color: #d9e6cc;
+  border-color: #73967a;
+}
+.v3-course-body > .v4-icon-plate {
+  width: 46px;
+  height: 46px;
+  margin-top: -52px;
+  z-index: 1;
+  background: #f4f1ea;
+}
+.v3-course-body > .v4-icon-plate svg {
+  width: 27px;
+  height: 27px;
+}
+.v3-method-list .v4-icon-plate {
+  margin: 0;
+}
+.v3-moments article > .v4-icon-plate {
+  margin-bottom: 28px;
+}
+.v4-hero-mosaic {
+  height: 610px;
+  position: relative;
+  isolation: isolate;
+}
+.v4-hero-mosaic:before {
+  content: "";
+  position: absolute;
+  inset: 23px 18px 48px 23px;
+  border: 1px solid #b3c1a5;
+  z-index: -1;
+}
+.v4-hero-mosaic figure {
+  margin: 0;
+  position: absolute;
+  background: #e8ecdf;
+  border: 6px solid #f4f1ea;
+  box-shadow: 0 12px 30px #174f4610;
+}
+.v4-hero-mosaic figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.v4-hero-mosaic figcaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #174f46;
+  color: #f4f1ea;
+  padding: 10px 13px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font:
+    9px/1.4 "Schibsted Grotesk",
+    sans-serif;
+  letter-spacing: 0.1em;
+}
+.v4-mosaic-main {
+  width: 72%;
+  height: 66%;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+.v4-mosaic-main img {
+  object-position: 56% center;
+}
+.v4-mosaic-work {
+  width: 56%;
+  height: 37%;
+  right: -10px;
+  top: 39%;
+  z-index: 3;
+}
+.v4-mosaic-life {
+  width: 58%;
+  height: 33%;
+  left: 8px;
+  bottom: 4%;
+  z-index: 2;
+}
+.v4-mosaic-note {
+  position: absolute;
+  top: 7%;
+  right: -5px;
+  width: 24%;
+  border-top: 2px solid #174f46;
+  padding-top: 15px;
+  display: grid;
+  gap: 13px;
+  font:
+    24px/1.15 Newsreader,
+    serif;
+}
+.v4-mosaic-note em {
+  font-size: 21px;
+}
+.v4-hero-mosaic .v4-mosaic-caption {
+  position: absolute;
+  bottom: -12px;
+  right: 0;
+  font-size: 9px;
+  letter-spacing: 0.04em;
+}
+.v4-deck-heading,
+.v4-rail-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 25px;
+}
+.v4-deck-heading .v3-kicker,
+.v4-rail-top .v3-kicker {
+  margin: 0;
+}
+.v4-slide-controls {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-shrink: 0;
+  font:
+    11px "Schibsted Grotesk",
+    sans-serif;
+}
+.v4-slide-controls button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  background: transparent;
+  border: 1px solid #9caf92;
+  color: #174f46;
+  cursor: pointer;
+}
+.v4-slide-controls button:hover:not(:disabled) {
+  background: #174f46;
+  color: #f4f1ea;
+}
+.v4-slide-controls button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+.v4-story-stage {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  background: #e8ecdf;
+  border: 1px solid #c6d0be;
+  min-height: 410px;
+}
+.v4-story-stage figure {
+  margin: 0;
+  position: relative;
+  align-self: stretch;
+  min-height: 360px;
+}
+.v4-story-stage img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.v4-story-stage figcaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 9px;
+  color: #f4f1ea;
+  background: #174f46ed;
+  padding: 11px 17px;
+}
+.v4-story-text {
+  padding: 38px 40px;
+  align-self: center;
+  min-height: 410px;
+}
+.v4-story-text h2 {
+  font-size: 39px;
+  line-height: 1.13;
+  margin-bottom: 20px;
+}
+.v4-story-text p {
+  font-size: 14px;
+  line-height: 1.8;
+}
+.v4-story-text > .v3-kicker {
+  font-size: 9px;
+  margin-bottom: 18px;
+}
+.v4-story-text .v4-icon-plate {
+  margin-bottom: 25px;
+}
+.v4-chapter-tabs {
+  display: flex;
+  border-bottom: 1px solid #c2ceba;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+.v4-chapter-tabs button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 145px;
+  background: transparent;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  color: #174f46;
+  padding: 20px 14px;
+  text-align: left;
+  font-size: 11px;
+  cursor: pointer;
+}
+.v4-chapter-tabs button[aria-pressed="true"] {
+  background: #e8ecdf;
+  border-bottom-color: #174f46;
+}
+.v4-story-deck {
+  margin-bottom: 48px;
+}
+.v4-course-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 48px) / 3);
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0;
+  overscroll-behavior-x: contain;
+  padding: 5px 0 17px;
+  scrollbar-width: thin;
+  scrollbar-color: #789071 #e5eadd;
+}
+.v4-course-track > .v3-course {
+  scroll-snap-align: start;
+}
+.v4-course-rail {
+  margin-block: 35px;
+}
+.v4-swipe-note {
+  font-size: 11px !important;
+  margin: 12px 0 0;
+}
+.v4-course-track:focus-visible {
+  outline: 2px solid #174f46;
+  outline-offset: 6px;
+}
+.v3-story .v4-story-stage {
+  background: #f4f1ea;
+}
+.v3-info-grid .v4-icon-plate {
+  margin-bottom: 25px;
+}
+@media (max-width: 1100px) {
+  .v4-hero-mosaic {
+    height: 530px;
+  }
+  .v4-mosaic-note {
+    font-size: 20px;
+  }
+  .v4-mosaic-note em {
+    font-size: 18px;
+  }
+  .v4-story-text {
+    padding: 28px;
+  }
+  .v4-story-text h2 {
+    font-size: 34px;
+  }
+  .v4-course-track {
+    grid-auto-columns: calc((100% - 24px) / 2);
+  }
+}
+@media (max-width: 900px) {
+  .v4-hero-mosaic {
+    height: 570px;
+    width: min(100%, 620px);
+    margin: 0 auto;
+  }
+  .v4-story-stage {
+    grid-template-columns: 1fr;
+  }
+  .v4-story-stage figure {
+    min-height: 290px;
+  }
+  .v4-story-text {
+    min-height: 330px;
+  }
+  .v4-mosaic-work {
+    right: 0;
+  }
+  .v4-mosaic-note {
+    right: 0;
+    font-size: 24px;
+  }
+  .v4-mosaic-note em {
+    font-size: 21px;
+  }
+  .v3 .v3-tabs button {
+    display: block;
+  }
+  .v3 .v3-tabs button svg {
+    display: block;
+    margin-bottom: 9px;
+  }
+  .v4-story-text h2 {
+    font-size: 35px;
+  }
+  .v4-deck-heading,
+  .v4-rail-top {
+    align-items: start;
+  }
+}
+@media (max-width: 560px) {
+  .v4-hero-mosaic {
+    height: 430px;
+  }
+  .v4-mosaic-main {
+    width: 74%;
+    height: 65%;
+  }
+  .v4-mosaic-work {
+    width: 59%;
+    height: 35%;
+    top: 41%;
+  }
+  .v4-mosaic-life {
+    width: 59%;
+    height: 31%;
+    bottom: 2%;
+    left: 0;
+  }
+  .v4-mosaic-note {
+    font-size: 18px;
+    width: 23%;
+    top: 3%;
+    gap: 9px;
+  }
+  .v4-mosaic-note em {
+    font-size: 16px;
+  }
+  .v4-hero-mosaic figure {
+    border-width: 4px;
+  }
+  .v4-hero-mosaic figcaption {
+    padding: 8px;
+    font-size: 7px;
+    gap: 6px;
+  }
+  .v4-hero-mosaic figcaption svg {
+    width: 15px;
+    height: 15px;
+  }
+  .v4-hero-mosaic .v4-mosaic-caption {
+    bottom: -29px;
+    font-size: 8px;
+  }
+  .v4-course-track {
+    grid-auto-columns: 88%;
+  }
+  .v4-deck-heading,
+  .v4-rail-top {
+    flex-direction: column;
+    gap: 17px;
+  }
+  .v4-slide-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .v4-chapter-tabs button {
+    min-width: 160px;
+    padding: 17px 12px;
+  }
+  .v4-story-stage figure {
+    min-height: 240px;
+  }
+  .v4-story-text {
+    padding: 27px;
+    min-height: 385px;
+  }
+  .v4-story-text h2 {
+    font-size: 32px;
+  }
+  .v4-story-deck {
+    margin-bottom: 30px;
+  }
+}
