@@ -1110,6 +1110,29 @@ export function AudienceDetail({ slug }: { slug: string }) {
     },
   };
   const a = mapping[slug];
+  const moments: Record<string, [string, string]> = {
+    "university-students": [
+      "You leave the seminar still holding your question.",
+      "You understand the discussion, but worry that your question will sound obvious. By the time you find the wording, the group has moved on. Your next step is practising how to enter the conversation while the thought is still forming.",
+    ],
+    "graduating-students": [
+      "“Tell me about yourself.” Suddenly, nothing sounds right.",
+      "You have projects, effort and real experience to talk about. Under interview pressure, your answer becomes a list or a memorised speech. Practise selecting one relevant example and explaining your part clearly.",
+    ],
+    "corporate-professionals": [
+      "Your update ends. The room moves on.",
+      "You explain the work carefully, but the decision you need gets lost in the details. Across different teams and cultures, a clear recommendation matters. Practise leading with your point and responding when someone challenges it.",
+    ],
+    "small-business-owners": [
+      "Your price becomes an apology.",
+      "You believe in the business you built. Yet a buyer’s question makes you over-explain, discount too soon or lose the value of your offer. Practise a relevant explanation, a calm price conversation and a useful next step.",
+    ],
+    "sales-marketing": [
+      "They enjoyed the conversation. Then nothing happened.",
+      "The call felt warm, but you never established the real concern or agreed what happens next. Practise asking better questions, responding to the actual objection and making the decision clear without pressure.",
+    ],
+  };
+
   return (
     <Frame>
       <Intro
@@ -1124,8 +1147,8 @@ export function AudienceDetail({ slug }: { slug: string }) {
           label="From the problem to the practice"
           slides={[
             {
-              title: a.title,
-              text: a.description,
+              title: moments[slug][0],
+              text: moments[slug][1],
               label: "THE MOMENT",
               image: a.image,
               icon: programmeIcons[a.indexes[0]],

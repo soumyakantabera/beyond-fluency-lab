@@ -31,3 +31,11 @@ Review the preview before merging into main. The production domain is unchanged 
 Browser verification on the Vercel preview confirmed the homepage composition, manual story navigation, programme filtering, all fourteen pricing rows, household course scope, course-to-enquiry navigation, the offline email handoff and mobile menu. The responsive review uses real 390 px and 768 px iframe viewports. Mobile headline sizing and tablet stacking were refined from those checks. A desktop screenshot is saved in `docs/homepage-preview.jpg`.
 
 Local Vite starts when explicitly bound to 127.0.0.1; the managed browser cannot reach the local workspace, so visual checks used the Vercel preview. No enquiry email or payment was submitted. No production merge was performed.
+
+## Global imagery and angular storytelling update
+
+The homepage now combines three overlapping rectangular images. Square-corner image rules also cover legacy editorial pages. Two original global illustrative scenes add workplace and everyday-life diversity; existing identity, palette and fonts remain.
+
+The original line-icon vocabulary is now expressed as stronger framed icon panels. Manual story decks cover global everyday situations, audience problem/practice/next-step narratives, all ten course learning journeys and coaching information pages. Course rails retain every course and support arrows, keyboard navigation and native horizontal swiping. They respect reduced-motion preferences and disable boundary controls when no further scrolling is available.
+
+Browser checks confirmed desktop and real 390 px/768 px layouts, story changes, course scrolling and disabled controls on short collections. The updated homepage screenshot is `docs/homepage-global-v4.jpg`. New photo prompts specified fictional diverse adults in daylight workplace/cafe conversations, forest-green/ivory accents and full-bleed rectangular compositions; built-in image generation was used. All fees and live delivery scopes remain as documented above.
