@@ -38,11 +38,16 @@ export function LeadForm({
   }, []);
   const [consent, setConsent] = useState(false);
   const [course, setCourse] = useState(report?.course.slug || "not-sure");
+  const [format, setFormat] = useState("");
 
   useEffect(() => {
     if (!report) {
       const c = new URLSearchParams(location.search).get("course");
-      if (courses.some((x) => x.slug === c)) setCourse(c!);
+      if (courses.some((x) => x.slug === c)) {
+        setCourse(c!);
+        const requested = new URLSearchParams(location.search).get("format") || "";
+        if (courses.find(x => x.slug === c)?.offers.some(o => o.format === requested)) setFormat(requested);
+      }
     }
   }, [report]);
 
@@ -219,7 +224,7 @@ export function LeadForm({
               id="course-select"
               className="form-select"
               value={course}
-              onChange={(e) => setCourse(e.target.value)}
+              onChange={(e) => {setCourse(e.target.value);setFormat("");}}
             >
               <option value="not-sure">Help me choose</option>
               {courses.map((c) => (
@@ -235,8 +240,8 @@ export function LeadForm({
               id="preferred-format"
               name="format"
               className="form-select"
-              key={course}
-              defaultValue=""
+              value={format}
+              onChange={(e) => setFormat(e.target.value)}
             >
               <option value="">Discuss the best fit</option>
               {courses

@@ -1,3 +1,4 @@
+import { useRouterState } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { SiteInvitation } from "@/components/course-invitation";
 import { BUSINESS, FOOTER_BLURB, ORIGIN } from "@/lib/content";
@@ -23,9 +24,10 @@ export function Header() {
 }
 
 export function Footer() {
+  const path = useRouterState({select:s => s.location.pathname});
   return (
     <>
-      <SiteInvitation />
+      {path !== "/" && path !== "/contact" && path !== "/enrol" && <SiteInvitation />}
       <footer>
         <div className="footer-top">
           <div>
