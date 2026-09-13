@@ -12,7 +12,7 @@ export const Route = createRootRoute({
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: APP_NAME },
-      { name: "description", content: "Communication coaching for fluent English speakers: public speaking, interviews, presentations, persuasion and performance under pressure. Live courses from €50." },
+      { name: "description", content: "Communication coaching for fluent English speakers: public speaking, interviews, presentations, persuasion and performance under pressure. Live classes and premium personalised private coaching." },
       { name: "theme-color", content: "#174F46" },
     ],
     links: [

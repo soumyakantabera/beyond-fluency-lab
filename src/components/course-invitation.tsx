@@ -14,15 +14,15 @@ export function CourseInvitation({course, reason, source = 'course'}: {
     <p>{reason || course.short}</p>
     <div className="invitation-fee"><strong>€{course.price}</strong><span>{course.duration} <br />Complete course</span></div>
     <ul>{course.outcomes.map(outcome => <li key={outcome}><LabIcon name="arrow" size={21}/>{outcome}</li>)}</ul>
-    <a className="btn" href={enrolmentHref(course.slug, source)}>Join this course <LabIcon name="arrow"/></a>
+    <a className="btn" href={enrolmentHref(course.slug, source)}>Ask about this course <LabIcon name="arrow"/></a>
     <a className="text-link" href={'/courses/' + course.slug}>See the course outline <LabIcon name="arrow"/></a>
-    <p className="fine">Explore the course, complete your details and continue to Stripe. Prices exclude VAT.</p>
+    <p className="fine">Indicative fee. Confirm your format, schedule and complete fee before enrolment.</p>
   </section>;
 }
 
 export function SiteInvitation() {
   return <section className="site-invitation wrap" aria-label="Take your next step">
     <div><p className="eyebrow">YOUR NEXT CONVERSATION STARTS HERE</p><h2>Make your next move <br />a more convincing one.</h2><p>Public speaking, interviews and professional communication. Live practice in English, with feedback you can use.</p></div>
-    <div className="invitation-actions"><a className="btn" href="/contact">Book a free trial <LabIcon name="arrow"/></a><a className="btn outline" href="/enrol">Join a course <LabIcon name="arrow"/></a><a className="text-link" href="/diagnostic">Find your plateau in 90 seconds <LabIcon name="compass"/></a><p className="fine">Start with a live trial. No payment is taken on this website.</p></div>
+    <div className="invitation-actions"><a className="btn" href="/contact">Start a conversation <LabIcon name="arrow"/></a><a className="btn outline" href="/courses">Explore the programmes <LabIcon name="arrow"/></a><a className="text-link" href="/diagnostic">Find your plateau in 90 seconds <LabIcon name="compass"/></a><p className="fine">Start with a free fit conversation. Availability is confirmed personally.</p></div>
   </section>;
 }

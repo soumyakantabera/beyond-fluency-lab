@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { MethodPage } from "@/components/site-pages";
+import { MethodPage } from "@/components/site-v3";
 import { seoForPath } from "@/lib/head";
 import { simplePages } from "@/lib/routes";
 

@@ -1,3 +1,4 @@
+import { programmes } from './programmes';
 export type EditorialPhoto = { src: string; alt: string; caption: string };
 const photo = (name: string, alt: string, caption: string): EditorialPhoto => ({
   src: "/assets/" + name + ".webp",
@@ -114,4 +115,4 @@ export function editorialPair(label: string, title: string): [EditorialPhoto, Ed
   if (l === "who it’s for") return [photos.hero, photos.practice];
   return [photos.practice, photos.mentoring];
 }
-export const coursePhotos = [photos.listening, photos.interview, photos.presentation, photos.salon];
+export const coursePhotos = programmes.map(p => photo(p.image, 'Illustrative communication practice', p.name));

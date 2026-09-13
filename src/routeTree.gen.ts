@@ -12,13 +12,19 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SplatRouteImport } from './routes/$'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AssessmentRouteImport } from './routes/assessment'
 import { Route as BrandKitRouteImport } from './routes/brand-kit'
+import { Route as CoachesRouteImport } from './routes/coaches'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DiagnosticRouteImport } from './routes/diagnostic'
 import { Route as EnrolRouteImport } from './routes/enrol'
 import { Route as FaqRouteImport } from './routes/faq'
+import { Route as ForEmployersRouteImport } from './routes/for-employers'
+import { Route as ForUniversitiesRouteImport } from './routes/for-universities'
+import { Route as LiveClassesRouteImport } from './routes/live-classes'
 import { Route as OurMethodRouteImport } from './routes/our-method'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as PrivateCoachingRouteImport } from './routes/private-coaching'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TestimonialsRouteImport } from './routes/testimonials'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
@@ -50,9 +56,19 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AssessmentRoute = AssessmentRouteImport.update({
+  id: '/assessment',
+  path: '/assessment',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BrandKitRoute = BrandKitRouteImport.update({
   id: '/brand-kit',
   path: '/brand-kit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CoachesRoute = CoachesRouteImport.update({
+  id: '/coaches',
+  path: '/coaches',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -75,6 +91,21 @@ const FaqRoute = FaqRouteImport.update({
   path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ForEmployersRoute = ForEmployersRouteImport.update({
+  id: '/for-employers',
+  path: '/for-employers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForUniversitiesRoute = ForUniversitiesRouteImport.update({
+  id: '/for-universities',
+  path: '/for-universities',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LiveClassesRoute = LiveClassesRouteImport.update({
+  id: '/live-classes',
+  path: '/live-classes',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OurMethodRoute = OurMethodRouteImport.update({
   id: '/our-method',
   path: '/our-method',
@@ -83,6 +114,11 @@ const OurMethodRoute = OurMethodRouteImport.update({
 const PricingRoute = PricingRouteImport.update({
   id: '/pricing',
   path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivateCoachingRoute = PrivateCoachingRouteImport.update({
+  id: '/private-coaching',
+  path: '/private-coaching',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -165,13 +201,19 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/about': typeof AboutRoute
+  '/assessment': typeof AssessmentRoute
   '/brand-kit': typeof BrandKitRoute
+  '/coaches': typeof CoachesRoute
   '/contact': typeof ContactRoute
   '/diagnostic': typeof DiagnosticRoute
   '/enrol': typeof EnrolRoute
   '/faq': typeof FaqRoute
+  '/for-employers': typeof ForEmployersRoute
+  '/for-universities': typeof ForUniversitiesRoute
+  '/live-classes': typeof LiveClassesRoute
   '/our-method': typeof OurMethodRoute
   '/pricing': typeof PricingRoute
+  '/private-coaching': typeof PrivateCoachingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/testimonials': typeof TestimonialsRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -192,13 +234,19 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/about': typeof AboutRoute
+  '/assessment': typeof AssessmentRoute
   '/brand-kit': typeof BrandKitRoute
+  '/coaches': typeof CoachesRoute
   '/contact': typeof ContactRoute
   '/diagnostic': typeof DiagnosticRoute
   '/enrol': typeof EnrolRoute
   '/faq': typeof FaqRoute
+  '/for-employers': typeof ForEmployersRoute
+  '/for-universities': typeof ForUniversitiesRoute
+  '/live-classes': typeof LiveClassesRoute
   '/our-method': typeof OurMethodRoute
   '/pricing': typeof PricingRoute
+  '/private-coaching': typeof PrivateCoachingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/testimonials': typeof TestimonialsRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -220,13 +268,19 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/about': typeof AboutRoute
+  '/assessment': typeof AssessmentRoute
   '/brand-kit': typeof BrandKitRoute
+  '/coaches': typeof CoachesRoute
   '/contact': typeof ContactRoute
   '/diagnostic': typeof DiagnosticRoute
   '/enrol': typeof EnrolRoute
   '/faq': typeof FaqRoute
+  '/for-employers': typeof ForEmployersRoute
+  '/for-universities': typeof ForUniversitiesRoute
+  '/live-classes': typeof LiveClassesRoute
   '/our-method': typeof OurMethodRoute
   '/pricing': typeof PricingRoute
+  '/private-coaching': typeof PrivateCoachingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/testimonials': typeof TestimonialsRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -249,13 +303,19 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/about'
+    | '/assessment'
     | '/brand-kit'
+    | '/coaches'
     | '/contact'
     | '/diagnostic'
     | '/enrol'
     | '/faq'
+    | '/for-employers'
+    | '/for-universities'
+    | '/live-classes'
     | '/our-method'
     | '/pricing'
+    | '/private-coaching'
     | '/sitemap.xml'
     | '/testimonials'
     | '/blog/$slug'
@@ -276,13 +336,19 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/about'
+    | '/assessment'
     | '/brand-kit'
+    | '/coaches'
     | '/contact'
     | '/diagnostic'
     | '/enrol'
     | '/faq'
+    | '/for-employers'
+    | '/for-universities'
+    | '/live-classes'
     | '/our-method'
     | '/pricing'
+    | '/private-coaching'
     | '/sitemap.xml'
     | '/testimonials'
     | '/blog/$slug'
@@ -303,13 +369,19 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/about'
+    | '/assessment'
     | '/brand-kit'
+    | '/coaches'
     | '/contact'
     | '/diagnostic'
     | '/enrol'
     | '/faq'
+    | '/for-employers'
+    | '/for-universities'
+    | '/live-classes'
     | '/our-method'
     | '/pricing'
+    | '/private-coaching'
     | '/sitemap.xml'
     | '/testimonials'
     | '/blog/$slug'
@@ -331,13 +403,19 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SplatRoute: typeof SplatRoute
   AboutRoute: typeof AboutRoute
+  AssessmentRoute: typeof AssessmentRoute
   BrandKitRoute: typeof BrandKitRoute
+  CoachesRoute: typeof CoachesRoute
   ContactRoute: typeof ContactRoute
   DiagnosticRoute: typeof DiagnosticRoute
   EnrolRoute: typeof EnrolRoute
   FaqRoute: typeof FaqRoute
+  ForEmployersRoute: typeof ForEmployersRoute
+  ForUniversitiesRoute: typeof ForUniversitiesRoute
+  LiveClassesRoute: typeof LiveClassesRoute
   OurMethodRoute: typeof OurMethodRoute
   PricingRoute: typeof PricingRoute
+  PrivateCoachingRoute: typeof PrivateCoachingRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TestimonialsRoute: typeof TestimonialsRoute
   BlogSlugRoute: typeof BlogSlugRoute
@@ -378,11 +456,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/assessment': {
+      id: '/assessment'
+      path: '/assessment'
+      fullPath: '/assessment'
+      preLoaderRoute: typeof AssessmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/brand-kit': {
       id: '/brand-kit'
       path: '/brand-kit'
       fullPath: '/brand-kit'
       preLoaderRoute: typeof BrandKitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/coaches': {
+      id: '/coaches'
+      path: '/coaches'
+      fullPath: '/coaches'
+      preLoaderRoute: typeof CoachesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -413,6 +505,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/for-employers': {
+      id: '/for-employers'
+      path: '/for-employers'
+      fullPath: '/for-employers'
+      preLoaderRoute: typeof ForEmployersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/for-universities': {
+      id: '/for-universities'
+      path: '/for-universities'
+      fullPath: '/for-universities'
+      preLoaderRoute: typeof ForUniversitiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/live-classes': {
+      id: '/live-classes'
+      path: '/live-classes'
+      fullPath: '/live-classes'
+      preLoaderRoute: typeof LiveClassesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/our-method': {
       id: '/our-method'
       path: '/our-method'
@@ -425,6 +538,13 @@ declare module '@tanstack/react-router' {
       path: '/pricing'
       fullPath: '/pricing'
       preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/private-coaching': {
+      id: '/private-coaching'
+      path: '/private-coaching'
+      fullPath: '/private-coaching'
+      preLoaderRoute: typeof PrivateCoachingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -539,13 +659,19 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SplatRoute: SplatRoute,
   AboutRoute: AboutRoute,
+  AssessmentRoute: AssessmentRoute,
   BrandKitRoute: BrandKitRoute,
+  CoachesRoute: CoachesRoute,
   ContactRoute: ContactRoute,
   DiagnosticRoute: DiagnosticRoute,
   EnrolRoute: EnrolRoute,
   FaqRoute: FaqRoute,
+  ForEmployersRoute: ForEmployersRoute,
+  ForUniversitiesRoute: ForUniversitiesRoute,
+  LiveClassesRoute: LiveClassesRoute,
   OurMethodRoute: OurMethodRoute,
   PricingRoute: PricingRoute,
+  PrivateCoachingRoute: PrivateCoachingRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TestimonialsRoute: TestimonialsRoute,
   BlogSlugRoute: BlogSlugRoute,

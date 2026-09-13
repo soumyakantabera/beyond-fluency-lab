@@ -1,6 +1,6 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
-import { SegmentPage } from "@/components/site-pages";
-import { StudentAudiencePage } from "@/components/student-pages";
+import { AudienceDetail } from "@/components/site-v3";
+
 import { NotFoundPage } from "@/components/not-found";
 import { segments } from "@/lib/content";
 import { seoForPath } from "@/lib/head";
@@ -32,9 +32,5 @@ export const Route = createFileRoute("/who-its-for/$slug")({
 
 function SegmentRoute() {
   const { slug } = Route.useParams();
-  if (slug === "university-students") return <StudentAudiencePage />;
-  if (slug === "graduating-students") return <StudentAudiencePage graduate />;
-  const index = segments.findIndex((s) => s.slug === slug);
-  if (index < 0) return <NotFoundPage />;
-  return <SegmentPage index={index} />;
+  return <AudienceDetail slug={slug} />;
 }

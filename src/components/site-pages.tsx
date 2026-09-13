@@ -275,7 +275,7 @@ export function Closing() {
       <p>Start with a live trial, or take a quiet 90 seconds to find where you plateau.</p>
       <div className="actions">
         <a className="btn" href="/contact">
-          Book a free trial <Arrow />
+          Start a conversation <Arrow />
         </a>
         <a className="btn outline" href="/diagnostic">
           Find your plateau <Arrow />
@@ -337,7 +337,7 @@ export function HomePage() {
           </p>
           <div className="actions hero-actions">
             <a className="btn" href="/contact">
-              Book a free trial <Arrow />
+              Start a conversation <Arrow />
             </a>
             <a className="btn outline" href="/diagnostic">
               Find your plateau in 90 seconds <Arrow />
@@ -1121,7 +1121,7 @@ export function PricingPage() {
       <PageHero
         eyebrow="PRICING"
         title="Clear scope. Considered fees."
-        description="Live communication coaching in English from €50. Choose the depth of practice that fits your next conversation."
+        description="Live communication coaching in English with tailored feedback. Choose the depth of practice that fits your next conversation."
       />
       <section className="wrap section">
         <CourseGrid />
