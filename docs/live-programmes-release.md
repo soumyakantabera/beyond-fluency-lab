@@ -24,6 +24,10 @@ The legacy checkout is guarded against the multi-format catalogue. It cannot saf
 
 ## Verification
 
-`npm run typecheck` and `npm run build` pass locally. Build skips external database migration when DATABASE_URL is absent. Existing auth, platform preview bridge and Vercel/Nitro architecture are preserved.
+`npm run typecheck`, `npm run build` and `npm run test:programmes` pass locally. The catalogue contract check covers all ten families, fourteen offers, image assets, sitemap inclusion, allowed/rejected enquiries, private/household/young-learner constraints and legacy diagnostic order. Build skips external database migration when DATABASE_URL is absent. Existing auth, platform preview bridge and Vercel/Nitro architecture are preserved.
 
 Review the preview before merging into main. The production domain is unchanged until merge/deployment approval.
+
+Browser verification on the Vercel preview confirmed the homepage composition, manual story navigation, programme filtering, all fourteen pricing rows, household course scope, course-to-enquiry navigation, the offline email handoff and mobile menu. The responsive review uses real 390 px and 768 px iframe viewports. Mobile headline sizing and tablet stacking were refined from those checks. A desktop screenshot is saved in `docs/homepage-preview.jpg`.
+
+Local Vite starts when explicitly bound to 127.0.0.1; the managed browser cannot reach the local workspace, so visual checks used the Vercel preview. No enquiry email or payment was submitted. No production merge was performed.
