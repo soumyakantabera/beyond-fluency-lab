@@ -55,3 +55,9 @@ These changes remain on draft PR #15. No production merge, payment or enquiry su
 ## Plateau Framework restored · 14 September 2026
 
 Restored the named Persuasive Structure, Pressure Performance and Register Control dimensions and original conceptual chart on the homepage and method page. Clarity, Composure and Connection remain plain-language descriptions, not replacement framework names. Seven image-led context chapters cover students/graduates, professionals, NRIs/life abroad, leaders/founders, sales/business, young learners and cross-cultural families. The audience page reuses the same examples and the report now explains these adaptations and live delivery scopes. Existing diagnostic scoring remains unchanged; the report identifies its work/interview scenario scope. Course catalogue and prices remain unchanged.
+
+## Journal, story guides and trial requests · 14 September 2026
+
+The journal now lists every article rather than relying on the old four-audience slices. Fresh original guides cover choosing live/private coaching and understanding fees, cross-cultural household requests and leadership decisions. Existing article URLs and the Plateau report remain available. Every article now displays current programme offers from the shared catalogue, including format, indicative fee, sessions, duration, capacity and the final-price confirmation note. The report's speaking-time table is matched to its section heading so new sections cannot displace it.
+
+Trial invitations appear between journal sections and midway through and after each article. They preserve the relevant course when opening the contact form. The contact form submits a trial request, not a paid enrolment; availability and session scope require personal confirmation. No trial request is submitted during verification.

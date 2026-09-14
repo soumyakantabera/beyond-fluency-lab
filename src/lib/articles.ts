@@ -121,7 +121,7 @@ export const articles: Article[] = [
         "Record a one-minute explanation for one particular buyer. Ask a listener to repeat the problem, the value and the next step. Any part they cannot repeat is a useful revision target. Then rehearse a price question with your trainer or a trusted colleague.\nThe Professional Communication course uses this kind of live practice to strengthen persuasive structure, composure and tone across business conversations.",
       ],
     ],
-    course: 2,
+    course: 8,
     segment: 1,
   },
   {
@@ -151,7 +151,7 @@ export const articles: Article[] = [
         "Choose one objection from your actual work, with identifying details removed. Have a partner vary the wording and the reason behind it. Your task is to clarify, summarise and propose one relevant next step.\nAsk for feedback on what you heard, not just what you said. Professional Communication gives this exercise a small live group, repeated attempts and trainer feedback.",
       ],
     ],
-    course: 2,
+    course: 9,
     segment: 2,
   },
   {
@@ -208,7 +208,7 @@ export const articles: Article[] = [
       ],
       [
         "How do you practise pressure gradually?",
-        "Begin with a familiar 30-second explanation. Repeat it with one interruption. Next add a time limit or a follow-up question, changing one demand at a time. Ask your partner whether the main point remained clear.\nSpeak with Confidence is a focused 3–4 week course for this kind of recovery practice. If pressure appears alongside problems with argument structure and tone, discuss the broader Professional Communication tier at your trial.",
+        "Begin with a familiar 30-second explanation. Repeat it with one interruption. Next add a time limit or a follow-up question, changing one demand at a time. Ask your partner whether the main point remained clear.\nSpeak with Confidence offers live practice for this kind of recovery. If pressure appears alongside problems with argument structure and tone, discuss Professional Communication at your trial. These are different programme scopes, not levels you must buy in sequence; current formats, sessions and indicative fees appear below.",
       ],
     ],
     course: 0,
@@ -283,7 +283,7 @@ export const articles: Article[] = [
       "Build a clear university presentation opening, explain your main idea and practise questions with a simple rehearsal exercise for students.",
     intro:
       "The opening does not need to be dramatic. It needs to help your audience understand the question, your main point and where the presentation is going.",
-    course: 0,
+    course: 5,
     segment: 3,
     audience: "university-students",
     published: "2026-09-09",

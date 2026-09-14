@@ -1,3 +1,5 @@
+import { TrialInvitation } from "./trial-invitation";
+import { programmes, feeNote } from "@/lib/programmes";
 import type { ReactNode } from "react";
 import { MobileDeck } from "./mobile-deck";
 import { courses, segments, faqs, BUSINESS, ORIGIN } from "@/lib/content";
@@ -6,7 +8,6 @@ import { LabIcon, Monogram } from "./lab-icon";
 import { StoryChapters } from "./editorial-motion";
 import { editorialPair, coursePhotos, photos } from "@/lib/editorial";
 import { LeadForm } from "./site-interactions";
-import { problemGuides } from "@/lib/problem-guides";
 import { CourseJoin } from "./course-join";
 export function Arrow() {
   return <LabIcon name="arrow" size={17} />;
@@ -840,7 +841,7 @@ export function SegmentPage({ index }: { index: number }) {
           </p>
           <h2 style={{ fontSize: 35 }}>{c.name}</h2>
           <p className="lead" style={{ fontSize: 16 }}>
-            {c.short} {c.duration} · €{c.price}.
+            {c.short}
           </p>
           <a className="text-link" href={"/courses/" + c.slug}>
             Read the course outline <Arrow />
@@ -1234,67 +1235,30 @@ export function BlogPage() {
           <Chart />
         </div>
       </section>
-      <section className="tinted">
-        <div className="wrap section">
-          <p className="eyebrow">PRACTICE IN YOUR CONTEXT</p>
-          <h2 style={{ marginBottom: 35 }}>Four audiences. Four starting points.</h2>
-          <div className="article-grid audience-articles">
-            {articles.slice(1, 5).map((a) => (
-              <article className="article-card" key={a.slug}>
-                <p className="eyebrow">{a.category}</p>
-                <h3>
-                  <a href={"/blog/" + a.slug}>{a.title}</a>
-                </h3>
-                <p>{a.description}</p>
-                <a className="text-link" href={"/blog/" + a.slug}>
-                  Read the guide <Arrow />
-                </a>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <section className="wrap"><TrialInvitation/></section>
       <section className="wrap section">
-        <p className="eyebrow">ACROSS EVERY CONTEXT</p>
-        <h2 style={{ marginBottom: 35 }}>Work on the dimension.</h2>
-        <ArticleCards items={articles.slice(5, 7)} />
-      </section>
-      <section className="wrap section">
-        <p className="eyebrow">
-          <LabIcon name="globe" size={20} />
-          LIFE, LEARNING & OUR STORY
-        </p>
-        <h2 style={{ marginBottom: 35 }}>A real situation. A useful next step.</h2>
+        <p className="eyebrow">LIFE, STUDY & WORK</p>
+        <h2>Find the conversation that feels familiar.</h2>
+        <p>Our story, the Plateau Framework and original practice guides for students, professionals, NRIs, families and business owners. Every guide starts with a real situation and gives you something specific to try.</p>
         <div className="v5-guide-grid">
-          {problemGuides.map((a) => (
+          {articles.filter(a => a.slug !== "fluency-plateau-report").map(a => (
             <article key={a.slug}>
-              <img
-                src={"/assets/" + a.image + ".webp"}
-                alt={"Illustrative scene for " + a.title}
-                width="900"
-                height="600"
-                loading="lazy"
-              />
+              <img src={"/assets/"+(a.image || programmes[a.course].image)+".webp"} alt={"Illustrative scene for "+a.title} width="900" height="600" loading="lazy"/>
               <p className="eyebrow">{a.category}</p>
-              <h3>
-                <a href={"/blog/" + a.slug}>{a.title}</a>
-              </h3>
+              <h3><a href={"/blog/"+a.slug}>{a.title}</a></h3>
               <p>{a.description}</p>
-              <a className="text-link" href={"/blog/" + a.slug}>
-                Read the guide <LabIcon name="arrow" size={18} />
-              </a>
+              <a className="text-link" href={"/blog/"+a.slug}>Read the guide <Arrow/></a>
             </article>
           ))}
         </div>
-        <h2 style={{ marginTop: 70 }}>For students and graduates.</h2>
-        <ArticleCards items={articles.slice(7).filter((a) => !problemGuides.includes(a))} />
       </section>
+      <section className="wrap section"><TrialInvitation/></section>
     </main>
   );
 }
 export function ArticlePage({ index }: { index: number }) {
   const a = articles[index],
-    c = courses[a.course];
+    c = programmes[a.course];
   return (
     <main id="main">
       <PageHero eyebrow={a.category} title={a.title} description={a.intro}>
@@ -1340,7 +1304,8 @@ export function ArticlePage({ index }: { index: number }) {
               {p.split("\n").map((t) => (
                 <p key={t}>{t}</p>
               ))}
-              {index === 0 && i === 3 && (
+              {i === 1 && <TrialInvitation course={c.slug}/>}
+              {index === 0 && q === "How much practice time can a smaller group create?" && (
                 <>
                   <div className="table-scroll">
                     <table className="data-table">
@@ -1423,8 +1388,10 @@ export function ArticlePage({ index }: { index: number }) {
             <p className="eyebrow">PUT IT INTO PRACTICE</p>
             <h2>{c.name}</h2>
             <p>
-              {c.short} {c.duration} · €{c.price}.
+              {c.short}
             </p>
+            <ul>{c.offers.map(o => <li key={o.format}><strong>{o.format}: €{o.price.toLocaleString("en-IE")}</strong> · {o.sessions} · {o.weeks} · {o.capacity}</li>)}</ul>
+            <p className="fine">{feeNote}</p>
             <a href={"/courses/" + c.slug}>
               Explore the course <LabIcon name="arrow" size={17} />
             </a>
@@ -1440,6 +1407,7 @@ export function ArticlePage({ index }: { index: number }) {
               </p>
             )}
           </section>
+          <TrialInvitation course={c.slug}/>
           <h2>What should you read next?</h2>
           <ul>
             {(index === 0

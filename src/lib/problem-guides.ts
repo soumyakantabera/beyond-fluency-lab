@@ -160,3 +160,42 @@ export const problemGuides: Article[] = [
     ],
   },
 ];
+
+problemGuides.push(
+  {
+    slug:'choose-live-class-or-private-communication-coaching',
+    title:'Live class or private coaching: what are you paying to practise?',
+    category:'CHOOSING YOUR PRACTICE',read:'4 min read',published:'2026-09-14',image:'bfl-story-rehearsal-v5',course:2,
+    description:'Choose communication coaching by the conversations you need to practise, the attention you need and the full programme scope. Understand indicative fees before booking.',
+    intro:'The useful question is not which programme sounds most premium. It is where you will get the right practice for the conversation ahead of you.',
+    sections:[
+      ['Start with the situation, not the price label','Write down one conversation you want to handle better: a seminar, an interview, a project recommendation or an introduction in a new country. Then ask what is difficult. Is your point unclear, does pressure disrupt your answer, or does the tone feel wrong? These are the three dimensions of the Plateau Framework. A useful programme should give you time to work on that specific task.'],
+      ['When can a live class fit?','A small live class adds other perspectives and opportunities to listen, take turns and respond to unfamiliar questions. Our planned maximum is six for adult classes and four for young learners. Shared practice still includes coach feedback, but the entire session cannot revolve around one person. Check the course’s age range, schedule, session count and speaking opportunities before choosing.'],
+      ['What makes private coaching different?','Private 1:1 gives one learner and one coach time to work on individual situations and agreed feedback needs. It can suit a sensitive leadership conversation or a focused career goal. It is not offered for every course, and it does not promise faster results. Private household coaching is a separate format for up to two adults, with its own scope.'],
+      ['How should you compare the fees?','Use the current programme details below and the Programme fees page. Compare the complete scope: format, live sessions, duration, capacity and feedback. Displayed amounts are indicative EUR programme fees, not a recurring subscription or a payment offer. The team confirms the coach, timetable, availability, applicable taxes and final total in writing before enrolment. A higher price is not proof that a programme is right for you.'],
+      ['What should you bring to a free trial?','Bring a short example of the situation, your goal and your usual availability. Ask what you would practise and how the coach would give feedback. Requesting a trial does not secure a course place. The team confirms the trial slot and scope personally; you can consider the proposal before deciding.']
+    ]
+  },
+  {
+    slug:'cross-cultural-family-communication-clear-requests',title:'When “I thought you understood” becomes a familiar conversation',category:'FAMILY & BELONGING',read:'4 min read',published:'2026-09-14',image:'bfl-global-belonging-v4',course:7,
+    description:'An original communication exercise for adults in cross-cultural households: explain a need, check meaning and make a clear request without assuming shared expectations.',
+    intro:'Sharing a language does not mean sharing every expectation about politeness, plans or personal space. Start with one everyday misunderstanding you can discuss calmly.',
+    sections:[
+      ['Choose one ordinary moment','Use a manageable topic, such as confirming a visit or sharing a household task. Avoid trying to resolve every disagreement at once. Describe what happened without claiming to know the other person’s intentions. The purpose is to make the conversation clearer, not to prove who communicates correctly.'],
+      ['Give the request a shape','Try three parts: what happened, what you need and what you are asking for next. A fictional example is: “When plans change late, I find it hard to organise my evening. Could we confirm tomorrow’s time before lunch?” This applies Persuasive Structure to a practical request, not to winning an argument.'],
+      ['Check the meaning before defending the wording','Ask what the other person heard and what they expected. Register Control means considering how directness and tone land in this relationship; it does not mean assigning a personality to a nationality. Pressure Performance might be a pause followed by a simpler restatement of the request.'],
+      ['Where live coaching can help','Private household communication practice can include up to two adults working on agreed everyday speaking goals. A coach can help you rehearse a request and reflect on how it sounds. This is communication coaching, not relationship therapy. The programme scope and indicative fee appear below; confirm the final arrangements before enrolling.']
+    ]
+  },
+  {
+    slug:'leadership-conversation-explain-difficult-decision',title:'A difficult decision deserves more than a polished announcement',category:'LEADERS & BUSINESS OWNERS',read:'4 min read',published:'2026-09-14',image:'bfl-global-work-v4',course:3,
+    description:'Practise explaining a difficult decision with a clear reason, honest trade-offs and room for questions. A practical application of the Plateau Framework for leaders.',
+    intro:'You may have spent days making a decision. Your listener is hearing it for the first time. Give them enough structure to understand it and enough space to question it.',
+    sections:[
+      ['Separate the decision from the background','Draft a first sentence that names what changes and when. Then choose the reason the listener most needs to understand. Do not bury the change inside a long history of meetings. Persuasive Structure makes the message easier to assess; it does not remove the need for sound judgment.'],
+      ['Name a real trade-off','Explain what the decision improves and what it makes harder. Use facts you can substantiate and distinguish a settled decision from a proposal. A credible explanation can include uncertainty. Avoid using confidence as a substitute for evidence.'],
+      ['Rehearse the question you would rather avoid','Ask a practice partner to challenge the reasoning once. Pause, acknowledge the concern and answer the question you were asked. If you do not know, say what you will check. Pressure Performance is recovering a useful conversation, not appearing unshakeable.'],
+      ['Change the detail for the audience','A teammate, customer and investor may need different implications explained. Keep the facts consistent while changing the amount of context and the next step. This is Register Control in practice. Premium private coaching can give an individual leader time for agreed scenarios; programme details below describe the current scope without promising a business outcome.']
+    ]
+  }
+);

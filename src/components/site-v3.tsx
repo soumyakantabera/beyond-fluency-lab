@@ -1,3 +1,4 @@
+import { TrialInvitation } from "./trial-invitation";
 import { useState, type ReactNode } from "react";
 import { programmes, feeNote, type Programme } from "@/lib/programmes";
 import { faqs } from "@/lib/content";
@@ -624,9 +625,9 @@ export function ContactPage() {
         description="You do not need to know the course name. A situation, a goal or a little context is enough to begin."
         image="listening"
       />
-      <section className="v3-wrap v3-section v3-split">
+      <section id="trial-booking" className="v3-wrap v3-section v3-split">
         <div>
-          <p className="v3-kicker">A SMALL FIRST STEP</p>
+          <p className="v3-kicker">YOUR FREE LIVE TRIAL</p>
           <h2>
             We will find
             <br />
@@ -638,8 +639,7 @@ export function ContactPage() {
             <li>Review the complete fee and terms before deciding.</li>
           </ol>
           <p>
-            The first fit conversation is free. Your enquiry does not reserve a place or authorise a
-            payment.
+            Request a free live trial to discuss your goal and experience the approach. The team confirms a suitable slot and session scope personally. Your request does not reserve a course place or authorise payment.
           </p>
           <p>
             For a child, a parent or guardian must enquire. Please avoid sensitive personal
@@ -649,7 +649,7 @@ export function ContactPage() {
             info@learnwithsmile.app <LabIcon name="mail" size={20} />
           </a>
         </div>
-        <LeadForm enrol />
+        <LeadForm />
       </section>
     </Frame>
   );
@@ -749,6 +749,7 @@ export function AboutPage() {
         image="heritage"
       />
       <Story />
+      <section className="v3-wrap"><TrialInvitation/></section>
       <section className="v3-wrap v3-section v3-split">
         <div>
           <p className="v3-kicker">A NOTE FROM THE LAB</p>

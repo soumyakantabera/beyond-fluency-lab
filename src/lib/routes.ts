@@ -26,8 +26,8 @@ export const simplePages: Record<string, [string, string]> = {
     "Attributed Parent-academy Learn With Smile stories, clearly separated from the founding European cohort, which has no EU testimonials yet.",
   ],
   blog: [
-    "Professional Communication Blog and Practical Guides",
-    "Read The Fluency Plateau Report and practical guides for meetings, sales, SME pitches, interviews, pressure performance and register.",
+    "Communication Stories and Guides for Life, Study and Work",
+    "Read our story, the Plateau Framework and original communication guides for students, professionals, NRIs, families and business owners. Explore live coaching and indicative programme fees.",
   ],
   pricing: [
     "Communication Coaching in English: indicative programme fees",

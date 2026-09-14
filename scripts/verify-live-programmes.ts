@@ -32,4 +32,4 @@ for (const article of problemGuides) {
  const schema = pageSchema('/blog/'+article.slug,article.title,article.description);
  assert.ok(schema['@graph'].some(node => node['@type']==='BlogPosting' && node.image));
 }
-console.log('PASS: five original problem guides have live routes, imagery, substantive sections and article structured data.');
+console.log(`PASS: ${problemGuides.length} original problem guides have live routes, imagery, substantive sections and article structured data.`);
