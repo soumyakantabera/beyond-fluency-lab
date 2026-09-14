@@ -29,3 +29,7 @@ The current forest/stone identity, original SVG icons, square image corners, sto
 ## Verification
 
 Local typecheck, build and catalogue/content checks are run for this revision. Browser review targets desktop and real 390 px/768 px frames on the Vercel preview, including spacing, article/trial contrast and current search metadata. No payment, enquiry email or production merge is performed.
+
+Verified results: typecheck, production build and programme/content checks passed (10 course families, 14 offers, 59 public paths). Desktop measurement confirmed adjacent section padding changed from 92+92 px to one 72 px gap, no homepage horizontal overflow and zero unnamed homepage links. Browser review confirmed the final Plateau Framework title/description, mobile/tablet pricing layout, mobile journal-to-guide navigation and readable article trial-panel spacing. Console inspection returned a browser-extension metadata error, not an application error. Not every public route was exercised interactively; the route/asset/content checks cover the catalogue and guide contract.
+
+Verified application preview: https://beyond-fluency-4e3nok2ea-learnwithsmilein-7865s-projects.vercel.app/
