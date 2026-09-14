@@ -57,7 +57,7 @@ export function CountrySelector() {
       </select>
     </div>
     <div className="country-help"><p id="country-status" role="status">{mode==='loading'?'Checking your network location…':mode==='manual'?(saved?'Your selection is saved on this browser.':'Selected for this visit; browser storage is unavailable.'):mode==='automatic'?'Detected from your network. You can change it.':'We couldn’t detect your country. Please choose it above.'}</p>
-      <button type="button" onClick={automatic} disabled={mode==='loading'}>{mode==='manual'?'Use automatic detection':'Detect again'}</button>
+      {mode === 'manual' && <button type="button" onClick={automatic}>Use automatic detection</button>}
     </div>
   </section>;
 }
