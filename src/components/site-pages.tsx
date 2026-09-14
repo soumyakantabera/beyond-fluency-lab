@@ -6,6 +6,7 @@ import { LabIcon, Monogram } from "./lab-icon";
 import { StoryChapters } from "./editorial-motion";
 import { editorialPair, coursePhotos, photos } from "@/lib/editorial";
 import { LeadForm } from "./site-interactions";
+import { problemGuides } from "@/lib/problem-guides";
 import { CourseJoin } from "./course-join";
 export function Arrow() {
   return <LabIcon name="arrow" size={17} />;
@@ -217,9 +218,7 @@ export function CourseGrid() {
             <p>{c.short}</p>
             <div className="course-card-fee">
               <span className="price">€{c.price}</span>
-              <span className="duration">
-                {c.duration}
-              </span>
+              <span className="duration">{c.duration}</span>
             </div>
             <a className="text-link" href={"/courses/" + c.slug}>
               Explore the course <Arrow />
@@ -552,7 +551,8 @@ export function CoursesPage() {
       <section className="wrap section">
         <CourseGrid />
         <p className="note">
-          All course fees exclude VAT and cover the stated duration. Session length, frequency and cohort dates are agreed before payment.
+          All course fees exclude VAT and cover the stated duration. Session length, frequency and
+          cohort dates are agreed before payment.
         </p>
         <Dimensions />
       </section>
@@ -681,7 +681,8 @@ export function CoursePage({ index }: { index: number }) {
             </li>
           </ul>
           <p className="fine">
-            Prices exclude VAT. Cohort schedule, session length and frequency are agreed before payment.
+            Prices exclude VAT. Cohort schedule, session length and frequency are agreed before
+            payment.
           </p>
           <a className="btn" href="#join-course">
             Join this course <Arrow />
@@ -706,9 +707,19 @@ export function CoursePage({ index }: { index: number }) {
             </p>
           </div>
           <AudienceGrid />
-          {index < 2 && <p style={{ marginTop: 24 }}>
-            Explore practice for <a className="text-link" href="/who-its-for/university-students">university presentations and internship interviews</a> or <a className="text-link" href="/who-its-for/graduating-students">graduate and first-job interviews</a>.
-          </p>}
+          {index < 2 && (
+            <p style={{ marginTop: 24 }}>
+              Explore practice for{" "}
+              <a className="text-link" href="/who-its-for/university-students">
+                university presentations and internship interviews
+              </a>{" "}
+              or{" "}
+              <a className="text-link" href="/who-its-for/graduating-students">
+                graduate and first-job interviews
+              </a>
+              .
+            </p>
+          )}
         </div>
       </section>
       <script
@@ -722,7 +733,12 @@ export function CoursePage({ index }: { index: number }) {
             name: c.name,
             description: c.description,
             url: ORIGIN + "/courses/" + c.slug,
-            provider: { "@type": "Organization", "@id": ORIGIN + "/#organization", name: "Beyond Fluency Lab", url: ORIGIN },
+            provider: {
+              "@type": "Organization",
+              "@id": ORIGIN + "/#organization",
+              name: "Beyond Fluency Lab",
+              url: ORIGIN,
+            },
             educationalLevel: "Fluent English speakers",
             teaches: c.outcomes,
             offers: {
@@ -730,7 +746,12 @@ export function CoursePage({ index }: { index: number }) {
               price: c.price,
               priceCurrency: "EUR",
               category: "Paid",
-              priceSpecification: { "@type": "PriceSpecification", price: c.price, priceCurrency: "EUR", valueAddedTaxIncluded: false },
+              priceSpecification: {
+                "@type": "PriceSpecification",
+                price: c.price,
+                priceCurrency: "EUR",
+                valueAddedTaxIncluded: false,
+              },
               url: ORIGIN + "/courses/" + c.slug,
             },
             hasCourseInstance: {
@@ -950,7 +971,9 @@ export function AboutPage() {
       <section className="wrap section">
         <div className="split">
           <div>
-            <p className="eyebrow">LEARN WITH SMILE <LabIcon name="arrow" size={17} /> BEYOND FLUENCY LAB</p>
+            <p className="eyebrow">
+              LEARN WITH SMILE <LabIcon name="arrow" size={17} /> BEYOND FLUENCY LAB
+            </p>
             <h2>
               Seven years of listening. <br />A sharper question.
             </h2>
@@ -1170,7 +1193,8 @@ export function PricingPage() {
               total payable amount are confirmed before enrolment.
             </p>
             <p>
-              All displayed fees exclude VAT. Review the cancellation and rescheduling terms before payment.
+              All displayed fees exclude VAT. Review the cancellation and rescheduling terms before
+              payment.
             </p>
             <a href="/legal/terms">Read the current terms</a>
           </div>
@@ -1236,9 +1260,34 @@ export function BlogPage() {
         <ArticleCards items={articles.slice(5, 7)} />
       </section>
       <section className="wrap section">
-        <p className="eyebrow">STUDENTS & GRADUATES</p>
-        <h2 style={{ marginBottom: 35 }}>Prepare for your next conversation.</h2>
-        <ArticleCards items={articles.slice(7)} />
+        <p className="eyebrow">
+          <LabIcon name="globe" size={20} />
+          LIFE, LEARNING & OUR STORY
+        </p>
+        <h2 style={{ marginBottom: 35 }}>A real situation. A useful next step.</h2>
+        <div className="v5-guide-grid">
+          {problemGuides.map((a) => (
+            <article key={a.slug}>
+              <img
+                src={"/assets/" + a.image + ".webp"}
+                alt={"Illustrative scene for " + a.title}
+                width="900"
+                height="600"
+                loading="lazy"
+              />
+              <p className="eyebrow">{a.category}</p>
+              <h3>
+                <a href={"/blog/" + a.slug}>{a.title}</a>
+              </h3>
+              <p>{a.description}</p>
+              <a className="text-link" href={"/blog/" + a.slug}>
+                Read the guide <LabIcon name="arrow" size={18} />
+              </a>
+            </article>
+          ))}
+        </div>
+        <h2 style={{ marginTop: 70 }}>For students and graduates.</h2>
+        <ArticleCards items={articles.slice(7).filter((a) => !problemGuides.includes(a))} />
       </section>
     </main>
   );
@@ -1251,12 +1300,32 @@ export function ArticlePage({ index }: { index: number }) {
       <PageHero eyebrow={a.category} title={a.title} description={a.intro}>
         <div className="meta">
           <span>Beyond Fluency Lab</span>
-          <time dateTime={a.published || "2026-09-06"}>{new Date((a.published || "2026-09-06") + "T12:00:00Z").toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}</time>
+          <time dateTime={a.published || "2026-09-06"}>
+            {new Date((a.published || "2026-09-06") + "T12:00:00Z").toLocaleDateString("en-GB", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+              timeZone: "UTC",
+            })}
+          </time>
           <span>{a.read}</span>
         </div>
       </PageHero>
       <section className="wrap section">
         <article className="article-body prose">
+          {a.image && (
+            <figure className="v5-article-image">
+              <img
+                src={"/assets/" + a.image + ".webp"}
+                alt={"Illustrative scene accompanying " + a.title}
+                width="1536"
+                height="1024"
+              />
+              <figcaption>
+                Illustrative scene. The people shown are not presented as named learners or staff.
+              </figcaption>
+            </figure>
+          )}
           <nav className="article-toc" aria-label="Article contents">
             {a.sections.map(([q], i) => (
               <a href={"#section-" + i} key={q}>
@@ -1362,13 +1431,31 @@ export function ArticlePage({ index }: { index: number }) {
             {"segment" in a && a.segment !== undefined && (
               <p>
                 More for{" "}
-                <a href={"/who-its-for/" + (a.audience || segments[a.segment].slug)}>{a.audience === "university-students" ? "university students" : segments[a.segment].name}</a>.
+                <a href={"/who-its-for/" + (a.audience || segments[a.segment].slug)}>
+                  {a.audience === "university-students"
+                    ? "university students"
+                    : segments[a.segment].name}
+                </a>
+                .
               </p>
             )}
           </section>
           <h2>What should you read next?</h2>
           <ul>
-            {(index === 0 ? articles.slice(1) : [...articles.filter(x => x.slug !== a.slug && (x.course === a.course || (a.segment !== undefined && x.segment === a.segment))).slice(0, 3), articles[0]])
+            {(index === 0
+              ? articles.slice(1)
+              : [
+                  ...articles
+                    .filter(
+                      (x) =>
+                        x.slug !== a.slug &&
+                        (x.course === a.course ||
+                          (a.segment !== undefined && x.segment === a.segment)),
+                    )
+                    .slice(0, 3),
+                  articles[0],
+                ]
+            )
               .filter((x) => x.slug !== a.slug)
               .map((x) => (
                 <li key={x.slug}>

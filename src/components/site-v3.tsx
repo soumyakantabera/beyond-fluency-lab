@@ -5,6 +5,7 @@ import { LeadForm } from "./site-interactions";
 import "./site-v3.css";
 import { LabIcon } from "./lab-icon";
 import { StorySlides, CourseRail, IconPlate, globalStories } from "./story-slides";
+import { problemGuides } from "@/lib/problem-guides";
 import type { IconName } from "@/lib/icon-paths";
 const programmeIcons: IconName[] = [
   "mentor",
@@ -19,7 +20,7 @@ const programmeIcons: IconName[] = [
   "compass",
 ];
 
-const arrow = <span aria-hidden="true">↗</span>;
+const arrow = <LabIcon name="arrow" size={19} />;
 function Link({
   href,
   children,
@@ -83,66 +84,53 @@ function Intro({
     </section>
   );
 }
-const chapters = [
-  {
-    label: "The beginning",
-    title: "First, we helped people find their words.",
-    text: "Beyond Fluency Lab grew from Learn With Smile in Kolkata, where learning starts with a simple belief: people need room to try. Not just a correction, but a conversation. Not just the right answer, but the courage to say it.",
-    image: "heritage",
-  },
-  {
-    label: "The realisation",
-    title: "Knowing English was only the beginning.",
-    text: "There is a moment after fluency when the challenge changes. You know the words. But in an interview, a meeting or an unfamiliar room, your message does not always land the way you intended. More vocabulary is not always the answer.",
-    image: "listening",
-  },
-  {
-    label: "Your next chapter",
-    title: "Now, we practise the moments that matter.",
-    text: "The Lab exists for that next step. Real conversations, thoughtful feedback and another chance to try. A place to build the clarity, composure and connection that help your voice feel like your own — wherever life takes you.",
-    image: "practice",
-  },
-];
 export function Story() {
-  const [active, setActive] = useState(0);
-  const c = chapters[active];
   return (
-    <section id="our-story" className="v3-story">
-      <div className="v3-wrap">
-        <div className="v3-section-top">
-          <p className="v3-kicker">
-            <LabIcon name="story" size={24} /> A NOTE ON WHERE WE BEGAN
-          </p>
-          <span className="v3-hand">Every voice has a story.</span>
-        </div>
-        <div className="v3-story-grid">
+    <section id="our-story" className="v5-origin">
+      <div className="v3-wrap v3-section">
+        <div className="brand-section-head">
           <div>
-            <div className="v3-tabs" aria-label="Story chapters">
-              {chapters.map((item, i) => (
-                <button key={item.label} aria-pressed={i === active} onClick={() => setActive(i)}>
-                  <LabIcon name={(["story", "focus", "globe"] as IconName[])[i]} size={22} />
-                  <span>0{i + 1}</span>
-                  {item.label}
-                </button>
-              ))}
-            </div>
-            <div className="v3-story-copy" aria-live="polite" aria-atomic="true">
-              <p className="v3-kicker">CHAPTER 0{active + 1}</p>
-              <h2>{c.title}</h2>
-              <p>{c.text}</p>
-            </div>
-            <div className="v3-story-controls">
-              <button aria-label="Previous chapter" onClick={() => setActive((active + 2) % 3)}>
-                ←
-              </button>
-              <span>0{active + 1} / 03</span>
-              <button aria-label="Next chapter" onClick={() => setActive((active + 1) % 3)}>
-                →
-              </button>
-            </div>
+            <p className="v3-kicker">
+              <LabIcon name="story" size={20} />
+              OUR STORY, IN THREE CHAPTERS
+            </p>
+            <h2>
+              Fluent is only
+              <br />
+              <em>the beginning.</em>
+            </h2>
           </div>
-          <Scene name={c.image} alt="Illustrative scene of learning and listening" />
+          <p>From Learn With Smile in Kolkata to the conversations that matter in your world.</p>
         </div>
+        <StorySlides
+          label="Our story"
+          slides={[
+            {
+              label: "OUR ROOTS",
+              icon: "story",
+              title: "A place to learn. Room to try.",
+              text: "Beyond Fluency Lab comes from Learn With Smile, rooted in Kolkata. We carry forward a human approach to learning: someone listens, you try, and feedback gives the next attempt a direction. The Lab brings that approach to a focused communication-coaching offer.",
+              image: "bfl-story-learning-v5",
+              href: "/about",
+            },
+            {
+              label: "WHY WE EXIST",
+              icon: "focus",
+              title: "The words are there. The moment is harder.",
+              text: "You understand the meeting but hold back your point. You know your experience but lose the thread in an interview. You can manage daily life in English but hesitate to start a conversation. We exist to give those specific moments a place to be practised.",
+              image: "bfl-story-rehearsal-v5",
+              href: "/blog/why-beyond-fluency-lab-exists",
+            },
+            {
+              label: "WHAT WE DO",
+              icon: "mentor",
+              title: "Real conversations. Thoughtful practice.",
+              text: "Bring a situation from your life, study or work. Practise with a coach, receive specific feedback and try again. Through small live classes and personalised private coaching, we work on clarity, composure and connection while keeping your own voice at the centre.",
+              image: "bfl-global-work-v4",
+              href: "/our-method",
+            },
+          ]}
+        />
       </div>
     </section>
   );
@@ -358,6 +346,54 @@ export function HomePage() {
             Live classes and premium private programmes for life, study and work. {feeNote}
           </p>
         </div>
+      </section>
+      <section className="v3-wrap v3-section">
+        <div className="brand-section-head">
+          <div>
+            <p className="v3-kicker">
+              <LabIcon name="story" size={20} />
+              FROM THE JOURNAL
+            </p>
+            <h2>
+              The real problem.
+              <br />
+              <em>A practical place to start.</em>
+            </h2>
+          </div>
+          <p>
+            Original guides from the Lab. Start with a situation you recognise, try one useful
+            exercise, and learn how our coaching approaches it.
+          </p>
+        </div>
+        <div className="v5-guide-grid">
+          {problemGuides.slice(0, 3).map((a) => (
+            <article key={a.slug}>
+              <a href={"/blog/" + a.slug} tabIndex={-1} aria-hidden="true">
+                <img
+                  src={"/assets/" + a.image + ".webp"}
+                  alt=""
+                  width="900"
+                  height="600"
+                  loading="lazy"
+                />
+              </a>
+              <p className="v3-kicker">
+                <LabIcon name={a.course === 4 ? "globe" : "story"} size={20} />
+                {a.category}
+              </p>
+              <h3>
+                <a href={"/blog/" + a.slug}>{a.title}</a>
+              </h3>
+              <p>{a.description}</p>
+              <Link href={"/blog/" + a.slug} subtle>
+                Read the guide
+              </Link>
+            </article>
+          ))}
+        </div>
+        <Link href="/blog" subtle>
+          All communication guides
+        </Link>
       </section>
       <section className="v3-wrap v3-section v3-last">
         <p className="v3-kicker">THOUGHTFUL COACHING NEEDS ROOM</p>
@@ -645,7 +681,7 @@ export function ContactPage() {
             information.
           </p>
           <a className="v3-link" href="mailto:info@learnwithsmile.app">
-            info@learnwithsmile.app ↗
+            info@learnwithsmile.app <LabIcon name="mail" size={20} />
           </a>
         </div>
         <LeadForm enrol />

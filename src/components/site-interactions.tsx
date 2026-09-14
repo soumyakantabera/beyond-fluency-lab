@@ -46,7 +46,8 @@ export function LeadForm({
       if (courses.some((x) => x.slug === c)) {
         setCourse(c!);
         const requested = new URLSearchParams(location.search).get("format") || "";
-        if (courses.find(x => x.slug === c)?.offers.some(o => o.format === requested)) setFormat(requested);
+        if (courses.find((x) => x.slug === c)?.offers.some((o) => o.format === requested))
+          setFormat(requested);
       }
     }
   }, [report]);
@@ -167,7 +168,7 @@ export function LeadForm({
               encodeURIComponent(requestText)
             }
           >
-            Open email to send request ↗
+            Open email to send request <LabIcon name="mail" size={18} />
           </a>
           <span className="fine"> Opens your email app. Review and press Send there.</span>
         </p>
@@ -224,7 +225,10 @@ export function LeadForm({
               id="course-select"
               className="form-select"
               value={course}
-              onChange={(e) => {setCourse(e.target.value);setFormat("");}}
+              onChange={(e) => {
+                setCourse(e.target.value);
+                setFormat("");
+              }}
             >
               <option value="not-sure">Help me choose</option>
               {courses.map((c) => (

@@ -1276,3 +1276,205 @@
     margin-bottom: 30px;
   }
 }
+/* Match the source brand-kit: one line family, warm stone, ink and forest. */
+.v3 {
+  --muted: #68615a;
+  --line: #d6d1c8;
+}
+.v3 h1,
+.v3 h2,
+.v3 h3 {
+  color: #272422;
+}
+.v3 em {
+  color: #174f46;
+}
+.v3-dark h2,
+.v3-dark h3 {
+  color: #f4f1ea;
+}
+.v3-dark em {
+  color: #dbe4df;
+}
+.v3-story,
+.v3-catalogue-home,
+.v5-origin {
+  background: #ece9e2;
+  border-color: #d6d1c8;
+}
+.v4-icon-plate {
+  background: transparent;
+  border: 0;
+  width: 38px;
+  height: 38px;
+  color: #174f46;
+  margin-bottom: 22px;
+}
+.v4-icon-plate:after {
+  display: none;
+}
+.v3-dark .v4-icon-plate {
+  background: transparent;
+  border: 0;
+  color: #f4f1ea;
+}
+.v3-course-body > .v4-icon-plate {
+  margin-top: 0;
+  background: transparent;
+  border: 0;
+  width: 32px;
+  height: 32px;
+}
+.v4-hero-mosaic figure {
+  box-shadow: none;
+}
+.v4-story-deck {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 30px;
+  row-gap: 0;
+}
+.v4-deck-heading {
+  display: contents;
+}
+.v4-deck-heading > .v3-kicker {
+  grid-column: 1/-1;
+  grid-row: 1;
+  margin-bottom: 25px;
+}
+.v4-deck-heading > .v4-slide-controls {
+  grid-row: 3;
+  grid-column: 2;
+  align-self: center;
+}
+.v4-story-stage {
+  grid-row: 2;
+  grid-column: 1/-1;
+  grid-template-columns: 1.08fr 1fr;
+  border: 0;
+  border-block: 1px solid #d6d1c8;
+  background: #f4f1ea;
+  min-height: 440px;
+}
+.v4-story-text {
+  padding: 45px 48px;
+  background: #f4f1ea;
+  min-height: 440px;
+}
+.v4-story-text h2 {
+  font-size: 39px;
+}
+.v4-story-text p {
+  font-size: 16px;
+}
+.v4-story-text .v3-kicker {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+.v4-story-stage figure {
+  margin: 0;
+  padding: 0;
+  min-height: 400px;
+}
+.v4-story-stage figcaption {
+  position: absolute;
+  background: #f4f1eae8;
+  color: #68615a;
+  font-size: 10px;
+}
+.v4-chapter-tabs {
+  grid-row: 3;
+  grid-column: 1;
+  max-width: 100%;
+  border-bottom: 0;
+}
+.v4-chapter-tabs button {
+  flex: 0 1 auto;
+  justify-content: start;
+  min-width: 125px;
+  border-bottom: 2px solid transparent;
+  padding: 22px 15px 20px 0;
+  margin-right: 20px;
+  font-size: 10px;
+  letter-spacing: 0.03em;
+}
+.v4-chapter-tabs button[aria-pressed="true"] {
+  background: transparent;
+  border-bottom-color: #174f46;
+}
+.v4-chapter-tabs button svg {
+  width: 20px;
+  height: 20px;
+}
+.v4-slide-controls button {
+  border-color: #b5b7ac;
+  width: 46px;
+  height: 46px;
+}
+.v4-story-stage .v4-icon-plate {
+  margin-bottom: 18px;
+}
+.v3-course {
+  background: #f4f1ea;
+  border-color: #d6d1c8;
+}
+.v3 .brand-section-head {
+  margin-bottom: 45px;
+}
+.v3 .brand-section-head > p {
+  font-size: 15px;
+}
+.v3 .brand-section-head h2 {
+  margin: 0;
+}
+.v5-origin .v4-story-deck {
+  margin-bottom: 0;
+}
+.v3 .v3-button {
+  background: #174f46;
+  color: #f4f1ea;
+}
+.v3 .v3-button > .lab-icon,
+.v3 .v3-link > .lab-icon {
+  flex-shrink: 0;
+}
+.v3 .v3-outcomes > .lab-icon {
+  color: #174f46;
+}
+@media (max-width: 900px) {
+  .v4-story-stage {
+    grid-template-columns: 1fr;
+  }
+  .v4-story-stage figure {
+    min-height: 300px;
+  }
+  .v4-story-text {
+    min-height: 340px;
+    padding: 32px;
+  }
+  .v4-story-text h2 {
+    font-size: 34px;
+  }
+  .v4-story-deck {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .v4-chapter-tabs {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  .v4-deck-heading > .v4-slide-controls {
+    grid-column: 1;
+    grid-row: 4;
+    margin-top: 14px;
+    justify-content: space-between;
+  }
+  .v4-chapter-tabs button {
+    min-width: 140px;
+  }
+  .v3 .brand-section-head {
+    display: block;
+  }
+  .v3 .brand-section-head > p {
+    margin-top: 24px;
+  }
+}
