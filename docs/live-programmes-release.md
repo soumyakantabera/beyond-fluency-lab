@@ -39,3 +39,15 @@ The homepage now combines three overlapping rectangular images. Square-corner im
 The original line-icon vocabulary is now expressed as stronger framed icon panels. Manual story decks cover global everyday situations, audience problem/practice/next-step narratives, all ten course learning journeys and coaching information pages. Course rails retain every course and support arrows, keyboard navigation and native horizontal swiping. They respect reduced-motion preferences and disable boundary controls when no further scrolling is available.
 
 Browser checks confirmed desktop and real 390 px/768 px layouts, story changes, course scrolling and disabled controls on short collections. The updated homepage screenshot is `docs/homepage-global-v4.jpg`. New photo prompts specified fictional diverse adults in daylight workplace/cafe conversations, forest-green/ivory accents and full-bleed rectangular compositions; built-in image generation was used. All fees and live delivery scopes remain as documented above.
+
+## Source-brand refinement and practical guides · 14 September 2026
+
+The original production brand-kit page and original editorial chapter component informed this revision. The original forest/stone palette, Newsreader/Schibsted typography and SVG icon family now carry through the revised pages. Decorative text arrow glyphs were replaced with SVG icons. Framed icon panels from the preceding revision are now bare line icons. Story slides use image-left/copy-right desktop compositions, thin rules and controls below; mobile stacks the image and copy with horizontally scrollable chapter labels. Image frames remain square.
+
+Two new original illustrative photographs support the roots and rehearsal chapters. Five new substantive journal guides explain why the Lab exists and give practical starting points for meeting hesitation, interviews, conversations after moving abroad and young learners. They have individual descriptions, internal course links, sitemap entries and BlogPosting image metadata. Illustrations do not represent actual learners or staff; articles make no guaranteed outcome claims.
+
+Verification: typecheck, production build and programme contract checks passed, covering 10 families, 14 offers and 56 public paths. All five new guides have image files, substantive sections, sitemap coverage and structured data. Browser verification on the Vercel preview confirmed desktop hero and story composition, chapter selection, navigation from the why-we-exist chapter to its article, loaded article imagery and BlogPosting metadata. Real 390 px mobile and 768 px tablet frames were inspected; mobile chapter selection and controls worked. Screenshot: `docs/homepage-brand-v5.jpg`.
+
+Verified application preview: https://beyond-fluency-3hotmpn7q-learnwithsmilein-7865s-projects.vercel.app/
+
+These changes remain on draft PR #15. No production merge, payment or enquiry submission was performed.
