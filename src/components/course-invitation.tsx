@@ -22,7 +22,7 @@ export function CourseInvitation({course, reason, source = 'course'}: {
 
 export function SiteInvitation() {
   return <section className="site-invitation wrap" aria-label="Take your next step">
-    <div><p className="eyebrow">YOUR NEXT CONVERSATION STARTS HERE</p><h2>Make your next move <br />a more convincing one.</h2><p>Public speaking, interviews and professional communication. Live practice in English, with feedback you can use.</p></div>
-    <div className="invitation-actions"><a className="btn" href="/contact">Start a conversation <LabIcon name="arrow"/></a><a className="btn outline" href="/courses">Explore the programmes <LabIcon name="arrow"/></a><a className="text-link" href="/diagnostic">Find your plateau in 90 seconds <LabIcon name="compass"/></a><p className="fine">Start with a free fit conversation. Availability is confirmed personally.</p></div>
+    <div><p className="eyebrow">YOUR NEXT CONVERSATION STARTS HERE</p><h2>Give your next conversation <br />room to grow.</h2><p>From classrooms and workplaces to life abroad and conversations at home. Live classes and personalised private coaching, shaped around your situation.</p></div>
+    <div className="invitation-actions"><a className="btn" href="/contact#trial-booking">Book a free live trial <LabIcon name="arrow"/></a><a className="btn outline" href="/courses">Explore the programmes <LabIcon name="arrow"/></a><a className="text-link" href="/diagnostic">Find your plateau in 90 seconds <LabIcon name="compass"/></a><p className="fine">Request a free trial. The team confirms availability and session scope personally.</p></div>
   </section>;
 }

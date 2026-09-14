@@ -1424,7 +1424,7 @@ export function ArticlePage({ index }: { index: number }) {
                   articles[0],
                 ]
             )
-              .filter((x) => x.slug !== a.slug)
+              .filter((x, i, all) => x.slug !== a.slug && all.findIndex(item => item.slug === x.slug) === i)
               .map((x) => (
                 <li key={x.slug}>
                   <a href={"/blog/" + x.slug}>{x.title}</a>
