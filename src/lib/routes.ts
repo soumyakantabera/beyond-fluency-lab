@@ -7,7 +7,7 @@ export const simplePages: Record<string, [string, string]> = {
   ],
   courses: [
     "Live Communication Courses in English for Fluent Speakers",
-    "Compare ten live live communication courses in English for Europe. Explore live classes and private programmes.",
+    "Explore ten communication course families for life, study and work, through small live classes and premium personalised private coaching.",
   ],
   "who-its-for": [
     "Communication Coaching for Students, Professionals and NRIs",
@@ -19,7 +19,7 @@ export const simplePages: Record<string, [string, string]> = {
   ],
   about: [
     "About Beyond Fluency Lab and Learn With Smile",
-    "Kolkata roots, European ambition. Learn With Smile’s 7-year, 500+ learner history behind a new live coaching programme for fluent English speakers.",
+    "The story behind Beyond Fluency Lab, from Learn With Smile in Kolkata to live communication coaching for students, professionals, NRIs and families.",
   ],
   testimonials: [
     "Learn With Smile Learner Stories and the European Launch",
@@ -31,11 +31,11 @@ export const simplePages: Record<string, [string, string]> = {
   ],
   pricing: [
     "Communication Coaching in English: indicative programme fees",
-    "Compare course fees: all live programme fees and session scopes.",
+    "Compare fourteen live programme offers, formats, sessions and indicative fees. Your timetable, taxes and final total are confirmed before enrolment.",
   ],
   faq: [
     "Frequently Asked Questions About Beyond Fluency Lab",
-    "Answers about live classes, fees, level, course progression, alumni practice and our independence from universities.",
+    "Answers about live classes, private coaching, indicative fees, trial requests, learner suitability and programme arrangements.",
   ],
   contact: [
     "Book a Free Live Communication Trial",
@@ -74,48 +74,8 @@ export const simplePages: Record<string, [string, string]> = {
     "How California and similar US state privacy rights apply to Beyond Fluency Lab learners in the United States.",
   ],
 };
-simplePages["who-its-for"] = [
-  "Communication Coaching for Students, Graduates & Professionals",
-  "Explore student and graduate pathways for presentations, internships and first-job interviews, plus communication coaching for working professionals.",
-];
-// Search snippets describe the actual offering without changing the editorial page story.
-simplePages.courses = [
-  "Live Communication & Interview Courses",
-  "Compare live online communication courses for students, graduates and professionals. Small-group practice, trainer feedback and fees of indicative programme fees.",
-];
-simplePages.blog = [
-  "Communication & Interview Preparation Guides",
-  "Practical guides for university presentations, graduate interviews and workplace conversations. Learn to structure answers and speak clearly under pressure.",
-];
-simplePages.about = [
-  "About Beyond Fluency Lab",
-  "Meet the communication-coaching approach from Learn With Smile. Live online practice for students, graduates and professionals who already speak English.",
-];
-simplePages.testimonials = [
-  "Learner Stories from Learn With Smile",
-  "Explore learner stories from Learn With Smile, the parent academy behind Beyond Fluency Lab, and discover our live communication-coaching approach.",
-];
-simplePages.pricing = [
-  "Communication Course Fees",
-  "Live programme fees, formats and session scopes.",
-];
+// Supporting pages share the same canonical metadata registry.
 Object.assign(simplePages, {
-  courses: [
-    "Live Communication Programmes",
-    "Explore all ten course families: live classes and premium personalised private coaching for life, study and work.",
-  ],
-  pricing: [
-    "Programme Fees & Live Coaching Scope",
-    "Compare fourteen live programme options, session counts and indicative fees. Your coach, timetable, taxes and total are confirmed before enrolment.",
-  ],
-  contact: [
-    "Start a Conversation",
-    "Tell us your communication goal and time zone. Request a free fit conversation before choosing a live programme.",
-  ],
-  "our-method": [
-    "Our Live Coaching Method",
-    "Real situations, deliberate practice and specific feedback for clarity, composure and connection.",
-  ],
   coaches: [
     "Your Coach & Our Approach",
     "Understand how a coach is matched to your goals and what to ask before enrolment.",

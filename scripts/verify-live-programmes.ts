@@ -4,7 +4,7 @@ import { programmes } from '../src/lib/programmes';
 import { courses } from '../src/lib/content';
 import { problemGuides } from '../src/lib/problem-guides';
 import { pageSchema } from '../src/lib/page-schema';
-import { paths } from '../src/lib/routes';
+import { paths, simplePages } from '../src/lib/routes';
 import { enquirySchema } from '../server/utils/enquiries';
 assert.equal(programmes.length, 10);
 assert.equal(programmes.flatMap(p => p.offers).length, 14);
@@ -33,3 +33,8 @@ for (const article of problemGuides) {
  assert.ok(schema['@graph'].some(node => node['@type']==='BlogPosting' && node.image));
 }
 console.log(`PASS: ${problemGuides.length} original problem guides have live routes, imagery, substantive sections and article structured data.`);
+
+assert.ok(simplePages['our-method'][0].includes('Plateau Framework'));
+assert.ok(simplePages['who-its-for'][0].includes('NRIs'));
+assert.ok(simplePages.blog[1].includes('families'));
+console.log('PASS: final metadata preserves the framework and current audience positioning.');

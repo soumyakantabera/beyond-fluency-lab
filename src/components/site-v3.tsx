@@ -140,7 +140,7 @@ export function Story() {
 function Card({ p, index }: { p: Programme; index: number }) {
   return (
     <article className="v3-course">
-      <a href={"/courses/" + p.slug} tabIndex={-1} aria-hidden="true">
+      <a href={"/courses/" + p.slug} aria-label={"Explore " + p.name}>
         <img src={"/assets/" + p.image + ".webp"} alt="" width="600" height="400" loading="lazy" />
       </a>
       <div className="v3-course-body">
@@ -334,7 +334,7 @@ export function HomePage() {
         <div className="v5-guide-grid">
           {problemGuides.slice(0, 3).map((a) => (
             <article key={a.slug}>
-              <a href={"/blog/" + a.slug} tabIndex={-1} aria-hidden="true">
+              <a href={"/blog/" + a.slug} aria-label={"Read " + a.title}>
                 <img
                   src={"/assets/" + a.image + ".webp"}
                   alt=""

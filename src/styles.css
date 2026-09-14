@@ -572,3 +572,26 @@ main img, main figure, .page-diptych, .diptych-image, .hero-main-image, .hero-de
 .trial-invitation{margin:36px 0;padding:32px;border-top:1px solid #b9c5ba;border-bottom:1px solid #b9c5ba;background:#ece9e2;color:#272422}.trial-invitation h2{font-family:Newsreader,serif;font-size:clamp(28px,3vw,40px);line-height:1.12;margin:14px 0}.trial-invitation .eyebrow{display:flex;align-items:center;gap:10px}.trial-invitation .btn{display:inline-flex;align-items:center;gap:16px;margin:12px 0}.trial-invitation .fine{font-size:13px;line-height:1.7}.trial-invitation p{max-width:760px}@media(max-width:600px){.trial-invitation{padding:24px 18px}}
 
 .prose .trial-invitation a.btn,.trial-invitation a.btn{color:#f4f1ea;background:#174f46;text-decoration:none}
+
+/* Shared editorial spacing: one gutter and one rhythm across old/new pages. */
+:root{--site-gutter:48px;--section-space:72px;--layout-gap:56px}
+.wrap{width:min(1240px,calc(100% - 2 * var(--site-gutter)));max-width:none;margin-inline:auto;padding-inline:0}
+.section{padding-block:var(--section-space)}
+.section + .section{padding-top:0}
+.split{gap:var(--layout-gap);grid-template-columns:repeat(2,minmax(0,1fr))}
+.v5-guide-grid{gap:40px 28px;margin-block:32px 0}
+.v5-guide-grid article{display:flex;flex-direction:column;align-items:flex-start;padding-top:20px}
+.v5-guide-grid h3{margin-bottom:16px}
+.v5-guide-grid article>p:not(.eyebrow):not(.v3-kicker){margin-bottom:20px}
+.v5-guide-grid article>.text-link,.v5-guide-grid article>.v3-link{margin-top:auto}
+.v5-guide-grid + .text-link,.v5-guide-grid + .v3-link{margin-top:32px}
+.article-body{max-width:780px;margin-inline:auto}
+.article-body .trial-invitation{margin-block:40px}
+.prose .trial-invitation h2{margin-block:12px 20px}
+.prose .trial-invitation p{margin-block:0 16px}
+.prose .trial-invitation .fine{margin-bottom:0;font-size:13px;line-height:1.65}
+.trial-invitation> :last-child{margin-bottom:0}
+.chart-key{flex-wrap:wrap;gap:10px 20px}
+.invitation-offers{display:grid;gap:16px;margin-block:24px}
+@media(max-width:1050px){:root{--site-gutter:32px;--layout-gap:32px;--section-space:56px}}
+@media(max-width:700px){:root{--site-gutter:20px;--layout-gap:28px;--section-space:44px}.split{grid-template-columns:1fr}.v5-guide-grid{gap:32px}.article-body .trial-invitation{margin-block:32px}.article-body .trial-invitation .btn{max-width:100%;gap:16px}.chart-key{font-size:12px}}
