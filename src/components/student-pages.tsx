@@ -214,7 +214,7 @@ export function StudentHomePage() {
               Find your starting point <LabIcon name="arrow" size={18} className="sf-icon-down" />
             </a>
           </div>
-          <p className="sf-note">Live online · Small groups · Interview course from €50</p>
+          <p className="sf-note">Live online · Small groups · Interview course with tailored feedback</p>
         </div>
         <figure>
           <img
@@ -380,7 +380,7 @@ export function StudentAudiencePage({ graduate = false }: { graduate?: boolean }
           <h2>Choose practice that fits your immediate goal.</h2>
           <p>
             If speaking up in seminars or presenting to a group is your first priority, Speak with
-            Confidence offers focused practice over 3–4 weeks for a listed fee of €50. You do not
+            Confidence offers focused practice over 5 weeks for an indicative fee of €349. You do not
             need to take every course in order.
           </p>
           <a className="sf-link" href="/courses/speak-with-confidence">

@@ -62,7 +62,7 @@ export function Navigation() {
           </a>
         ))}
         <a className="btn" href="/contact">
-          Book a free trial <LabIcon name="arrow" size={16} />
+          Let’s talk <LabIcon name="arrow" size={16} />
         </a>
       </nav>
     </>

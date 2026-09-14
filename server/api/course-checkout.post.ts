@@ -9,6 +9,8 @@ export default defineHandler(async (event) => {
   const env = process.env;
   if (
     env.CHECKOUT_ENABLED !== "true" ||
+    // Multi-format indicative programmes must not enter the legacy single-price checkout.
+    courses.some((course) => course.offers.length > 1) ||
     !env.STRIPE_SECRET_KEY ||
     !env.STRIPE_WEBHOOK_SECRET ||
     !env.DATABASE_URL ||
@@ -17,7 +19,7 @@ export default defineHandler(async (event) => {
   )
     return reply(
       {
-        error: "Online payments are not open yet. Please request a free trial or try again later.",
+        error: "Online payments are not open yet. Please request programme availability.",
       },
       503,
     );

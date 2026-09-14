@@ -1,5 +1,5 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
-import { CoursePage } from "@/components/site-pages";
+import { CoursePage } from "@/components/site-v3";
 import { NotFoundPage } from "@/components/not-found";
 import { courses } from "@/lib/content";
 import { seoForPath } from "@/lib/head";

@@ -30,17 +30,25 @@ export function LeadForm({
   const submission = useRef<{ body: string; id: string } | null>(null);
   useEffect(() => {
     const controller = new AbortController();
-    fetch('/api/enquiries', { signal: controller.signal })
-      .then(r => r.ok ? r.json() : null).then(data => setOnline(data?.enabled === true)).catch(() => {});
+    fetch("/api/enquiries", { signal: controller.signal })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => setOnline(data?.enabled === true))
+      .catch(() => {});
     return () => controller.abort();
   }, []);
   const [consent, setConsent] = useState(false);
   const [course, setCourse] = useState(report?.course.slug || "not-sure");
+  const [format, setFormat] = useState("");
 
   useEffect(() => {
     if (!report) {
       const c = new URLSearchParams(location.search).get("course");
-      if (courses.some((x) => x.slug === c)) setCourse(c!);
+      if (courses.some((x) => x.slug === c)) {
+        setCourse(c!);
+        const requested = new URLSearchParams(location.search).get("format") || "";
+        if (courses.find((x) => x.slug === c)?.offers.some((o) => o.format === requested))
+          setFormat(requested);
+      }
     }
   }, [report]);
 
@@ -54,17 +62,19 @@ export function LeadForm({
     const f = new FormData(e.currentTarget);
     if (String(f.get("website") || "")) return;
     setBusy(true);
+    const requestedFormat = String(f.get("format") || "Discuss the best fit");
     const chosen = courses.find((c) => c.slug === course);
     const lines = [
       report
         ? "Diagnostic report request"
         : enrol
           ? "Course enrolment enquiry"
-          : "Free trial request",
+          : "Free fit conversation request",
       "",
       "Name: " + (f.get("name") || "—"),
+      requestedFormat ? "Preferred format: " + requestedFormat : "",
       "Email: " + f.get("email"),
-      chosen ? "Course: " + chosen.name + " · €" + chosen.price : "Course: help me choose",
+      chosen ? "Course: " + chosen.name : "Course: help me choose",
       f.get("timezone") ? "Time zone: " + f.get("timezone") : "",
       f.get("availability") ? "Availability: " + f.get("availability") : "",
       f.get("message") ? "Goal: " + f.get("message") : "",
@@ -77,37 +87,59 @@ export function LeadForm({
       .join("\n");
     setRequestText(lines);
     if (online) {
-      const payload = { kind: report ? 'report' : enrol ? 'enrolment' : 'trial',
-        name: String(f.get('name') || ''), email: String(f.get('email') || ''), course,
-        timezone: String(f.get('timezone') || ''), availability: String(f.get('availability') || ''),
-        message: String(f.get('message') || ''), diagnostic: report?.dimension.name,
-        privacyAcknowledged: consent, website: String(f.get('website') || '') };
+      const payload = {
+        kind: report ? "report" : enrol ? "enrolment" : "trial",
+        name: String(f.get("name") || ""),
+        email: String(f.get("email") || ""),
+        course,
+        timezone: String(f.get("timezone") || ""),
+        availability: String(f.get("availability") || ""),
+        message: [
+          requestedFormat ? "Preferred format: " + requestedFormat : "",
+          String(f.get("message") || ""),
+        ]
+          .filter(Boolean)
+          .join(" — ")
+          .slice(0, 2000),
+        diagnostic: report?.dimension.name,
+        privacyAcknowledged: consent,
+        website: String(f.get("website") || ""),
+      };
       const body = JSON.stringify(payload);
       if (submission.current?.body !== body) submission.current = { body, id: crypto.randomUUID() };
       try {
-        const response = await fetch('/api/enquiries', { method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ ...payload, id: submission.current.id }), signal: AbortSignal.timeout(20000) });
+        const response = await fetch("/api/enquiries", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...payload, id: submission.current.id }),
+          signal: AbortSignal.timeout(20000),
+        });
         const result = await response.json();
-        if (!response.ok || !result.saved) throw new Error(result.error || 'We could not confirm your request.');
+        if (!response.ok || !result.saved)
+          throw new Error(result.error || "We could not confirm your request.");
         conversionEvent("lead_saved", course, report ? "report" : enrol ? "enrolment" : "trial");
         setError(false);
-        setStatus(`Your request is saved. Reference: ${result.reference}. The team will confirm availability separately.`);
+        setStatus(
+          `Your request is saved. Reference: ${result.reference}. The team will confirm availability separately.`,
+        );
       } catch {
         setError(true);
-        setStatus('We could not confirm receipt. Keep a copy and try again later.');
-      } finally { setBusy(false); }
+        setStatus("We could not confirm receipt. Keep a copy and try again later.");
+      } finally {
+        setBusy(false);
+      }
       return;
     }
     try {
       await navigator.clipboard.writeText(lines);
       setError(false);
       setStatus(
-        "Your request is copied. Nothing has been sent to the team. You can also download a copy below.",
+        "Your request is ready and copied. Use the email link below to send it. Nothing has been sent yet.",
       );
     } catch {
       setError(false);
       setStatus(
-        "Your browser could not copy the request. Nothing has been sent. Download a copy below to keep your details.",
+        "Your request is ready. Use the email link below to send it, or download a copy. Nothing has been sent yet.",
       );
     } finally {
       setBusy(false);
@@ -125,16 +157,29 @@ export function LeadForm({
 
   return (
     <form className="form" onSubmit={submit}>
+      {requestText && (
+        <p>
+          <a
+            className="btn"
+            href={
+              "mailto:info@learnwithsmile.app?subject=" +
+              encodeURIComponent("Beyond Fluency Lab — programme enquiry") +
+              "&body=" +
+              encodeURIComponent(requestText)
+            }
+          >
+            Open email to send request <LabIcon name="mail" size={18} />
+          </a>
+          <span className="fine"> Opens your email app. Review and press Send there.</span>
+        </p>
+      )}
       {enrol && (
         <div className="enrol-summary">
           <p className="eyebrow">YOUR COURSE ENQUIRY</p>
           <h2>{courses.find((c) => c.slug === course)?.name || "Let’s find your course"}</h2>
           <p>
             {courses.find((c) => c.slug === course)
-              ? "€" +
-                courses.find((c) => c.slug === course)!.price +
-                " · " +
-                courses.find((c) => c.slug === course)!.duration
+              ? "Choose your preferred format below. We confirm availability and the final fee before enrolment."
               : "Select a course below, or ask us to help you choose."}
           </p>
         </div>
@@ -180,14 +225,36 @@ export function LeadForm({
               id="course-select"
               className="form-select"
               value={course}
-              onChange={(e) => setCourse(e.target.value)}
+              onChange={(e) => {
+                setCourse(e.target.value);
+                setFormat("");
+              }}
             >
               <option value="not-sure">Help me choose</option>
               {courses.map((c) => (
                 <option key={c.slug} value={c.slug}>
-                  {c.name} · €{c.price}
+                  {c.name}
                 </option>
               ))}
+            </select>
+          </div>
+          <div>
+            <label htmlFor="preferred-format">Preferred format</label>
+            <select
+              id="preferred-format"
+              name="format"
+              className="form-select"
+              value={format}
+              onChange={(e) => setFormat(e.target.value)}
+            >
+              <option value="">Discuss the best fit</option>
+              {courses
+                .find((c) => c.slug === course)
+                ?.offers.map((o) => (
+                  <option key={o.format} value={o.format}>
+                    {o.format} · €{o.price}
+                  </option>
+                ))}
             </select>
           </div>
           <div className="form-row">
@@ -245,7 +312,7 @@ export function LeadForm({
             ? "prepare my diagnostic report"
             : enrol
               ? "respond to my course enrolment enquiry"
-              : "respond to my trial request"}
+              : "respond to my fit conversation request"}
           , as described in the{" "}
           <a className="underline" href="/legal/privacy">
             Privacy Policy
@@ -254,16 +321,22 @@ export function LeadForm({
         </label>
       </div>
       <p className="note" role="status">
-        {online ? 'Your request will be saved for the team. This is not a confirmed booking.' : 'Online submissions are not open yet. Copy or download your request to keep it; this does not send it to the team.'}
+        {online
+          ? "Your request will be saved for the team. This is not a confirmed booking."
+          : "Online submissions are not open yet. Prepare your request, then use the email link to send it to our team."}
       </p>
       <button className="btn" disabled={busy} type="submit">
-        {online ? (busy ? 'Sending…' : 'Send my request') : busy
-          ? "Preparing…"
-          : report
-            ? "Copy my report request"
-            : enrol
-              ? "Copy my enrolment enquiry"
-              : "Copy my free trial request"}{" "}
+        {online
+          ? busy
+            ? "Sending…"
+            : "Send my request"
+          : busy
+            ? "Preparing…"
+            : report
+              ? "Copy my report request"
+              : enrol
+                ? "Prepare my enquiry"
+                : "Copy my free trial request"}{" "}
         <LabIcon name="arrow" size={17} />
       </button>
       {status && (

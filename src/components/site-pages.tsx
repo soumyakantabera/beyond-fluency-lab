@@ -1,3 +1,5 @@
+import { TrialInvitation } from "./trial-invitation";
+import { programmes, feeNote } from "@/lib/programmes";
 import type { ReactNode } from "react";
 import { MobileDeck } from "./mobile-deck";
 import { courses, segments, faqs, BUSINESS, ORIGIN } from "@/lib/content";
@@ -217,9 +219,7 @@ export function CourseGrid() {
             <p>{c.short}</p>
             <div className="course-card-fee">
               <span className="price">€{c.price}</span>
-              <span className="duration">
-                {c.duration}
-              </span>
+              <span className="duration">{c.duration}</span>
             </div>
             <a className="text-link" href={"/courses/" + c.slug}>
               Explore the course <Arrow />
@@ -275,7 +275,7 @@ export function Closing() {
       <p>Start with a live trial, or take a quiet 90 seconds to find where you plateau.</p>
       <div className="actions">
         <a className="btn" href="/contact">
-          Book a free trial <Arrow />
+          Start a conversation <Arrow />
         </a>
         <a className="btn outline" href="/diagnostic">
           Find your plateau <Arrow />
@@ -337,7 +337,7 @@ export function HomePage() {
           </p>
           <div className="actions hero-actions">
             <a className="btn" href="/contact">
-              Book a free trial <Arrow />
+              Start a conversation <Arrow />
             </a>
             <a className="btn outline" href="/diagnostic">
               Find your plateau in 90 seconds <Arrow />
@@ -552,7 +552,8 @@ export function CoursesPage() {
       <section className="wrap section">
         <CourseGrid />
         <p className="note">
-          All course fees exclude VAT and cover the stated duration. Session length, frequency and cohort dates are agreed before payment.
+          All course fees exclude VAT and cover the stated duration. Session length, frequency and
+          cohort dates are agreed before payment.
         </p>
         <Dimensions />
       </section>
@@ -681,7 +682,8 @@ export function CoursePage({ index }: { index: number }) {
             </li>
           </ul>
           <p className="fine">
-            Prices exclude VAT. Cohort schedule, session length and frequency are agreed before payment.
+            Prices exclude VAT. Cohort schedule, session length and frequency are agreed before
+            payment.
           </p>
           <a className="btn" href="#join-course">
             Join this course <Arrow />
@@ -706,9 +708,19 @@ export function CoursePage({ index }: { index: number }) {
             </p>
           </div>
           <AudienceGrid />
-          {index < 2 && <p style={{ marginTop: 24 }}>
-            Explore practice for <a className="text-link" href="/who-its-for/university-students">university presentations and internship interviews</a> or <a className="text-link" href="/who-its-for/graduating-students">graduate and first-job interviews</a>.
-          </p>}
+          {index < 2 && (
+            <p style={{ marginTop: 24 }}>
+              Explore practice for{" "}
+              <a className="text-link" href="/who-its-for/university-students">
+                university presentations and internship interviews
+              </a>{" "}
+              or{" "}
+              <a className="text-link" href="/who-its-for/graduating-students">
+                graduate and first-job interviews
+              </a>
+              .
+            </p>
+          )}
         </div>
       </section>
       <script
@@ -722,7 +734,12 @@ export function CoursePage({ index }: { index: number }) {
             name: c.name,
             description: c.description,
             url: ORIGIN + "/courses/" + c.slug,
-            provider: { "@type": "Organization", "@id": ORIGIN + "/#organization", name: "Beyond Fluency Lab", url: ORIGIN },
+            provider: {
+              "@type": "Organization",
+              "@id": ORIGIN + "/#organization",
+              name: "Beyond Fluency Lab",
+              url: ORIGIN,
+            },
             educationalLevel: "Fluent English speakers",
             teaches: c.outcomes,
             offers: {
@@ -730,7 +747,12 @@ export function CoursePage({ index }: { index: number }) {
               price: c.price,
               priceCurrency: "EUR",
               category: "Paid",
-              priceSpecification: { "@type": "PriceSpecification", price: c.price, priceCurrency: "EUR", valueAddedTaxIncluded: false },
+              priceSpecification: {
+                "@type": "PriceSpecification",
+                price: c.price,
+                priceCurrency: "EUR",
+                valueAddedTaxIncluded: false,
+              },
               url: ORIGIN + "/courses/" + c.slug,
             },
             hasCourseInstance: {
@@ -819,7 +841,7 @@ export function SegmentPage({ index }: { index: number }) {
           </p>
           <h2 style={{ fontSize: 35 }}>{c.name}</h2>
           <p className="lead" style={{ fontSize: 16 }}>
-            {c.short} {c.duration} · €{c.price}.
+            {c.short}
           </p>
           <a className="text-link" href={"/courses/" + c.slug}>
             Read the course outline <Arrow />
@@ -950,7 +972,9 @@ export function AboutPage() {
       <section className="wrap section">
         <div className="split">
           <div>
-            <p className="eyebrow">LEARN WITH SMILE <LabIcon name="arrow" size={17} /> BEYOND FLUENCY LAB</p>
+            <p className="eyebrow">
+              LEARN WITH SMILE <LabIcon name="arrow" size={17} /> BEYOND FLUENCY LAB
+            </p>
             <h2>
               Seven years of listening. <br />A sharper question.
             </h2>
@@ -1121,7 +1145,7 @@ export function PricingPage() {
       <PageHero
         eyebrow="PRICING"
         title="Clear scope. Considered fees."
-        description="Live communication coaching in English from €50. Choose the depth of practice that fits your next conversation."
+        description="Live communication coaching in English with tailored feedback. Choose the depth of practice that fits your next conversation."
       />
       <section className="wrap section">
         <CourseGrid />
@@ -1170,7 +1194,8 @@ export function PricingPage() {
               total payable amount are confirmed before enrolment.
             </p>
             <p>
-              All displayed fees exclude VAT. Review the cancellation and rescheduling terms before payment.
+              All displayed fees exclude VAT. Review the cancellation and rescheduling terms before
+              payment.
             </p>
             <a href="/legal/terms">Read the current terms</a>
           </div>
@@ -1210,53 +1235,61 @@ export function BlogPage() {
           <Chart />
         </div>
       </section>
-      <section className="tinted">
-        <div className="wrap section">
-          <p className="eyebrow">PRACTICE IN YOUR CONTEXT</p>
-          <h2 style={{ marginBottom: 35 }}>Four audiences. Four starting points.</h2>
-          <div className="article-grid audience-articles">
-            {articles.slice(1, 5).map((a) => (
-              <article className="article-card" key={a.slug}>
-                <p className="eyebrow">{a.category}</p>
-                <h3>
-                  <a href={"/blog/" + a.slug}>{a.title}</a>
-                </h3>
-                <p>{a.description}</p>
-                <a className="text-link" href={"/blog/" + a.slug}>
-                  Read the guide <Arrow />
-                </a>
-              </article>
-            ))}
-          </div>
+      <section className="wrap"><TrialInvitation/></section>
+      <section className="wrap section">
+        <p className="eyebrow">LIFE, STUDY & WORK</p>
+        <h2>Find the conversation that feels familiar.</h2>
+        <p>Our story, the Plateau Framework and original practice guides for students, professionals, NRIs, families and business owners. Every guide starts with a real situation and gives you something specific to try.</p>
+        <div className="v5-guide-grid">
+          {articles.filter(a => a.slug !== "fluency-plateau-report").map(a => (
+            <article key={a.slug}>
+              <img src={"/assets/"+(a.image || programmes[a.course].image)+".webp"} alt={"Illustrative scene for "+a.title} width="900" height="600" loading="lazy"/>
+              <p className="eyebrow">{a.category}</p>
+              <h3><a href={"/blog/"+a.slug}>{a.title}</a></h3>
+              <p>{a.description}</p>
+              <a className="text-link" href={"/blog/"+a.slug}>Read the guide <Arrow/></a>
+            </article>
+          ))}
         </div>
       </section>
-      <section className="wrap section">
-        <p className="eyebrow">ACROSS EVERY CONTEXT</p>
-        <h2 style={{ marginBottom: 35 }}>Work on the dimension.</h2>
-        <ArticleCards items={articles.slice(5, 7)} />
-      </section>
-      <section className="wrap section">
-        <p className="eyebrow">STUDENTS & GRADUATES</p>
-        <h2 style={{ marginBottom: 35 }}>Prepare for your next conversation.</h2>
-        <ArticleCards items={articles.slice(7)} />
-      </section>
+      <section className="wrap section"><TrialInvitation/></section>
     </main>
   );
 }
 export function ArticlePage({ index }: { index: number }) {
   const a = articles[index],
-    c = courses[a.course];
+    c = programmes[a.course];
   return (
     <main id="main">
       <PageHero eyebrow={a.category} title={a.title} description={a.intro}>
         <div className="meta">
           <span>Beyond Fluency Lab</span>
-          <time dateTime={a.published || "2026-09-06"}>{new Date((a.published || "2026-09-06") + "T12:00:00Z").toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}</time>
+          <time dateTime={a.published || "2026-09-06"}>
+            {new Date((a.published || "2026-09-06") + "T12:00:00Z").toLocaleDateString("en-GB", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+              timeZone: "UTC",
+            })}
+          </time>
           <span>{a.read}</span>
         </div>
       </PageHero>
       <section className="wrap section">
         <article className="article-body prose">
+          {a.image && (
+            <figure className="v5-article-image">
+              <img
+                src={"/assets/" + a.image + ".webp"}
+                alt={"Illustrative scene accompanying " + a.title}
+                width="1536"
+                height="1024"
+              />
+              <figcaption>
+                Illustrative scene. The people shown are not presented as named learners or staff.
+              </figcaption>
+            </figure>
+          )}
           <nav className="article-toc" aria-label="Article contents">
             {a.sections.map(([q], i) => (
               <a href={"#section-" + i} key={q}>
@@ -1271,7 +1304,8 @@ export function ArticlePage({ index }: { index: number }) {
               {p.split("\n").map((t) => (
                 <p key={t}>{t}</p>
               ))}
-              {index === 0 && i === 3 && (
+              {i === 1 && <TrialInvitation course={c.slug}/>}
+              {index === 0 && q === "How much practice time can a smaller group create?" && (
                 <>
                   <div className="table-scroll">
                     <table className="data-table">
@@ -1354,22 +1388,43 @@ export function ArticlePage({ index }: { index: number }) {
             <p className="eyebrow">PUT IT INTO PRACTICE</p>
             <h2>{c.name}</h2>
             <p>
-              {c.short} {c.duration} · €{c.price}.
+              {c.short}
             </p>
+            <ul>{c.offers.map(o => <li key={o.format}><strong>{o.format}: €{o.price.toLocaleString("en-IE")}</strong> · {o.sessions} · {o.weeks} · {o.capacity}</li>)}</ul>
+            <p className="fine">{feeNote}</p>
             <a href={"/courses/" + c.slug}>
               Explore the course <LabIcon name="arrow" size={17} />
             </a>
             {"segment" in a && a.segment !== undefined && (
               <p>
                 More for{" "}
-                <a href={"/who-its-for/" + (a.audience || segments[a.segment].slug)}>{a.audience === "university-students" ? "university students" : segments[a.segment].name}</a>.
+                <a href={"/who-its-for/" + (a.audience || segments[a.segment].slug)}>
+                  {a.audience === "university-students"
+                    ? "university students"
+                    : segments[a.segment].name}
+                </a>
+                .
               </p>
             )}
           </section>
+          <TrialInvitation course={c.slug}/>
           <h2>What should you read next?</h2>
           <ul>
-            {(index === 0 ? articles.slice(1) : [...articles.filter(x => x.slug !== a.slug && (x.course === a.course || (a.segment !== undefined && x.segment === a.segment))).slice(0, 3), articles[0]])
-              .filter((x) => x.slug !== a.slug)
+            {(index === 0
+              ? articles.slice(1)
+              : [
+                  ...articles
+                    .filter(
+                      (x) =>
+                        x.slug !== a.slug &&
+                        (x.course === a.course ||
+                          (a.segment !== undefined && x.segment === a.segment)),
+                    )
+                    .slice(0, 3),
+                  articles[0],
+                ]
+            )
+              .filter((x, i, all) => x.slug !== a.slug && all.findIndex(item => item.slug === x.slug) === i)
               .map((x) => (
                 <li key={x.slug}>
                   <a href={"/blog/" + x.slug}>{x.title}</a>

@@ -116,6 +116,13 @@ function Cookies() { return <>
         </thead>
         <tbody>
           <tr>
+            <td><code>bfl-country-preference-v1</code></td>
+            <td>Beyond Fluency Lab</td>
+            <td>Remembers a country you select in the footer. Automatic detection uses the hosting provider’s network-country signal; this feature does not store your IP address or precise location. Choose “Use automatic detection” to remove the saved preference.</td>
+            <td>Requested preference</td>
+            <td>Until you reset the selection or clear site data</td>
+          </tr>
+          <tr>
             <td><code>bfl-consent</code></td>
             <td>Beyond Fluency Lab</td>
             <td>Stores your analytics and advertising choice</td>
