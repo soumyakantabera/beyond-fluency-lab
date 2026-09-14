@@ -1,3 +1,4 @@
+import { CountrySelector } from "./country-selector";
 import { useRouterState } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { SiteInvitation } from "@/components/course-invitation";
@@ -69,6 +70,7 @@ export function Footer() {
             <a href="/brand-kit">Brand assets</a>
           </div>
         </div>
+        <CountrySelector />
         <div className="footer-bottom">
           <span>© 2026 Beyond Fluency Lab</span>
           <MotionDirector />

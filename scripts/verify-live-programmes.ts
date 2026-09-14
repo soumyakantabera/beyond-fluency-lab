@@ -1,3 +1,5 @@
+import { countryCodes, normalizeCountry } from '../src/lib/countries';
+import { countryOptions } from '../src/lib/country-options';
 import assert from 'node:assert/strict';
 import { existsSync } from 'node:fs';
 import { programmes } from '../src/lib/programmes';
@@ -38,3 +40,12 @@ assert.ok(simplePages['our-method'][0].includes('Plateau Framework'));
 assert.ok(simplePages['who-its-for'][0].includes('NRIs'));
 assert.ok(simplePages.blog[1].includes('families'));
 console.log('PASS: final metadata preserves the framework and current audience positioning.');
+
+assert.equal(countryCodes.length,249);
+assert.equal(new Set(countryCodes).size,249);
+assert.equal(countryOptions.length,249);
+assert.equal(normalizeCountry(' in '),'IN');
+assert.equal(normalizeCountry('US'),'US');
+for(const invalid of [null,undefined,'','XX','ZZ','USA','<script>',123]) assert.equal(normalizeCountry(invalid),null);
+for(const option of countryOptions) assert.ok(normalizeCountry(option.code) && option.name);
+console.log('PASS: 249 country choices, valid normalization and safe unknown-country fallback.');
