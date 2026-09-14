@@ -5,6 +5,7 @@ import { LeadForm } from "./site-interactions";
 import "./site-v3.css";
 import { LabIcon } from "./lab-icon";
 import { StorySlides, CourseRail, IconPlate, globalStories } from "./story-slides";
+import { PlateauFramework, plateauContexts } from "./plateau-framework";
 import { problemGuides } from "@/lib/problem-guides";
 import type { IconName } from "@/lib/icon-paths";
 const programmeIcons: IconName[] = [
@@ -262,43 +263,7 @@ export function HomePage() {
           You need space to practise being heard.
         </p>
       </section>
-      <section className="v3-wrap v3-section">
-        <StorySlides label="Lives behind the words" slides={globalStories} />
-      </section>
-      <section className="v3-dark">
-        <div className="v3-wrap v3-split">
-          <div>
-            <p className="v3-kicker">THE WORK BEHIND THE CONFIDENCE</p>
-            <h2>
-              Less rehearsing alone.
-              <br />
-              <em>More real conversation.</em>
-            </h2>
-            <p>
-              Bring a moment from your life. Practise it with a coach. Notice what changes. Try
-              again with a little more clarity.
-            </p>
-            <Link href="/our-method" subtle>
-              Inside the Lab
-            </Link>
-          </div>
-          <div className="v3-method-list">
-            {[
-              ["01", "Clarity", "Find the point you want people to remember."],
-              ["02", "Composure", "Stay with your idea when the conversation changes."],
-              ["03", "Connection", "Choose the language that meets the person in front of you."],
-            ].map(([n, t, d]) => (
-              <article key={n}>
-                <IconPlate name={n === "01" ? "structure" : n === "02" ? "pressure" : "exchange"} />
-                <div>
-                  <h3>{t}</h3>
-                  <p>{d}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PlateauFramework />
       <section className="v3-wrap v3-section v3-split">
         <Scene name="mentoring" alt="Illustrative one-to-one conversation with a coach" />
         <div>
@@ -713,34 +678,12 @@ export function MethodPage() {
   return (
     <Frame>
       <Intro
-        label="INSIDE THE LAB"
-        title="Confidence is something you practise."
-        description="More than knowing the words: choosing them, holding your ground and connecting with another person. Our sessions make that work visible."
+        label="OUR METHOD"
+        title="The Plateau Framework. Built around your life."
+        description="Our original three dimensions, applied to the conversations students, professionals, NRIs, families and business owners face. Live practice gives each dimension a practical purpose."
         image="practice"
       />
-      <section className="v3-wrap v3-section">
-        <div className="v3-moments">
-          {[
-            [
-              "Clarity",
-              "Organise the thought. Choose relevant evidence. Make your next step easy to understand.",
-            ],
-            [
-              "Composure",
-              "Pause without panic. Recover from interruptions. Respond when a question changes direction.",
-            ],
-            [
-              "Connection",
-              "Listen closely. Adjust your tone. Make space for another person’s perspective.",
-            ],
-          ].map(([t, d]) => (
-            <article key={t}>
-              <h2>{t}</h2>
-              <p>{d}</p>
-            </article>
-          ))}
-        </div>
-      </section>
+      <PlateauFramework />
       <section className="v3-dark">
         <div className="v3-wrap v3-section">
           <p className="v3-kicker">A SESSION AT THE LAB</p>
@@ -1073,7 +1016,11 @@ export function AudiencesPage() {
         image="bfl-global-belonging-v4"
       />
       <section className="v3-wrap v3-section">
-        <StorySlides label="People, problems, possibilities" slides={globalStories} />
+        <p className="v3-kicker">THE PLATEAU FRAMEWORK IN YOUR WORLD</p>
+        <h2>Different situations. <em>Three shared dimensions.</em></h2>
+        <p>Persuasive Structure, Pressure Performance and Register Control give us a shared language for practice. We adapt the task to your goals, age and context.</p>
+        <StorySlides label="People, problems, possibilities" slides={plateauContexts} />
+        <Link href="/our-method" subtle>Explore the Plateau Framework</Link>
       </section>
       <section className="v3-wrap v3-section">
         <div className="v3-info-grid">

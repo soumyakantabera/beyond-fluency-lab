@@ -10,12 +10,12 @@ export const simplePages: Record<string, [string, string]> = {
     "Compare ten live live communication courses in English for Europe. Explore live classes and private programmes.",
   ],
   "who-its-for": [
-    "Professional Communication Coaching for Your Role",
-    "Live coaching for corporate professionals, SME owners, sales and marketing people, and graduating students. Four equal audiences, one fluency plateau.",
+    "Communication Coaching for Students, Professionals and NRIs",
+    "The Plateau Framework in real life: live communication coaching for students, professionals, NRIs, leaders, business owners and families.",
   ],
   "our-method": [
     "The Plateau Framework: Live Communication Coaching Method",
-    "Persuasive structure, pressure performance and register control. Approximately 6 learners, the same trainer and monthly alumni practice.",
+    "Persuasive Structure, Pressure Performance and Register Control: an original coaching framework adapted to life, study and work through live classes and personalised private practice.",
   ],
   about: [
     "About Beyond Fluency Lab and Learn With Smile",

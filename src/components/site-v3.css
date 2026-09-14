@@ -1478,3 +1478,6 @@
     margin-top: 24px;
   }
 }
+
+/* The original Plateau Framework, applied across learner contexts. */
+.plateau-dimensions{margin:48px 0}.plateau-dimensions article>svg{color:var(--v3-forest,#174f46);margin-bottom:18px}.plateau-followthrough{max-width:820px;margin-top:32px}.plateau-followthrough a{display:inline-flex;align-items:center;gap:12px;margin:12px 24px 0 0;color:#174f46;border-bottom:1px solid #174f46;padding-bottom:8px}#plateau-framework .plateau-chart{align-self:center;min-width:0}#plateau-framework .plateau-chart svg{width:100%;height:auto}#plateau-framework .v3-kicker{display:flex;align-items:center;gap:8px}

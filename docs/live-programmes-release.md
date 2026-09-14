@@ -51,3 +51,7 @@ Verification: typecheck, production build and programme contract checks passed, 
 Verified application preview: https://beyond-fluency-3hotmpn7q-learnwithsmilein-7865s-projects.vercel.app/
 
 These changes remain on draft PR #15. No production merge, payment or enquiry submission was performed.
+
+## Plateau Framework restored · 14 September 2026
+
+Restored the named Persuasive Structure, Pressure Performance and Register Control dimensions and original conceptual chart on the homepage and method page. Clarity, Composure and Connection remain plain-language descriptions, not replacement framework names. Seven image-led context chapters cover students/graduates, professionals, NRIs/life abroad, leaders/founders, sales/business, young learners and cross-cultural families. The audience page reuses the same examples and the report now explains these adaptations and live delivery scopes. Existing diagnostic scoring remains unchanged; the report identifies its work/interview scenario scope. Course catalogue and prices remain unchanged.
